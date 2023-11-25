@@ -1,8 +1,20 @@
-# React + Vite
+Projecto creado con npm create-vite@latest
+Estilos manejados con TailwindCSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Estructura de archivos (Carpetas)
 
-Currently, two official plugins are available:
+Components ---> Aqui van los componentes de la app
+Config
+--Endpoint --> Aqui se declara la url al backend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Api
+--Config --> Configuracion de la url base de axios
+--Fetch[nombre del archivo] --> Peticiones fetch al servidor
+
+Assets
+--Icons --> Carpeta para guadar iconos
+--Images --> Carpeta para guardar imagenes
+
+Pages --> Contiene las paginas de la app
+
+Hooks --> Carpeta para custom hooks
