@@ -10,7 +10,7 @@ const Home = () => {
     <MainLayout>
       <h1>Home</h1>
       <Textfield value={newMessage} onChange={handleMessage} />
-      <Button text="Send" onClick={sendMessage} />
+      <Button text="Button" onClick={sendMessage} />
     </MainLayout>
   );
 };
