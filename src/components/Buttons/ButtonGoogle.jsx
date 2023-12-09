@@ -1,9 +1,9 @@
 import React from "react";
 import clsx from "clsx";
 
-export const ButtonGoogle = ({text, onClick}) => {
+export const ButtonGoogle = ({ text, onClick }) => {
   return (
-    <google
+    <button
       className={clsx(
         //default state
         "bg-[#B5BAC1] text-[#1E1F22]",
@@ -28,6 +28,6 @@ export const ButtonGoogle = ({text, onClick}) => {
     >
       {text}
       <img className="pl-6 " src="/src/assets/google.svg" alt="google" />
-    </google>
+    </button>
   );
 };
