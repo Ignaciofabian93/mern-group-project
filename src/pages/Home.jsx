@@ -14,7 +14,7 @@ const Home = () => {
       <h1>Home</h1>
       <Textfield value={newMessage} onChange={handleMessage} />
       <Button text="Button" onClick={sendMessage} />
-      <ButtonGoogle text="Continue Whit Google"/>
+      <ButtonGoogle text="Continue Whit Google" onclick={handleMessage}/>
     </MainLayout>
   );
 };
