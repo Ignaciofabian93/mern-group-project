@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import MainLayout from "../Layouts/MainLayout";
 import Textfield from "../components/Textfield/Textfield";
-import Button from "../components/Buttons/Button";
 import useMessage from "../hooks/useMessage";
 import { ThemeContext } from "../context/themeContext";
+import { Button } from "../components/Buttons/Button";
+import { ButtonGoogle } from "../components/Buttons/ButtonGoogle";
 
 const Home = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -13,6 +14,7 @@ const Home = () => {
       <h1>Home</h1>
       <Textfield value={newMessage} onChange={handleMessage} />
       <Button text="Button" onClick={sendMessage} />
+      <ButtonGoogle text="Continue Whit Google"/>
     </MainLayout>
   );
 };

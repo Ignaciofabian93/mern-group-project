@@ -1,13 +1,13 @@
 import React from "react";
 import clsx from "clsx";
 
-export const Button = ({ text, onClick }) => {
+export const ButtonGoogle = ({text}) => {
   return (
-    <button
+    <google
       className={clsx(
         //default state
-        "bg-[#6E8ABB] text-white",
-        "py-2 px-8 leanding",
+        "bg-[#B5BAC1] text-[#1E1F22]",
+        "py-3 px-14 leanding",
         "rounded-full",
         "font-semibold tracking-wide",
         "cursor-pointer",
@@ -15,7 +15,7 @@ export const Button = ({ text, onClick }) => {
         "relative shadow",
         //hover
         "transition",
-        "hover:bg-[#395886] hover:shadow-md",
+        "hover:bg-[#DBDEE1] hover:shadow-md",
         //focus state
         "outline-none",
         "ring-[#6E8ABB]/70 ring-offset-2",
@@ -23,12 +23,8 @@ export const Button = ({ text, onClick }) => {
         //disabled state
         "disabled:bg-[#6E8ABB]/50 disabled:cursor-not-allowed disabled:shadow"
       )}
-      onClick={onClick}
     >
       {text}
-    </button>
+    </google>
   );
 };
-
-
-
