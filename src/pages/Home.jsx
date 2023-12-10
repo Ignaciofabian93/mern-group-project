@@ -2,6 +2,8 @@ import React from "react";
 import MainLayout from "../Layouts/MainLayout";
 // import Textfield from "../components/Textfield/Textfield";
 import useMessage from "../hooks/useMessage";
+import User from "../components/User/User";
+import Rooms from "../components/Rooms/Rooms";
 // import { ThemeContext } from "../context/themeContext";
 // import { Button } from "../components/Buttons/Button";
 // import { ButtonGoogle } from "../components/Buttons/ButtonGoogle";
@@ -21,12 +23,13 @@ const Home = () => {
   } = useMessage();
   return (
     <MainLayout>
-      <div>
-        <div>
-          <label>Username:</label>
-          <input type="text" value={username} onChange={handleUsername} />
+      <div className="p-8">
+        <div className="mb-5">
+          <User username={username} onChange={handleUsername} />
         </div>
         <div>
+
+          <Rooms/>
           <label>Room:</label>
           <input type="text" value={currentRoom} onChange={handleCurrenRoom} />
           <button onClick={joinRoom}>Join Room</button>
@@ -54,8 +57,6 @@ const Home = () => {
               onChange={handleMessageInput}
             />
             <button onClick={sendMessage}>Send</button>
-           
-            
           </div>
         </div>
       </div>
