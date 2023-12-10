@@ -54,8 +54,8 @@ const Home = () => {
               onChange={handleMessageInput}
             />
             <button onClick={sendMessage}>Send</button>
-           <button>Hola</button>
-            <div>Hola Carlos</div>
+           
+            
           </div>
         </div>
       </div>
