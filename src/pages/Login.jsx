@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
+import AuthLayout from "../Layouts/AuthLayout";
 import { Authcontext } from "../context/authContext";
-import MainLayout from "../Layouts/MainLayout";
+import Textfield from "../components/Textfield/Textfield";
+import { Button } from "../components/Buttons/Button";
 
 const Login = () => {
   const { handleGoogleLogin } = useContext(Authcontext);
   return (
-    <MainLayout>
-      <button onClick={handleGoogleLogin}>Login</button>
-    </MainLayout>
+    <AuthLayout>
+      <section>
+        <Textfield />
+        <Textfield />
+        <Button text={"Login"} onClick={handleGoogleLogin} />
+      </section>
+    </AuthLayout>
   );
 };
 
