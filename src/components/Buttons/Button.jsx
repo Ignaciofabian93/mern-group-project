@@ -6,7 +6,7 @@ export const Button = ({ text, onClick }) => {
     <button
       className={clsx(
         //default state
-        "bg-[#6E8ABB] text-white",
+        "bg-[#5865F2] text-white",
         "py-3 px-12 leanding",
         "rounded-full",
         "font-semibold tracking-wide",
@@ -15,13 +15,13 @@ export const Button = ({ text, onClick }) => {
         "relative shadow",
         //hover
         "transition",
-        "hover:bg-[#395886] hover:shadow-md",
+        "hover:bg-[#4752C4] hover:shadow-md",
         //focus state
         "outline-none",
-        "ring-[#6E8ABB]/70 ring-offset-2",
+        "ring-[#5865F2]/70 ring-offset-2",
         "focus-visible:ring-2 focus:scale-[0.98]",
         //disabled state
-        "disabled:bg-[#6E8ABB]/50 disabled:cursor-not-allowed disabled:shadow"
+        "disabled:bg-[#5865F2]/50 disabled:cursor-not-allowed disabled:shadow"
       )}
       onClick={onClick}
     >

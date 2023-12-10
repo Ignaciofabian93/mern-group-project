@@ -3,7 +3,7 @@ import MainLayout from "../Layouts/MainLayout";
 // import Textfield from "../components/Textfield/Textfield";
 import useMessage from "../hooks/useMessage";
 // import { ThemeContext } from "../context/themeContext";
-// import { Button } from "../components/Buttons/Button";
+import { Button } from "../components/Buttons/Button";
 // import { ButtonGoogle } from "../components/Buttons/ButtonGoogle";
 
 const Home = () => {
@@ -53,7 +53,8 @@ const Home = () => {
               value={messageInput}
               onChange={handleMessageInput}
             />
-            <button onClick={sendMessage}>Send</button>
+            {/* <button onClick={sendMessage}>Send</button> */}
+            <Button onClick={sendMessage} text={"Enviar"}/>
           </div>
         </div>
       </div>
