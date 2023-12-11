@@ -32,7 +32,7 @@ const Home = () => {
     <MainLayout>
       <Navbar />
       <main className="flex">
-        <section className="flex flex-col flex-1 w-32">
+        <section className="flex flex-col w-64">
           <div className="m-5 mt-10">
             <UserConnected username={"midudev"} email={"midudev@gmail.com"} />
           </div>
@@ -47,7 +47,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="flex-2  w-2/3  mr-80   bg-[#313338]">
+        <section className="flex-1  p-2  bg-[#313338]">
           <Message />
         </section>
       </main>
