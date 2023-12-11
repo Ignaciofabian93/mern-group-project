@@ -18,10 +18,10 @@ import { StatusBar } from "../components/StatusBar/StatusBar";
 const Home = () => {
   // const { theme, toggleTheme } = useContext(ThemeContext);
 
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true);
   const toogleDarkMode = () => {
-    setDarkMode(!darkMode)
-  }
+    setDarkMode(!darkMode);
+  };
 
   const {
     username,
@@ -37,9 +37,9 @@ const Home = () => {
     sendMessage,
   } = useMessage();
   return (
-    <MainLayout>
-      <Navbar  toogleDarkMode={toogleDarkMode} darkMode={darkMode} />
-      <main className={`flex ${darkMode && "dark"}`}>
+    <MainLayout darkMode={darkMode}>
+      <Navbar toogleDarkMode={toogleDarkMode} darkMode={darkMode} />
+      <main className="flex">
         <section className="flex flex-col w-64 dark:bg-[#2B2D31]">
           <div className="m-5 mt-10">
             <UserConnected

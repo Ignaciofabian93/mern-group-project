@@ -1,9 +1,9 @@
 import React from "react";
 
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, darkMode }) => {
   return (
-    <main className="h-screen">
+    <main className={` h-screen ${darkMode && "dark"}`}>
       <section>{children}</section>
     </main>
   );
