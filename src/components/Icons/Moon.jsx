@@ -3,7 +3,7 @@ import React from "react";
 export const IconMoon = () => {
   return (
     <div className="flex gap-2">
-      <p className="text-gray-800">Dark Mode</p>
+      <p className="text-white dark:text-gray-800">Dark Mode</p>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24"
