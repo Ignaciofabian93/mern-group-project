@@ -12,14 +12,16 @@ const Login = () => {
     <AuthLayout>
       <section className="w-full h-full flex flex-col items-center justify-center">
         <h1 className="text-3xl">App</h1>
-        <div className="w-full flex flex-col items-center mb-8">
+        <div className="w-full flex flex-col items-center mb-8 gap-2">
           <Textfield
+            placeholder={"Email"}
             name={"email"}
             onChange={handleLoginData}
             value={loginData.email}
             type={"email"}
           />
           <Textfield
+            placeholder={"Password"}
             name={"password"}
             onChange={handleLoginData}
             value={loginData.password}

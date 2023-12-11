@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 export const UserConnected = ({ username, email, imgUser }) => {
   return (
-    <div className="flex items-center  gap-4 ">
+    <div className="flex items-center gap-4 ">
       <div>
         <img
           src={imgUser}

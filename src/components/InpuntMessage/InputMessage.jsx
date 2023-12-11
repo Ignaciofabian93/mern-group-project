@@ -3,7 +3,10 @@ import clsx from "clsx";
 import { ButtonSend } from "../Buttons/ButtonSend";
 import { ButtonFile } from "../Buttons/ButtonFile";
 
-export const InputMessage = () => {
+export const InputMessage = ({
+  messageInput,
+  handleMessageInput,
+}) => {
   const fileInputRef = useRef(null);
 
   const handleFileButtonClick = () => {
@@ -33,8 +36,10 @@ export const InputMessage = () => {
             "focus:outline-none",
             "focus:border-transparent"
           )}
+          value={messageInput}
           type="text"
           placeholder="Enviar mensaje"
+          onChange={handleMessageInput}
         />
       </div>
       <div className="flex gap-5">
@@ -46,9 +51,9 @@ export const InputMessage = () => {
             onChange={handleFileInputChange}
             ref={fileInputRef}
           />
-          <button type="button" onClick={handleFileButtonClick}>
+          <div type="button" onClick={handleFileButtonClick}>
             <ButtonFile />
-          </button>
+          </div>
         </div>
         <ButtonSend />
       </div>

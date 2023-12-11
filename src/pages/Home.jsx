@@ -44,7 +44,7 @@ const Home = () => {
           <div className="m-5 mt-10">
             <UserConnected
               imgUser={"/src/assets/img/user.jpg"}
-              username={"midudev"}
+              username={username}
               email={"midudev@gmail.com"}
             />
           </div>
@@ -61,7 +61,10 @@ const Home = () => {
 
         <section className=" bg-slate-200 flex-1  px-12 pb-5 pt-2 dark:bg-[#313338] transition duration-500">
           <StatusBar text={"JavaScript Channel"} />
-          <Message />
+          <Message
+            messageInput={messageInput}
+            handleMessageInput={handleMessageInput}
+          />
         </section>
       </main>
     </MainLayout>
