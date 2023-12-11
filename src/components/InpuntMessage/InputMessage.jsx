@@ -26,7 +26,7 @@ export const InputMessage = () => {
             "px-3",
             "rounded-l",
             "dark:border border-transparent",
-            "dark:bg-[#383A40]",
+            "dark:bg-[#383A40] transition duration-500",
             "dark:text-white",
 
             //focus

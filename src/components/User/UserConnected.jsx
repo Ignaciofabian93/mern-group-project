@@ -17,7 +17,16 @@ export const UserConnected = ({ username, email, imgUser }) => {
         />
       </div>
       <div>
-        <p className={clsx("font-semibold dark:text-white")}>{username}</p>
+        <p
+          className={clsx(
+            "font-semibold",
+            //dark mode
+            " dark:text-white",
+            "transition duration-500"
+          )}
+        >
+          {username}
+        </p>
         <p className={clsx("text-gray-500", "text-sm")}>{email}</p>
       </div>
     </div>

@@ -4,11 +4,15 @@ import { IconSun } from "../Icons/Sun";
 
 const Navbar = ({toogleDarkMode, darkMode}) => {
   return (
-    <div className="dark:bg-[#1E1F22] justify-between flex px-10 py-4">
-      <p className="dark:text-white">DevChat</p>
+    <div className="dark:bg-[#1E1F22] transition duration-500 justify-between flex px-10 py-2">
+      <p className="dark:text-white transition duration-500">DevChat</p>
+      <div>
+        
+      </div>
       <button onClick={toogleDarkMode}>
-        {darkMode ? <IconSun /> : <IconMoon />}
+        {darkMode ?  <IconSun />  : <IconMoon />}
       </button>
+      
     </div>
   );
 };

@@ -40,7 +40,7 @@ const Home = () => {
     <MainLayout darkMode={darkMode}>
       <Navbar toogleDarkMode={toogleDarkMode} darkMode={darkMode} />
       <main className="flex">
-        <section className="flex flex-col w-64 dark:bg-[#2B2D31]">
+        <section className="flex flex-col w-64 dark:bg-[#2B2D31] transition duration-500">
           <div className="m-5 mt-10">
             <UserConnected
               imgUser={"/src/assets/img/user.jpg"}
@@ -59,7 +59,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="flex-1  px-4 pb-5 pt-10 dark:bg-[#313338]">
+        <section className="flex-1  px-4 pb-5 pt-10 dark:bg-[#313338] transition duration-500">
           <StatusBar text={"JavaScript Channel"} />
           <Message />
         </section>
