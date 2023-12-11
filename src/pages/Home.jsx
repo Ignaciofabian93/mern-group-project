@@ -12,6 +12,7 @@ import React from "react";
 import { UserConnected } from "../components/User/UserConnected";
 import { Rooms } from "../components/Rooms/Rooms";
 import Navbar from "../components/Navigation/Navbar";
+import { Message } from "../components/Message/Message";
 
 const Home = () => {
   // const { theme, toggleTheme } = useContext(ThemeContext);
@@ -46,8 +47,8 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="flex-2  w-2/3  mr-32 h-screen">
-          <div className="borde h-full w-full  bg-[#313338]"></div>
+        <section className="flex-2  w-2/3  mr-80   bg-[#313338]">
+          <Message />
         </section>
       </main>
     </MainLayout>
