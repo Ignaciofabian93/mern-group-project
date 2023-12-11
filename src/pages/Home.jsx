@@ -1,12 +1,17 @@
-import React from "react";
-import MainLayout from "../Layouts/MainLayout";
 // import Textfield from "../components/Textfield/Textfield";
+import MainLayout from "../Layouts/MainLayout";
+
 import useMessage from "../hooks/useMessage";
-import User from "../components/User/User";
-import Rooms from "../components/Rooms/Rooms";
+import React from "react";
+
 // import { ThemeContext } from "../context/themeContext";
 // import { Button } from "../components/Buttons/Button";
 // import { ButtonGoogle } from "../components/Buttons/ButtonGoogle";
+
+//Componentes David
+import { UserConnected } from "../components/User/UserConnected";
+import { Rooms } from "../components/Rooms/Rooms";
+import Navbar from "../components/Navigation/Navbar";
 
 const Home = () => {
   // const { theme, toggleTheme } = useContext(ThemeContext);
@@ -16,6 +21,7 @@ const Home = () => {
     currentRoom,
     handleCurrenRoom,
     joinRoom,
+    imgRoom,
     messageInput,
     messages,
     handleMessageInput,
@@ -23,43 +29,27 @@ const Home = () => {
   } = useMessage();
   return (
     <MainLayout>
-      <div className="p-8">
-        <div className="mb-5">
-          <User username={username} onChange={handleUsername} />
-        </div>
-        <div>
+      <Navbar />
+      <main className="flex">
+        <section className="flex flex-col flex-1 w-32">
+          <div className="m-5 mt-10">
+            <UserConnected username={"midudev"} email={"midudev@gmail.com"} />
+          </div>
 
-          <Rooms/>
-          <label>Room:</label>
-          <input type="text" value={currentRoom} onChange={handleCurrenRoom} />
-          <button onClick={joinRoom}>Join Room</button>
-        </div>
-        <div>
-          <div
-            style={{
-              border: "1px solid #ccc",
-              padding: "10px",
-              margin: "10px",
-              height: "200px",
-              overflowY: "auto",
-            }}
-          >
-            {messages.map((msg, index) => (
-              <div key={index}>
-                <strong>{msg.username}:</strong> {msg.text}
-              </div>
-            ))}
+          <div className="pt-5 m-5 flex flex-col gap-4">
+            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
+            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
+            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
+            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
+            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
+            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
           </div>
-          <div>
-            <input
-              type="text"
-              value={messageInput}
-              onChange={handleMessageInput}
-            />
-            <button onClick={sendMessage}>Send</button>
-          </div>
-        </div>
-      </div>
+        </section>
+
+        <section className="flex-2  w-2/3  mr-32 h-screen">
+          <div className="borde h-full w-full  bg-[#313338]"></div>
+        </section>
+      </main>
     </MainLayout>
   );
 };

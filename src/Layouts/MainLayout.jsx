@@ -3,7 +3,7 @@ import React from "react";
 
 const MainLayout = ({ children }) => {
   return (
-    <main>
+    <main className="h-screen">
       <section>{children}</section>
     </main>
   );

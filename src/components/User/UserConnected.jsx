@@ -1,9 +1,9 @@
 import React from "react";
 import clsx from "clsx";
 
-export default function User() {
+export const UserConnected = ({username, email}) => {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-4 ">
       <div>
         <img
           src="/src/assets/img/user.jpg"
@@ -12,8 +12,8 @@ export default function User() {
         />
       </div>
       <div>
-        <p className={clsx("font-semibold")}>nombre</p>
-        <p className={clsx("text-gray-500")}>correo@gmail.com</p>
+        <p className={clsx("font-semibold text-white")}>{username}</p>
+        <p className={clsx("text-gray-500", "text-sm")}>{email}</p>
       </div>
     </div>
   );

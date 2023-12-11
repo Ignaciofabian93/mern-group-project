@@ -1,17 +1,22 @@
 import React from "react";
 import Room from "../Room/Room";
+import { ButtonJoinRoom } from "../Buttons/ButtonJoinRoom";
 
-export default function Rooms() {
+export const Rooms = ({ joinRoom, imgRoom }) => {
   return (
-    <div className=" border w-20 ">
-      <div className="flex flex-col gap-3 p-2 ">
-        <Room />
-        <Room />
-        <Room />
-        <Room />
-        <Room />
-        <Room />
+    <div className=" h-full items-center">
+      <div className="flex  flex-col gap-3">
+
+        <div className="flex items-center gap-5">
+          <div>
+            <Room imgRoom={imgRoom} />
+          </div>
+
+          <div>
+            <ButtonJoinRoom joinRoom={joinRoom} />
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
