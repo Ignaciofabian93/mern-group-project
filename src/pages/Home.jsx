@@ -44,7 +44,7 @@ const Home = () => {
           <div className="m-5 mt-10">
             <UserConnected
               imgUser={"/src/assets/img/user.jpg"}
-              username={username}
+              username={"midudev"}
               email={"midudev@gmail.com"}
             />
           </div>

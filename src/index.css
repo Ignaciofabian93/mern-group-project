@@ -2,7 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-/* input:focus ~ .input-text,
-input:not(:placeholder-shown) + label {
-  @apply text-blue-500 bg-white transform -translate-y-7 -translate-x-0 scale-90;
-} */

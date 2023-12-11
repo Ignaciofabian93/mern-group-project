@@ -17,7 +17,7 @@ const Textfield = ({ value, onChange, name, type, placeholder }) => {
             "focus:border-blue-500",
             "focus:text-black",
             "transition duration-200",
-            "bg-inherit"
+            // "bg-inherit"
           )}
           type={type}
           placeholder={placeholder}
@@ -31,6 +31,7 @@ const Textfield = ({ value, onChange, name, type, placeholder }) => {
             "bg-white",
             "px-3",
             "text-sm duration-100",
+            "capitalize",
             "ease-linear",
             "peer-placeholder-shown:translate-y-4",
             "peer-placeholder-shown:text-base",

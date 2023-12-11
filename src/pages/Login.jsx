@@ -12,7 +12,7 @@ const Login = () => {
     <AuthLayout>
       <section className="w-full h-full flex flex-col items-center justify-center">
         <h1 className="text-3xl">App</h1>
-        <div className="w-full flex flex-col items-center mb-8 gap-5">
+        <div className="w-full flex flex-col items-center mb-8 ">
           <Textfield
             placeholder={"Email"}
             name={"email"}
@@ -28,7 +28,7 @@ const Login = () => {
             type={"password"}
           />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2">
           <Button text={"Entrar"} onClick={handleLogin} />
           <ButtonGoogle
             text={"Entrar con Google"}

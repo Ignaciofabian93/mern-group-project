@@ -9,12 +9,13 @@ const ButtonGoogle = ({ text, onClick }) => {
         className={clsx(
           //default state
           "bg-[#B5BAC1] text-[#1E1F22]",
-          "py-3 px-10 leanding",
+          "py-3 px-24 leading",
           "rounded-full",
           "font-semibold tracking-wide",
           "cursor-pointer",
           "inline-flex items-center justify-center",
           "relative shadow",
+          "w-full",
           //hover
           "transition",
           "hover:bg-[#DBDEE1] hover:shadow-md",
@@ -29,7 +30,7 @@ const ButtonGoogle = ({ text, onClick }) => {
         onClick={onClick}
       >
         {text}
-        <div className="pl-5">
+        <div className="ml-7">
           <Google />
         </div>
       </div>
