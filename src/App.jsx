@@ -16,7 +16,7 @@ const ProtectedRoute = ({ children }) => {
     if (!user) {
       navigate("/login");
     }
-  }, [user, navigate]);
+  }, [user]);
 
   return children;
 };
@@ -26,7 +26,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route
-          path="/home"
+          path="/"
           element={
             <ProtectedRoute>
               <Home />

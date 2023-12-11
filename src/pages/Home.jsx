@@ -4,6 +4,7 @@ import MainLayout from "../Layouts/MainLayout";
 import useMessage from "../hooks/useMessage";
 import User from "../components/User/User";
 import Rooms from "../components/Rooms/Rooms";
+import useRoom from "../hooks/useRoom";
 // import { ThemeContext } from "../context/themeContext";
 // import { Button } from "../components/Buttons/Button";
 // import { ButtonGoogle } from "../components/Buttons/ButtonGoogle";
@@ -21,6 +22,8 @@ const Home = () => {
     handleMessageInput,
     sendMessage,
   } = useMessage();
+  const { rooms } = useRoom();
+  console.log("ROOMS: ", rooms);
   return (
     <MainLayout>
       <div className="p-8">
@@ -28,8 +31,7 @@ const Home = () => {
           <User username={username} onChange={handleUsername} />
         </div>
         <div>
-
-          <Rooms/>
+          <Rooms />
           <label>Room:</label>
           <input type="text" value={currentRoom} onChange={handleCurrenRoom} />
           <button onClick={joinRoom}>Join Room</button>

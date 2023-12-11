@@ -21,11 +21,10 @@ const useLogin = () => {
     try {
       setLoading(true);
       const response = await loginUser(loginData.email, loginData.password);
-      console.log("response: ", response);
       if (response.user.uid) {
         setLoading(false);
         setMessage("Login exitoso");
-        navigate("/home");
+        navigate("/");
       } else {
         setLoading(false);
         setMessage("Error al iniciar sesion");
