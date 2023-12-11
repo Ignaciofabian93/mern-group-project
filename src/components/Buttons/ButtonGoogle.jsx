@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-export const ButtonGoogle = ({ text, onClick }) => {
+const ButtonGoogle = ({ text, onClick }) => {
   return (
     <button
       className={clsx(
@@ -31,3 +31,5 @@ export const ButtonGoogle = ({ text, onClick }) => {
     </button>
   );
 };
+
+export default ButtonGoogle;

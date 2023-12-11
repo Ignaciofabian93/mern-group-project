@@ -2,13 +2,12 @@ import React, { createContext, useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
   signInWithPopup,
-  getAuth,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import app from "../firebase/config";
+import { auth } from "../firebase/config";
 
 export const Authcontext = createContext();
 
@@ -16,37 +15,41 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
 
-  // useEffect(() => {
-  //   onAuthStateChanged(app, (currentUser) => {
-  //     console.log(currentUser);
-  //     if (currentUser) {
-  //       getToken();
-  //     } else {
-  //       setUser(null);
-  //     }
-  //   });
-  // }, [token]);
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        getToken();
+      } else {
+        setUser(null);
+      }
+    });
+  }, [token]);
 
-  // const getToken = async () => {
-  //   if (app.currentUser) {
-  //     const token = await app.currentUser.getIdToken();
-  //     setToken(token);
-  //   }
-  // };
+  const getToken = async () => {
+    if (auth.currentUser) {
+      const token = await auth.currentUser.getIdToken();
+      setUser({
+        name: auth.currentUser.displayName,
+        email: auth.currentUser.email,
+        photo: auth.currentUser.photoURL,
+        uid: auth.currentUser.uid,
+      });
+      setToken(token);
+    }
+  };
 
   const loginUser = (email, password) =>
-    signInWithEmailAndPassword(app, email, password);
+    signInWithEmailAndPassword(auth, email, password);
 
   const registerUser = (email, password) =>
-    createUserWithEmailAndPassword(app, email, password);
+    createUserWithEmailAndPassword(auth, email, password);
 
-  const logOut = () => signOut(app);
+  const logOut = () => signOut(auth);
 
   const provider = new GoogleAuthProvider();
 
   const handleGoogleLogin = async () => {
     try {
-      const auth = getAuth(app);
       const response = await signInWithPopup(auth, provider);
       console.log("response: ", response);
       if (response.user) {

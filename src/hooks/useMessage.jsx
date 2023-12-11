@@ -1,21 +1,28 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { url } from "../api/config";
+import { createRoom } from "../api/fetchRoom";
+import { Authcontext } from "../context/authContext";
+import useRoom from "./useRoom";
 
 const useMessage = () => {
+  const { user } = useContext(Authcontext);
+  const { rooms } = useRoom();
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const [username, setUsername] = useState("");
   const [currentRoom, setCurrentRoom] = useState("");
 
+  console.log("USER: ", user);
+
   useEffect(() => {
     const newSocket = io(url);
     setSocket(newSocket);
 
-    return () => {
-      socket.disconnect();
-    };
+    // return () => {
+    //   socket.disconnect();
+    // };
   }, []);
 
   useEffect(() => {
@@ -46,10 +53,19 @@ const useMessage = () => {
     }
   }, [socket]);
 
-  const joinRoom = () => {
-    if (socket && username && currentRoom) {
-      console.log("room info: ", currentRoom, username);
-      socket.emit("joinRoom", currentRoom, username);
+  const joinRoom = async () => {
+    if (socket && user && currentRoom) {
+      const checkRoom = rooms.rooms.some((room) => room.name === currentRoom);
+      if (checkRoom) {
+        socket.emit("joinRoom", currentRoom, user.name);
+      } else {
+        const response = await createRoom(currentRoom, user.uid);
+        if (response.room._id) {
+          socket.emit("joinRoom", currentRoom, user.name);
+        } else {
+          console.log("Error al crear el room");
+        }
+      }
     }
   };
 
