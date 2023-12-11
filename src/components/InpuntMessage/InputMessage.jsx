@@ -25,7 +25,7 @@ export const InputMessage = () => {
             "py-2",
             "px-3",
             "rounded-l",
-            "dark:border border-transparent",
+            "border border-transparent",
             "dark:bg-[#383A40] transition duration-500",
             "dark:text-white",
 
