@@ -6,28 +6,30 @@ const Textfield = ({ value, onChange, name, type, placeholder }) => {
     <>
       <div className="relative mt-6">
         <input
-          type={type}
           className={clsx(
             "peer w-96 border-b",
             "placeholder:text-transparent",
             "border-gray-300",
             "border rounded-lg",
             " py-4",
-            "pl-2",
+            "pl-4",
             "outline-none",
             "focus:border-blue-500",
             "focus:text-black",
             "transition duration-200",
             "bg-inherit"
           )}
+          type={type}
           placeholder={placeholder}
+          onChange={onChange}
+          value={value}
         />
         <label
           className={clsx(
             "absolute",
             "left-0 ml-1 -translate-y-3",
             "bg-white",
-            "px-1",
+            "px-3",
             "text-sm duration-100",
             "ease-linear",
             "peer-placeholder-shown:translate-y-4",
