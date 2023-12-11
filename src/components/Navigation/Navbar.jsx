@@ -1,9 +1,15 @@
 import React from "react";
 
-const Navbar = () => {
+const Navbar = ({ toogleDarkMode, darkMode }) => {
   return (
-    <div className="bg-[#1E1F22] w-full h-8 flex items-center">
-      <p className="pl-5 font-semibold text-white">DevChat</p>
+    <div className=" w-full h-8  px-5 ">
+      <div className="flex items-center justify-between">
+        <p className="dark:text-white">DevChat</p>
+
+        <button className="dark:text-white" onClick={toogleDarkMode}>
+          {darkMode ? "LHT" : "DRK"}
+        </button>
+      </div>
     </div>
   );
 };

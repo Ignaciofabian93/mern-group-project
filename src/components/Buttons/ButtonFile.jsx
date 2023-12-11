@@ -3,7 +3,7 @@ import React from "react";
 export const ButtonFile = () => {
   return (
     <button>
-      <div className="bg-[#383A40] p-2 rounded-r flex items-center">
+      <div className="dark:bg-[#383A40] p-2 rounded-r flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="26"

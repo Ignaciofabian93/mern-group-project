@@ -4,11 +4,10 @@ import { ButtonJoinRoom } from "../Buttons/ButtonJoinRoom";
 
 export const Rooms = ({ joinRoom, imgRoom }) => {
   return (
-    <div className=" h-full items-center">
-      <div className="flex  flex-col gap-3">
-
-        <div className="flex items-center gap-5">
-          <div>
+    <div className=" items-center flex ">
+      <div className="flex  flex-col">
+        <div className="flex items-center gap-4  justify-center ">
+          <div className="flex items-center">
             <Room imgRoom={imgRoom} />
           </div>
 
