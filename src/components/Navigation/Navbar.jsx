@@ -10,7 +10,7 @@ const Navbar = ({toogleDarkMode, darkMode}) => {
         
       </div>
       <button onClick={toogleDarkMode}>
-        {darkMode ?  <IconSun />  : <IconMoon />}
+        {darkMode ?  <IconSun/>  : <IconMoon />}
       </button>
       
     </div>

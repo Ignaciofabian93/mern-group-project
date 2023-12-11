@@ -59,7 +59,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className=" bg-slate-200 flex-1  px-4 pb-5 pt-7 dark:bg-[#313338] transition duration-500">
+        <section className=" bg-slate-200 flex-1  px-12 pb-5 pt-2 dark:bg-[#313338] transition duration-500">
           <StatusBar text={"JavaScript Channel"} />
           <Message />
         </section>
