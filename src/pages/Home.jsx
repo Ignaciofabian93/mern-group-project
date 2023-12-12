@@ -8,6 +8,7 @@ import { Rooms } from "../components/Rooms/Rooms";
 import Navbar from "../components/Navigation/Navbar";
 import { Message } from "../components/Message/Message";
 import { StatusBar } from "../components/StatusBar/StatusBar";
+import DropDown from "../components/DropDown/DropDown";
 
 const Home = () => {
   // const { theme, toggleTheme } = useContext(ThemeContext);
@@ -24,12 +25,15 @@ const Home = () => {
       <main className="flex">
         <section className="flex flex-col w-80 dark:bg-[#2B2D31] transition duration-500">
           <div className="m-5 mt-10">
+        <section className="flex flex-col w-80 dark:bg-[#2B2D31] transition duration-500">
+          <div className="m-5 mt-10 flex gap-12">
             <UserConnected
-              imgUser={user.photo}
-              username={user.name}
-              email={user.email}
+            imgUser={user.photo}
+            username={user.name}
+            email={user.email}
             />
             
+            <DropDown></DropDown>
           </div>
 
           <div className="pt-5 m-5 flex flex-col gap-4 h-ful">
