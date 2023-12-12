@@ -14,15 +14,15 @@ const Login = () => {
         <h1 className="text-3xl">App</h1>
         <div className="w-full flex flex-col items-center mb-8 ">
           <Textfield
-            placeholder={"Email"}
-            name={"email"}
+            placeholder={"Correo electrónico"}
+            name={"Correo electrónico"}
             onChange={handleLoginData}
             value={loginData.email}
             type={"email"}
           />
           <Textfield
             placeholder={"Password"}
-            name={"password"}
+            name={"Contraseña"}
             onChange={handleLoginData}
             value={loginData.password}
             type={"password"}
