@@ -22,13 +22,14 @@ const Home = () => {
     <MainLayout darkMode={darkMode}>
       <Navbar toogleDarkMode={toogleDarkMode} darkMode={darkMode} />
       <main className="flex">
-        <section className="flex flex-col w-64 dark:bg-[#2B2D31] transition duration-500">
+        <section className="flex flex-col w-80 dark:bg-[#2B2D31] transition duration-500">
           <div className="m-5 mt-10">
             <UserConnected
               imgUser={user.photo}
               username={user.name}
               email={user.email}
             />
+            
           </div>
 
           <div className="pt-5 m-5 flex flex-col gap-4 h-ful">
