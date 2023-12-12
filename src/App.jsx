@@ -26,11 +26,11 @@ const App = () => {
     <Router>
       <Routes>
         <Route
-          path="/home"
+          path="/"
           element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <Home />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
         <Route path="/login" element={<Login />} />

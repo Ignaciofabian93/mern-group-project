@@ -4,7 +4,7 @@ import { Google } from "../Icons/Google";
 
 const ButtonGoogle = ({ text, onClick }) => {
   return (
-    <google>
+    <button>
       <div
         className={clsx(
           //default state
@@ -34,7 +34,7 @@ const ButtonGoogle = ({ text, onClick }) => {
           <Google />
         </div>
       </div>
-    </google>
+    </button>
   );
 };
 

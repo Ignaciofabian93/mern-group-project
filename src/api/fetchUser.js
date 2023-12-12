@@ -1,15 +1,12 @@
 import { api } from "./config";
 
-export const handleLoginUser = async (uid) => {
+export const registerUser = async (user) => {
   try {
-    const response = await api.post("/login", { uid });
+    const { name, email, password } = user;
+    const response = await api.post("/api/register", { name, email, password });
     const data = await response.data;
     return data;
   } catch (error) {
-    throw new Error(`Error al intentar conectar el inicio de sesión, ${error}`);
+    throw new Error(`Error al intentar crear el usuario, ${error}`);
   }
 };
-
-export const handleLogoutUser = async () => {};
-
-export const handleRegisterUser = async () => {};

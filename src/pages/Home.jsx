@@ -1,12 +1,6 @@
-// import Textfield from "../components/Textfield/Textfield";
 import MainLayout from "../Layouts/MainLayout";
-
 import useMessage from "../hooks/useMessage";
 import React, { useState } from "react";
-
-// import { ThemeContext } from "../context/themeContext";
-// import { Button } from "../components/Buttons/Button";
-// import { ButtonGoogle } from "../components/Buttons/ButtonGoogle";
 
 //Componentes David
 import { UserConnected } from "../components/User/UserConnected";
@@ -23,20 +17,7 @@ const Home = () => {
     setDarkMode(!darkMode);
   };
 
-  const {
-    user,
-    username,
-    handleUsername,
-    currentRoom,
-    handleCurrenRoom,
-    joinRoom,
-    imgUser,
-    imgRoom,
-    messageInput,
-    messages,
-    handleMessageInput,
-    sendMessage,
-  } = useMessage();
+  const { user, joinRoom, messageInput, handleMessageInput } = useMessage();
   return (
     <MainLayout darkMode={darkMode}>
       <Navbar toogleDarkMode={toogleDarkMode} darkMode={darkMode} />
