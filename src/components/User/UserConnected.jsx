@@ -12,7 +12,7 @@ export const UserConnected = ({ username, email, imgUser }) => {
             "bg-slate-400",
             "w-12 h-12",
             "rounded-full",
-            "cursor-pointer"
+            "cursor-pointer",
           )}
         />
       </div>
