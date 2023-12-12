@@ -20,16 +20,16 @@ export const InputMessage = ({
   };
 
   return (
-    <div className="flex mt-15">
+    <div className="flex mt-10 gap-2 items-center">
       <div className="w-full">
         <input
           className={clsx(
             "w-full",
             "py-2",
-            "px-3",
-            "rounded-l",
+            "px-8",
+            "rounded-full",
             "border border-transparent",
-            "dark:bg-[#383A40] transition duration-500",
+            "dark:bg-[#414347] transition duration-500",
             "dark:text-white",
 
             //focus
@@ -38,11 +38,11 @@ export const InputMessage = ({
           )}
           value={messageInput}
           type="text"
-          placeholder="Enviar mensaje"
+          placeholder="Escribe un mensaje"
           onChange={handleMessageInput}
         />
       </div>
-      <div className="flex gap-5">
+      <div className="flex gap-2 ">
         <div>
           <input
             type="file"
@@ -52,10 +52,10 @@ export const InputMessage = ({
             ref={fileInputRef}
           />
           <div type="button" onClick={handleFileButtonClick}>
-            <ButtonFile />
+        <ButtonFile />
           </div>
         </div>
-        <ButtonSend />
+            <ButtonSend />
       </div>
     </div>
   );

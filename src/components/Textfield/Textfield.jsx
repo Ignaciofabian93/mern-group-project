@@ -4,83 +4,33 @@ import clsx from "clsx";
 const Textfield = ({ onChange, name, type, placeholder, value }) => {
   return (
     <>
-      <div className="relative mt-6">
-        <input
-          type={type}
-          placeholder={placeholder}
-          onChange={onChange}
-          className={clsx(
-            "peer w-96 border-b",
-            "placeholder:text-transparent",
-            "border-gray-300",
-            "border rounded-lg",
-            " py-4",
-            "pl-4",
-            "outline-none",
-            "focus:border-blue-500",
-            "focus:text-blue",
-            "transition duration-200",
-            "bg-inherit"
-          )}
-          value={value}
-          name={name}
-        />
-        <label
-          className={clsx(
-            "absolute",
-            "left-0 ml-1 -translate-y-3",
-            "bg-white",
-            "px-3",
-            "text-sm duration-100",
-            "ease-linear",
-            "peer-placeholder-shown:translate-y-4",
-            "peer-placeholder-shown:text-base",
-            "peer-placeholder-shown:text-gray-500",
-            "peer-focus:ml-1",
-            "peer-focus:-translate-y-3",
-            "peer-focus:px-5",
-            "peer-focus:text-sm"
-          )}
-        >
+      <label className="block">
+        <span className="block text-sm font-medium text-slate-700">
           {placeholder}
-        </label>
-      </div>
+        </span>
+
+        <input
+          onChange={onChange}
+          name={name}
+          type={type}
+          value={value}
+          className={clsx(
+            "mt-1 block w-96 py-3 pl-4",
+            "bg-white border",
+            "border-slate-300 rounded-md",
+            "text-sm shadow-sm placeholder-slate-400",
+            "focus:outline-none",
+            "focus:border-sky-500",
+            "focus:ring-1 focus:ring-sky-500",
+            "disabled:bg-slate-50",
+            "disabled:text-slate-500",
+            "disabled:border-slate-200",
+            "disabled:shadow-none"
+          )}
+        />
+      </label>
     </>
   );
 };
 
 export default Textfield;
-
-//  <label className="relative">
-//    <input
-//      type={type}
-//      value={value}
-//      onChange={onChange}
-//      name={name}
-//      required
-//      className={clsx(
-//        "border-gray-300",
-//        "border rounded-lg",
-//        "w-96 py-4",
-//        "pl-2",
-//        "outline-none",
-//        "focus:border-blue-500",
-//        "focus:text-black",
-//        "transition duration-200",
-//        "bg-inherit"
-//      )}
-//    />
-//    <span
-//      className={clsx(
-//        "text-opacity-80",
-//        "text-gray-600",
-//        "absolute",
-//        "left-2 top-4",
-//        "transition duration-200",
-//        "input-text pointer-events-none",
-//        "peer-valid: text-sm peer-valid: traslate-y-5"
-//      )}
-//    >
-//      {placeholder}
-//    </span>
-//  </label>;

@@ -7,12 +7,25 @@ export const Message = ({ messageInput, handleMessageInput }) => {
 
   return (
     <div className="flex flex-col">
+      <div className="h-[700px]  mt-8 overflow-auto text-white flex flex-col gap-8">
+        <div className="flex gap-2 text-black dark:text-white pl-10">
+          <img
+            // src={user.photo}
       <div className="h-[750px]  mt-8 overflow-auto text-white flex flex-col gap-8">
         <div className="flex gap-5 text-black dark:text-white">
           {/* <img
             src={user.photo}
             alt="photouser"
             className="bg-slate-400 w-12 h-12 rounded-full cursor-pointer"
+          />
+          <div className="flex flex-col gap-2">
+            {/* <p className="font-normal text-sm text-gray-500">{user.name} :</p> */}
+            <p className="font-normal text-sm text-gray-500">David Martinez</p>
+            <p className="bg-slate-300 rounded-lg flex items-center py-2 px-3 dark:bg-slate-700 transition duration-500 ">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam unde
+              adipisci error minima placeat quasi repellat quae aspernatur
+              officiis recusandae?
+            </p>
           /> */}
           <div>
             {/* <p className="font-bold">{user.name} :</p> */}
@@ -25,7 +38,7 @@ export const Message = ({ messageInput, handleMessageInput }) => {
           </div>
         </div>
       </div>
-      <div className=" pb-6 mt-5">
+      <div className=" mt-5 px-10">
         <InputMessage
           messageInput={messageInput}
           handleMessageInput={handleMessageInput}

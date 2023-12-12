@@ -3,13 +3,12 @@ import React from "react";
 export const ButtonFile = () => {
   return (
     <button>
-      <div className="bg-white dark:bg-[#383A40] transition duration-500 p-2 rounded-r flex items-center">
+      <div className="bg-white dark:bg-[#414347] dark:fill-white transition duration-500 p-3 rounded-full flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="26"
-          width="20"
+          height="16"
+          width="16"
           viewBox="0 0 384 512"
-          className="hover:fill-[#DBDEE1]"
           opacity="1"
           fill="#B5BAC1"
         >
