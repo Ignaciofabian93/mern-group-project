@@ -9,9 +9,6 @@ import { Message } from "../components/Message/Message";
 import { StatusBar } from "../components/StatusBar/StatusBar";
 import { UserConnected } from "../components/User/UserConnected";
 
-
-
-
 const Home = () => {
   // const { theme, toggleTheme } = useContext(ThemeContext);
 

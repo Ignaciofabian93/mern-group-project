@@ -8,7 +8,7 @@ export const UserConnected = ({ username, email, imgUser }) => {
       <div className="flex items-center gap-4 ">
         <div>
           <img
-            // src="{imgUser}"
+            src="{imgUser}"
             alt=""
             className={clsx(
               "bg-slate-400",
@@ -31,7 +31,9 @@ export const UserConnected = ({ username, email, imgUser }) => {
             {username}
           </p>
 
-          <p className={clsx( "text-white","dark:text-gray-500", "text-sm")}>{email}</p>
+          <p className={clsx("text-white", "dark:text-gray-500", "text-sm")}>
+            {email}
+          </p>
         </div>
       </div>
 
