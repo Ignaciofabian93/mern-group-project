@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-const Textfield = ({ onChange, name, type, placeholder }) => {
+const Textfield = ({ onChange, name, type, placeholder, value }) => {
   return (
     <>
       <div className="relative mt-6">
@@ -22,6 +22,8 @@ const Textfield = ({ onChange, name, type, placeholder }) => {
             "transition duration-200",
             "bg-inherit"
           )}
+          value={value}
+          name={name}
         />
         <label
           className={clsx(
@@ -40,7 +42,7 @@ const Textfield = ({ onChange, name, type, placeholder }) => {
             "peer-focus:text-sm"
           )}
         >
-          {name}
+          {placeholder}
         </label>
       </div>
     </>

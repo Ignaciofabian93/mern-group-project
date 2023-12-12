@@ -11,7 +11,6 @@ const useMessage = () => {
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
   const [messageInput, setMessageInput] = useState("");
-  const [username, setUsername] = useState("");
   const [currentRoom, setCurrentRoom] = useState("");
 
   console.log("USER: ", user);
@@ -76,10 +75,6 @@ const useMessage = () => {
     }
   };
 
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
   const handleCurrenRoom = (e) => {
     setCurrentRoom(e.target.value);
   };
@@ -89,11 +84,10 @@ const useMessage = () => {
   };
 
   return {
+    user,
     messages,
     sendMessage,
     joinRoom,
-    username,
-    handleUsername,
     handleCurrenRoom,
     messageInput,
     handleMessageInput,
