@@ -3,14 +3,25 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import useMessage from "../../hooks/useMessage";
 import Textfield from "../Textfield/Textfield";
+import { ButtonModal } from "../Buttons/ButtonModal";
 
 export default function Example() {
   const [open, setOpen] = useState(true);
   const { user } = useMessage();
-
   const cancelButtonRef = useRef(null);
-
   console.log(open);
+
+  // file input
+  const fileInputRef = useRef(null);
+  const handleFileButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileInputChange = (e) => {
+    // Aquí puedes manejar la lógica cuando se selecciona un archivo
+    const selectedFile = e.target.files[0];
+    console.log("Selected File:", selectedFile);
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -52,34 +63,53 @@ export default function Example() {
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0">
                       <Dialog.Title
                         as="h3"
-                        className="font-semibold leading-6 text-2xl text-gray-900 pb-5"
+                        className="font-semibold leading-6 text-3xl text-gray-900 pt-5 pb-10"
                       >
                         Modificar cuenta
                       </Dialog.Title>
 
                       <div className="gap-5 flex flex-col items-center justify-center text-left">
-                        <input type="file" />
-                        <img
-                          className="h-15 w-15 rounded-full"
-                          src={user.photo}
-                          alt="photo"
-                        />
+                        <div className="flex gap-2 ">
+                          <div>
+                            <input
+                              type="file"
+                              className="input-field"
+                              hidden
+                              onChange={handleFileInputChange}
+                              ref={fileInputRef}
+                            />
+                            <div
+                              className="flex flex-col items-center"
+                              type="button"
+                              onClick={handleFileButtonClick}
+                            >
+                              <img
+                                className="h-15 w-15 rounded-full opacity-80"
+                                src={user.photo}
+                                alt="photo"
+                              />
+                              <p className=" text-gray-500 text-sm">
+                                Cambiar foto de perfil
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
                         <div className="flex flex-col gap-2">
                           <Textfield placeholder={"Username"} />
-                          <Textfield placeholder={"Password"} />
+                          <Textfield placeholder={"Contraseña"} />
+                          <Textfield placeholder={"Confirmar Contraseña"} />
+                          <div className="py-3 ">
+                            <ButtonModal
+                              type={"button"}
+                              onClick={() => setOpen(false)}
+                              text={"Actualizar"}
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                  <button
-                    type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-700 sm:ml-3 sm:w-auto"
-                    onClick={() => setOpen(false)}
-                  >
-                    Actualizar
-                  </button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
