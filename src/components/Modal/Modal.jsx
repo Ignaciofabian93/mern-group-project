@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import useMessage from "../../hooks/useMessage";
@@ -33,6 +33,9 @@ export default function Example() {
 
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div className="cursor-pointer" onClick={() => setOpen(false)}>
+              X
+            </div>
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -43,29 +46,37 @@ export default function Example() {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                  <div
-                    className="cursor-pointer"
-                    onClick={() => setOpen(false)}
-                  >
-                    X
-                  </div>
+                <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 flex items-center justify-center">
                   <div className="sm:flex sm:items-start">
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                       <Dialog.Title
                         as="h3"
-                        className="text-base font-semibold leading-6 text-gray-900"
+                        className="font-semibold leading-6 text-2xl text-gray-900"
                       >
                         Modificar cuenta
                       </Dialog.Title>
 
-                      <div className="mt-2">
-                        <img src={user.photo} alt="photo" />
-                        <input type="text" placeholder="Inresar nuevo correo" />
-                        <input
-                          type="text"
-                          placeholder="Ingresar nueva contraseña"
+                      <div className="gap-10 flex flex-col items-center justify-center">
+                        <img
+                          className="h-10 w-10 rounded-full"
+                          src={user.photo}
+                          alt="photo"
                         />
+
+                        <label className="block">
+                          <span className="block text-sm font-medium text-slate-700">
+                            Username
+                          </span>
+
+                          <input
+                            type="text"
+                            className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+     
+    "
+                          />
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -73,7 +84,7 @@ export default function Example() {
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                    className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-700 sm:ml-3 sm:w-auto"
                     onClick={() => setOpen(false)}
                   >
                     Actualizar

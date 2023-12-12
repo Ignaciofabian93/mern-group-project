@@ -10,7 +10,7 @@ const Register = () => {
     <AuthLayout>
       <section className="w-full h-full flex flex-col items-center justify-center">
         <h1 className="text-3xl">Devs Chat</h1>
-        <div className="w-full flex flex-col items-center mb-8 ">
+        <div className="w-full flex gap-3 flex-col items-center mb-8 ">
           <Textfield
             placeholder={"Nombre"}
             name={"name"}

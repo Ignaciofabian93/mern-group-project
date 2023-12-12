@@ -51,7 +51,7 @@ export default function Example() {
                       "block px-4 py-2 text-sm"
                     )}
                   >
-                    tuerca
+                    Configuración de cuenta
                   </a>
                 )}
               </Menu.Item>
@@ -66,7 +66,7 @@ export default function Example() {
                         "block w-full px-4 py-2 text-left text-sm"
                       )}
                     >
-                     icono de salida
+                     Cerrar sesión
                     </button>
                   )}
                 </Menu.Item>
