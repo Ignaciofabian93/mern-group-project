@@ -24,15 +24,12 @@ const Home = () => {
       <Navbar toogleDarkMode={toogleDarkMode} darkMode={darkMode} />
       <main className="flex">
         <section className="flex flex-col w-80 dark:bg-[#2B2D31] transition duration-500">
-          <div className="m-5 mt-10">
-        <section className="flex flex-col w-80 dark:bg-[#2B2D31] transition duration-500">
           <div className="m-5 mt-10 flex gap-12">
             <UserConnected
-            imgUser={user.photo}
-            username={user.name}
-            email={user.email}
+              imgUser={user.photo}
+              username={user.name}
+              email={user.email}
             />
-            
             <DropDown></DropDown>
           </div>
 

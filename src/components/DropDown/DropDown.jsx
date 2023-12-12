@@ -43,8 +43,7 @@ export default function Example() {
                 </a>
               )}
             </Menu.Item>
-            
-            
+
             <form method="POST" action="#">
               <Menu.Item>
                 {({ active }) => (
