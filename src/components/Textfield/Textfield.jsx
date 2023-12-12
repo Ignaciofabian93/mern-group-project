@@ -1,11 +1,14 @@
 import React from "react";
 import clsx from "clsx";
 
-const Textfield = ({ value, onChange, name, type, placeholder }) => {
+const Textfield = ({ onChange, name, type, placeholder }) => {
   return (
     <>
       <div className="relative mt-6">
         <input
+          type={type}
+          placeholder={placeholder}
+          onChange={onChange}
           className={clsx(
             "peer w-96 border-b",
             "placeholder:text-transparent",
@@ -15,14 +18,10 @@ const Textfield = ({ value, onChange, name, type, placeholder }) => {
             "pl-4",
             "outline-none",
             "focus:border-blue-500",
-            "focus:text-black",
+            "focus:text-blue",
             "transition duration-200",
-            // "bg-inherit"
+            "bg-inherit"
           )}
-          type={type}
-          placeholder={placeholder}
-          onChange={onChange}
-          value={value}
         />
         <label
           className={clsx(
@@ -31,14 +30,13 @@ const Textfield = ({ value, onChange, name, type, placeholder }) => {
             "bg-white",
             "px-3",
             "text-sm duration-100",
-            "capitalize",
             "ease-linear",
             "peer-placeholder-shown:translate-y-4",
             "peer-placeholder-shown:text-base",
             "peer-placeholder-shown:text-gray-500",
             "peer-focus:ml-1",
             "peer-focus:-translate-y-3",
-            "peer-focus:px-2",
+            "peer-focus:px-5",
             "peer-focus:text-sm"
           )}
         >
