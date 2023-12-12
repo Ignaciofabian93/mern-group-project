@@ -89,6 +89,7 @@ const useMessage = () => {
   };
 
   return {
+    user,
     messages,
     sendMessage,
     joinRoom,

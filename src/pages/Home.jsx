@@ -24,6 +24,7 @@ const Home = () => {
   };
 
   const {
+    user,
     username,
     handleUsername,
     currentRoom,
@@ -43,9 +44,9 @@ const Home = () => {
         <section className="flex flex-col w-64 dark:bg-[#2B2D31] transition duration-500">
           <div className="m-5 mt-10">
             <UserConnected
-              imgUser={"/src/assets/img/user.jpg"}
-              username={"midudev"}
-              email={"midudev@gmail.com"}
+              imgUser={user.photo}
+              username={user.name}
+              email={user.email}
             />
           </div>
 
