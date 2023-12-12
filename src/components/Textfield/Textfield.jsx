@@ -16,13 +16,14 @@ const Textfield = ({ value, onChange, name, type, placeholder }) => {
             "outline-none",
             "focus:border-blue-500",
             "focus:text-black",
-            "transition duration-200",
+            "transition duration-200"
             // "bg-inherit"
           )}
           type={type}
           placeholder={placeholder}
           onChange={onChange}
           value={value}
+          name={name}
         />
         <label
           className={clsx(
@@ -42,7 +43,7 @@ const Textfield = ({ value, onChange, name, type, placeholder }) => {
             "peer-focus:text-sm"
           )}
         >
-          {name}
+          {placeholder}
         </label>
       </div>
     </>

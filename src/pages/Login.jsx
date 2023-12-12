@@ -4,27 +4,27 @@ import Textfield from "../components/Textfield/Textfield";
 import { Button } from "../components/Buttons/Button";
 import ButtonGoogle from "../components/Buttons/ButtonGoogle";
 import useLogin from "../hooks/useLogin";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const { handleLogin, handleGoogleLogin, loginData, handleLoginData } =
-    useLogin();
+  const { handleLogin, handleGoogleLogin, userData, handleData } = useLogin();
   return (
     <AuthLayout>
       <section className="w-full h-full flex flex-col items-center justify-center">
-        <h1 className="text-3xl">App</h1>
+        <h1 className="text-3xl">Devs Chat</h1>
         <div className="w-full flex flex-col items-center mb-8 ">
           <Textfield
             placeholder={"Correo electrónico"}
-            name={"Correo electrónico"}
-            onChange={handleLoginData}
-            value={loginData.email}
+            name={"email"}
+            onChange={handleData}
+            value={userData.email}
             type={"email"}
           />
           <Textfield
-            placeholder={"Password"}
-            name={"Contraseña"}
-            onChange={handleLoginData}
-            value={loginData.password}
+            placeholder={"Contraseña"}
+            name={"password"}
+            onChange={handleData}
+            value={userData.password}
             type={"password"}
           />
         </div>
@@ -34,6 +34,11 @@ const Login = () => {
             text={"Entrar con Google"}
             onClick={handleGoogleLogin}
           />
+        </div>
+        <div className="mt-8">
+          <Link to={"/register"}>
+            <span className="italic font-bold underline">Registrarse</span>
+          </Link>
         </div>
       </section>
     </AuthLayout>
