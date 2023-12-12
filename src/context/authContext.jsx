@@ -49,26 +49,18 @@ const AuthProvider = ({ children }) => {
 
   const provider = new GoogleAuthProvider();
 
-  const handleGoogleLogin = async () => {
-    try {
-      const response = await signInWithPopup(auth, provider);
-      console.log("response: ", response);
-      if (response.user) {
-        setUser({
-          name: response.user.displayName,
-          email: response.user.email,
-          photo: response.user.photoURL,
-          uid: response.user.uid,
-        });
-      }
-      console.log("user!: ", user);
-    } catch (error) {
-      throw new Error(`Error al intentar iniciar sesion: ${error}`);
-    }
-  };
+  const googleLogin = async () => await signInWithPopup(auth, provider);
+
   return (
     <Authcontext.Provider
-      value={{ handleGoogleLogin, user, logOut, loginUser, registerUser }}
+      value={{
+        user,
+        token,
+        googleLogin,
+        loginUser,
+        registerUser,
+        logOut,
+      }}
     >
       {children}
     </Authcontext.Provider>

@@ -1,23 +1,22 @@
 import React from "react";
 import { IconMoon } from "../Icons/Moon";
 import { IconSun } from "../Icons/Sun";
-import useMessage from "../../hooks/useMessage";
+import useUser from "../../hooks/useUser";
 
-const Navbar = ({toogleDarkMode, darkMode}) => {
-
-  const { user } = useMessage();
+const Navbar = ({ toogleDarkMode, darkMode }) => {
+  const { user } = useUser();
 
   return (
-    <div className="bg-gray-500 dark:bg-[#1E1F22] transition duration-500 justify-between flex px-10 py-2">
-      <p className="text-white dark:text-white transition duration-500">{user.name}</p>
-      <div>
-        
-      </div>
+    <nav className="w-full h-[50px] flex items-center bg-gray-500 dark:bg-[#1E1F22] transition duration-500 justify-between px-10 py-2 fixed top-0">
+      {user && (
+        <p className="text-white dark:text-white transition duration-500">
+          {user.name}
+        </p>
+      )}
       <button onClick={toogleDarkMode}>
-        {darkMode ?  <IconSun/>  : <IconMoon />}
+        {darkMode ? <IconSun /> : <IconMoon />}
       </button>
-      
-    </div>
+    </nav>
   );
 };
 

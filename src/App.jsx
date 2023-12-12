@@ -9,14 +9,14 @@ import { Home, Login, Register } from "./pages";
 import { Authcontext } from "./context/authContext";
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useContext(Authcontext);
+  const { token } = useContext(Authcontext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    if (!token) {
       navigate("/login");
     }
-  }, [user]);
+  }, [token]);
 
   return children;
 };
@@ -26,11 +26,11 @@ const App = () => {
     <Router>
       <Routes>
         <Route
-          path="/home"
+          path="/"
           element={
-            // <ProtectedRoute>
-            <Home />
-            // </ProtectedRoute>
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
           }
         />
         <Route path="/login" element={<Login />} />

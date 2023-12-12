@@ -1,6 +1,6 @@
 import { api } from "./config";
 
-export const registerUser = async (user) => {
+export const saveUser = async (user) => {
   try {
     const { name, email, password } = user;
     const response = await api.post("/api/register", { name, email, password });
