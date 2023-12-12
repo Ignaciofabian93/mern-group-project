@@ -2,6 +2,7 @@ import React from "react";
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import useMessage from "../../hooks/useMessage";
+import Textfield from "../Textfield/Textfield";
 
 export default function Example() {
   const [open, setOpen] = useState(true);
@@ -48,35 +49,25 @@ export default function Example() {
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 flex items-center justify-center">
                   <div className="sm:flex sm:items-start">
-                    <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <div className="mt-3 text-center sm:ml-4 sm:mt-0">
                       <Dialog.Title
                         as="h3"
-                        className="font-semibold leading-6 text-2xl text-gray-900"
+                        className="font-semibold leading-6 text-2xl text-gray-900 pb-5"
                       >
                         Modificar cuenta
                       </Dialog.Title>
 
-                      <div className="gap-10 flex flex-col items-center justify-center">
+                      <div className="gap-5 flex flex-col items-center justify-center text-left">
+                        <input type="file" />
                         <img
-                          className="h-10 w-10 rounded-full"
+                          className="h-15 w-15 rounded-full"
                           src={user.photo}
                           alt="photo"
                         />
-
-                        <label className="block">
-                          <span className="block text-sm font-medium text-slate-700">
-                            Username
-                          </span>
-
-                          <input
-                            type="text"
-                            className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-     
-    "
-                          />
-                        </label>
+                        <div className="flex flex-col gap-2">
+                          <Textfield placeholder={"Username"} />
+                          <Textfield placeholder={"Password"} />
+                        </div>
                       </div>
                     </div>
                   </div>
