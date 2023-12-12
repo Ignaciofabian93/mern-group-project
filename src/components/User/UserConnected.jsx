@@ -10,7 +10,7 @@ export const UserConnected = ({ username, email, imgUser }) => {
           alt=""
           className={clsx(
             "bg-slate-400",
-            "w-10 h-10",
+            "w-12 h-12",
             "rounded-full",
             "cursor-pointer"
           )}
