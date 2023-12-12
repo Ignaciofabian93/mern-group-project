@@ -46,7 +46,7 @@ export default function Example() {
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <div className="cursor-pointer" onClick={() => setOpen(false)}>
-              X
+              
             </div>
             <Transition.Child
               as={Fragment}
@@ -96,7 +96,7 @@ export default function Example() {
                         </div>
 
                         <div className="flex flex-col gap-2">
-                          <Textfield placeholder={"Username"} />
+                          <Textfield placeholder={"Nombre"} />
                           <Textfield placeholder={"Contraseña"} />
                           <Textfield placeholder={"Confirmar Contraseña"} />
                           <div className="py-3 ">
