@@ -3,7 +3,7 @@ import React from "react";
 export const IconSun = () => {
   return (
     <div className="flex gap-3">
-      <p className=" text-white">Light mode</p>
+      <p className=" text-white">Light Mode</p>
 
       <svg
         width="24"

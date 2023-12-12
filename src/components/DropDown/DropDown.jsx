@@ -1,6 +1,8 @@
+import React from 'react'
 import { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import Modal from "../Modal/Modal";
+import { Settings } from '../Icons/Settings';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -23,8 +25,8 @@ export default function Example() {
 
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex w-full justify-right gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-            icono flecha hacia abajo
+          <Menu.Button className="">
+            <Settings/>
           </Menu.Button>
         </div>
 
