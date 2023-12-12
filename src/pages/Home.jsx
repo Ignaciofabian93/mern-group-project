@@ -33,14 +33,13 @@ const Home = () => {
             {/* <DropDown></DropDown> */}
           </div>
 
-            <div className="pt-5 m-5 flex flex-col gap-4 h-ful">
-              <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-              <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-              <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-              <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-              <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-              <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-            </div>
+          <div className="pt-5 m-5 flex flex-col gap-4 h-ful">
+            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
+            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
+            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
+            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
+            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
+            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
           </div>
         </section>
 
