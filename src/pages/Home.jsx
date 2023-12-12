@@ -9,6 +9,7 @@ import Navbar from "../components/Navigation/Navbar";
 import { Message } from "../components/Message/Message";
 import { StatusBar } from "../components/StatusBar/StatusBar";
 import DropDown from "../components/DropDown/DropDown";
+import Modal from "../components/Modal/Modal";
 
 const Home = () => {
   // const { theme, toggleTheme } = useContext(ThemeContext);
