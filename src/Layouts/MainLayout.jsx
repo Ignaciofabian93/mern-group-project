@@ -3,7 +3,7 @@ import React from "react";
 
 const MainLayout = ({ children, darkMode }) => {
   return (
-    <main className={` h-screen ${darkMode && "dark"}`}>
+    <main className={`${darkMode && "dark"}`}>
       <section>{children}</section>
     </main>
   );

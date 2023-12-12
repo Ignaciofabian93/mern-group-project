@@ -1,8 +1,10 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import useMessage from "../../hooks/useMessage";
 
 export default function Example() {
   const [open, setOpen] = useState(true);
+  const { user } = useMessage();
 
   const cancelButtonRef = useRef(null);
 
@@ -55,7 +57,9 @@ export default function Example() {
                       >
                         Modificar cuenta
                       </Dialog.Title>
+
                       <div className="mt-2">
+                        <img src={user.photo} alt="photo" />
                         <input type="text" placeholder="Inresar nuevo correo" />
                         <input
                           type="text"

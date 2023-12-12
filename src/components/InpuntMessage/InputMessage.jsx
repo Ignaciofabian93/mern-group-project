@@ -20,7 +20,7 @@ export const InputMessage = ({
   };
 
   return (
-    <div className="flex">
+    <div className="flex mt-15">
       <div className="w-full">
         <input
           className={clsx(
