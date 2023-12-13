@@ -37,7 +37,7 @@ const Home = () => {
   return (
     <MainLayout>
       <section className="w-full h-full flex">
-        <aside className="w-1/4 h-full bg-slate-600">
+        <aside className="w-1/4 h-full dark:bg-[#182234]">
           <div className="w-full h-[100px] flex justify-center items-center pt-4">
             <UserConnected />
           </div>
