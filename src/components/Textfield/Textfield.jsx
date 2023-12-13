@@ -15,7 +15,7 @@ const Textfield = ({ onChange, name, type, placeholder, value }) => {
           type={type}
           value={value}
           className={clsx(
-            "mt-1 block w-96 py-3 pl-4",
+            "mt-1 block w-[360px] py-3 pl-4",
             "bg-white border",
             "border-slate-300 rounded-md",
             "text-sm shadow-sm placeholder-slate-400",

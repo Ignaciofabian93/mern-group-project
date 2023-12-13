@@ -42,7 +42,7 @@ const Login = () => {
                 type={"password"}
               />
             </div>
-            <div className="w-10/12">
+            <div>
               <div className="flex flex-col gap-2 mb-4">
                 <Button text={"Iniciar sesión"} onClick={handleLogin} />
                 <ButtonGoogle
@@ -52,7 +52,7 @@ const Login = () => {
               </div>
               <div className="w-full flex justify-center">
                 <Link to={"/register"}>
-                  <span className="font-bold text-sm text-blue-700 pl-2 hover:underline">
+                  <span className="font-normal text-sm text-blue-700 pl-2 hover:underline">
                     Registrarse
                   </span>
                 </Link>
