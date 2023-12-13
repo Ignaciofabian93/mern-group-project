@@ -1,10 +1,6 @@
 import React from "react";
 
-<<<<<<< HEAD
-export const LogoAuth = () => {
-=======
 const LogoAuth = () => {
->>>>>>> 6e3af71e9b2ff9a46ee16098a1590ddaf18a2d92
   return (
     <div>
       <svg
@@ -22,8 +18,5 @@ const LogoAuth = () => {
     </div>
   );
 };
-<<<<<<< HEAD
-=======
 
 export default LogoAuth;
->>>>>>> 6e3af71e9b2ff9a46ee16098a1590ddaf18a2d92
