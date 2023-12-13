@@ -8,28 +8,36 @@ const UserConnected = () => {
   return (
     <div
       className={clsx(
-        // "relative",
-        "w-11/12 h-full",
-        "flex items-center justify-around",
-        "rounded-md px-4",
-        "cursor-pointer",
-        "transition-all duration-300",
+        /* ----- default -----*/
         "ease-in-out",
-        "dark:bg-[#1E1F22] text-white"
+        "w-[280px] h-[112px]",
+        "cursor-pointer",
+        "rounded-2xl px-4 mt-8",
+        "text-white",
+        "flex items-center justify-around",
+        "bg-[]",
+
+        /* ----- Transition -----*/
+        "transition duration-500",
+
+        /* ----- dark mode -----*/
+        "dark:bg-[#334155]"
       )}
     >
-      <div className="w-[50px] h-[50px] rounded-[50%] overflow-hidden">
-        {user && (
-          <img src={user.photo} alt="profile" className="w-full h-full" />
-        )}
-      </div>
-      <div className="flex flex-col">
-        {user && (
-          <>
-            <p className="text-md">{user.name}</p>
-            <p className="text-sm">{user.email}</p>
-          </>
-        )}
+      <div className="flex gap-3">
+        <div className="w-[50px] h-[50px] rounded-[50%] overflow-hidden">
+          {user && (
+            <img src={user.photo} alt="profile" className="w-full h-full" />
+          )}
+        </div>
+        <div className="flex flex-col">
+          {user && (
+            <>
+              <p className="text-lg text-black font-semibold dark:text-white">{user.name}</p>
+              <p className="text-sm text-black dark:text-[#94A3B8]">{user.email}</p>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

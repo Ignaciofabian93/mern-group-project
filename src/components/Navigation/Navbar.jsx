@@ -18,6 +18,7 @@ export const Navbar = () => {
         "bg-gradient-to-b-[#DFF1FB] ",
         /* ----- Dark Theme Background -----*/
         "dark:bg-[#0B1120]",
+    
         /* ----- Transition -----*/
         // "transition duration-500"
       )}

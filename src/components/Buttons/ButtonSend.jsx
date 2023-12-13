@@ -1,9 +1,25 @@
 import React from "react";
+import clsx from "clsx";
 
 export const ButtonSend = ({ onClick }) => {
   return (
     <button onClick={onClick}>
-      <div className="bg-[#ffff] fill-[#334155] dark:bg-[#334155] dark:fill-white rounded-full p-3  flex items-center hover:scale-110 transition duration-300">
+      <div
+        className={clsx(
+          /* ----- defaukt-----*/
+          "p-3",
+          "bg-[#ffff]",
+          "fill-[#334155]",
+          "flex items-center",
+
+          /* ----- hover-----*/
+          "hover:scale-110 transition duration-300",
+
+          /* ----- Dark mode-----*/
+          "dark:fill-white rounded-full",
+          "dark:bg-[#334155]"
+        )}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="16"

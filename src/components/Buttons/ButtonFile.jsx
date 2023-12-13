@@ -1,9 +1,27 @@
 import React from "react";
+import clsx from "clsx";
 
 export const ButtonFile = () => {
   return (
     <button>
-      <div className="bg-[#ffff] fill-[#334155] dark:bg-[#334155] dark:fill-white transition duration-300 p-3 rounded-full flex items-center hover:scale-110">
+      <div
+        className={clsx(
+          /* ----- default -----*/
+          "p-3 rounded-full",
+          "flex items-center",
+          "bg-[#ffff] fill-[#334155]",
+
+          /* ----- dark mode -----*/
+          "dark:bg-[#334155]",
+          "dark:fill-white",
+
+          /* ----- Transition -----*/
+          "transition duration-300",
+
+          /* ----- hover -----*/
+          "hover:scale-110"
+        )}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="16"
