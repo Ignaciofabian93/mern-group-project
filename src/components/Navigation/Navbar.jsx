@@ -15,13 +15,11 @@ export const Navbar = () => {
         "fixed top-0",
         "flex  justify-between",
         "px-10 py-2",
-        /* ----- Default Value Color-----*/
-        "border-gray-300 border-b-2",
-        "bg-[#F8FAFC]",
+        "bg-gradient-to-b-[#DFF1FB] ",
         /* ----- Dark Theme Background -----*/
-        "dark:bg-[#0B1120]  dark:border-[#313338]",
+        "dark:bg-[#0B1120]",
         /* ----- Transition -----*/
-        "transition duration-500"
+        // "transition duration-500"
       )}
     >
       <div className="flex gap-2 items-center">

@@ -31,7 +31,7 @@ const InputMessage = ({ onClick, onChange, value }) => {
             "px-8",
             "rounded-full",
             "border border-transparent",
-            "dark:bg-[#414347] transition duration-500",
+            "dark:bg-[#1E293B] transition duration-500",
             "dark:text-white",
 
             //focus
