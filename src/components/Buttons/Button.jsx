@@ -9,7 +9,7 @@ export const Button = ({ text, onClick }) => {
         "bg-[#5865F2] text-white",
         "h-[50px] w-[360px] leanding",
         "rounded-full",
-        "font-semibold tracking-wide",
+        "font-medium tracking-wide",
         "cursor-pointer",
         "inline-flex items-center justify-center",
         "relative shadow",

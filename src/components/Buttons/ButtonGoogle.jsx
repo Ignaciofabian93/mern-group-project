@@ -11,7 +11,7 @@ const ButtonGoogle = ({ text, onClick }) => {
           "bg-[#EBEBEB] text-[#1E1F22]",
           "py-3 w-[360px] leading",
           "rounded-full",
-          "font-semibold tracking-wide",
+          "font-medium tracking-wide",
           "cursor-pointer",
           "inline-flex items-center justify-center",
           "relative shadow",
