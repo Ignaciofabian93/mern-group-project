@@ -37,11 +37,11 @@ const Home = () => {
   return (
     <MainLayout>
       <section className="w-full h-full flex">
-        <aside className="w-1/4 h-full dark:bg-[#182234]">
-          <div className="w-full h-[100px] flex justify-center items-center pt-4">
+        <aside className="w-1/4 h-full bg-[#D5DBFD] shadow-lg dark:bg-[#182234]">
+          <div className="w-full h-[100px] flex pt-[48px] justify-center items-center">
             <UserConnected />
           </div>
-          <div className="w-full h-[calc(100%_-_100px)] flex flex-col items-center justify-between py-4">
+          <div className="w-full h-[calc(100%_-_100px)] flex flex-col items-center justify-between py-16">
             <div className="flex items-center justify-around w-full px-4 mt-6">
               <CustomSelect
                 rooms={rooms}
@@ -78,6 +78,7 @@ const Home = () => {
             "via-[#EEDDEC]",
 
             /*-------- dark mode  ------*/
+            
             "dark:bg-gradient-to-b",
             "dark:from-[#0B1120]",
             "dark:to-[#361D3A]",

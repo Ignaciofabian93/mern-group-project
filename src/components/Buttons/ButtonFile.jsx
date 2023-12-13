@@ -10,16 +10,18 @@ export const ButtonFile = () => {
           "p-3 rounded-full",
           "flex items-center",
           "bg-[#ffff] fill-[#334155]",
-
-          /* ----- dark mode -----*/
-          "dark:bg-[#334155]",
-          "dark:fill-white",
+          "shadow-md",
 
           /* ----- Transition -----*/
           "transition duration-300",
 
           /* ----- hover -----*/
-          "hover:scale-110"
+          "hover:scale-110",
+
+          /* ----- dark mode -----*/
+          "dark:bg-[#334155]",
+          "dark:fill-white",
+          "dark:shadow-md"
         )}
       >
         <svg

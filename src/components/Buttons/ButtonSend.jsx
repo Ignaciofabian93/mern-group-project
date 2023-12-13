@@ -11,13 +11,15 @@ export const ButtonSend = ({ onClick }) => {
           "bg-[#ffff]",
           "fill-[#334155]",
           "flex items-center",
+          "shadow-md",
 
           /* ----- hover-----*/
           "hover:scale-110 transition duration-300",
 
           /* ----- Dark mode-----*/
           "dark:fill-white rounded-full",
-          "dark:bg-[#334155]"
+          "dark:bg-[#334155]",
+          "dark:shadow-md"
         )}
       >
         <svg

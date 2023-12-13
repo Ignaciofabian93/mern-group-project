@@ -14,7 +14,7 @@ export const Navbar = () => {
         "w-full h-[50px]",
         "fixed top-0",
         "flex  justify-between",
-        "px-10 py-2",
+        "pl-[100px] pr-[100px] py-2",
         "bg-gradient-to-b-[#DFF1FB] ",
         /* ----- Dark Theme Background -----*/
         "dark:bg-[#0B1120]",

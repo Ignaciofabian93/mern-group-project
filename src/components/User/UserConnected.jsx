@@ -10,18 +10,20 @@ const UserConnected = () => {
       className={clsx(
         /* ----- default -----*/
         "ease-in-out",
+        "shadow-lg",
         "w-[280px] h-[112px]",
         "cursor-pointer",
         "rounded-2xl px-4 mt-8",
         "text-white",
         "flex items-center justify-around",
-        "bg-[]",
+        "bg-[#F8FAFC]",
 
         /* ----- Transition -----*/
         "transition duration-500",
 
         /* ----- dark mode -----*/
-        "dark:bg-[#334155]"
+        "dark:bg-[#334155]",
+        "dark:shadow-md"
       )}
     >
       <div className="flex gap-3">
@@ -33,8 +35,12 @@ const UserConnected = () => {
         <div className="flex flex-col">
           {user && (
             <>
-              <p className="text-lg text-black font-semibold dark:text-white">{user.name}</p>
-              <p className="text-sm text-black dark:text-[#94A3B8]">{user.email}</p>
+              <p className="text-lg text-[#334155] font-semibold dark:text-white">
+                {user.name}
+              </p>
+              <p className="text-sm text-black dark:text-[#94A3B8]">
+                {user.email}
+              </p>
             </>
           )}
         </div>
