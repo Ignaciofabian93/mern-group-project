@@ -1,8 +1,8 @@
 import React from "react";
 
-export const ButtonSend = () => {
+export const ButtonSend = ({ onClick }) => {
   return (
-    <button>
+    <button onClick={onClick}>
       <div className="bg-[#5865F2] rounded-full p-3 hover:bg-[#4752C4] flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"

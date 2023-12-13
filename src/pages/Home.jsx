@@ -1,62 +1,102 @@
+import React, { useState } from "react";
 import MainLayout from "../Layouts/MainLayout";
 import useMessage from "../hooks/useMessage";
-import React, { useState } from "react";
+import InputMessage from "../components/InpuntMessage/InputMessage";
+import UserConnected from "../components/User/UserConnected";
+import CustomSelect from "../components/Select/CustomSelect";
+import useLogin from "../hooks/useLogin";
+import CustomModal from "../components/Modal/CustomModal";
 
-//Componentes
-import { Rooms } from "../components/Rooms/Rooms";
-import { Navbar } from "../components/Navigation/Navbar";
-import { Message } from "../components/Message/Message";
-import { StatusBar } from "../components/StatusBar/StatusBar";
-import { UserConnected } from "../components/User/UserConnected";
+const rooms = [
+  " ",
+  "JavaScript",
+  "TypeScript",
+  "ReactJs",
+  "NextJs",
+  "NodeJs",
+  "MongoDB",
+];
 
 const Home = () => {
-  const [darkMode, setDarkMode] = useState(true);
-  const toogleDarkMode = () => {
-    setDarkMode(!darkMode);
+  const { handleLogOut } = useLogin();
+  const [showModal, setShowModal] = useState(false);
+  const {
+    handleCurrentRoom,
+    messages,
+    sendMessage,
+    handleMessageInput,
+    messageInput,
+    currentRoom,
+  } = useMessage();
+
+  const handleShowModal = () => {
+    setShowModal(true);
   };
 
-  const { user, joinRoom, messageInput, handleMessageInput } = useMessage();
   return (
-    <MainLayout darkMode={darkMode}>
-      <Navbar toogleDarkMode={toogleDarkMode} darkMode={darkMode} />
-      <main className="w-full h-[calc(100vh_-_50px)] pt-[50px]">
-        <section className="flex flex-col w-1/4 dark:bg-[#2B2D31] transition duration-500">
-          <div className="flex w-full items-center justify-center px-4 py-2">
-            <UserConnected
-              imgUser={"/src/assets/img/user.jpg"}
-              username={"David Martinez"}
-              email={"dmmtapia.ux@gmail.com"}
-              // imgUser={user.photo}
-              // username={user.name}
-              // email={user.email}
-            />
-            {/* <DropDown></DropDown> */}
+    <MainLayout>
+      <section className="w-full h-full flex">
+        <aside className="w-1/4 h-full bg-slate-600">
+          <div className="w-full h-[100px] flex justify-center items-center pt-4">
+            <UserConnected />
           </div>
-
-          <div className="pt-5 m-5 flex flex-col gap-4 h-ful">
-            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
+          <div className="w-full h-[calc(100%_-_100px)] flex flex-col items-center justify-between py-4">
+            <div className="flex items-center justify-around w-full px-4 mt-6">
+              <CustomSelect
+                rooms={rooms}
+                onChange={handleCurrentRoom}
+                value={currentRoom}
+              />
+            </div>
+            <div className="w-full px-4 mb-4">
+              <button
+                className="w-full h-[50px] flex items-center pl-4 my-2 rounded-md dark:bg-[#1E1F22] text-white"
+                onClick={handleShowModal}
+              >
+                <p>Configuración</p>
+              </button>
+              <button
+                className="w-full h-[50px] flex items-center pl-4 my-2 rounded-md dark:bg-[#1E1F22] text-white"
+                onClick={handleLogOut}
+              >
+                <p>Salir</p>
+              </button>
+            </div>
           </div>
-        </section>
-
-        {/* <section className=" bg-slate-200 flex-1  px-12 pb-5 pt-2 dark:bg-[#313338] transition duration-500">
-          <StatusBar text={"JavaScript Channel"} />
-        <section className=" bg-slate-200 flex-1  pb-5  dark:bg-[#313338] transition duration-500">
-          <StatusBar
-            text={"JavaScript Channel"}
-            toogleDarkMode={toogleDarkMode}
-            darkMode={darkMode}
-          />
-          <Message
-            messageInput={messageInput}
-            handleMessageInput={handleMessageInput}
-          />
-        </section> */}
-      </main>
+        </aside>
+        <div className="w-3/4 h-full bg-slate-400">
+          <div className="w-full h-full flex flex-col justify-between py-6">
+            <div
+              className="h-[calc(100%_-_100px)]"
+              style={{
+                border: "1px solid #ccc",
+                padding: "10px",
+                margin: "10px",
+                overflowY: "auto",
+              }}
+            >
+              {messages.map((msg, index) => (
+                <div key={index}>
+                  <strong>{msg.username}:</strong> {msg.text}
+                </div>
+              ))}
+            </div>
+            <div className="w-full h-[100px] flex justify-center items-center">
+              <InputMessage
+                onChange={handleMessageInput}
+                onClick={sendMessage}
+                value={messageInput}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      {showModal && (
+        <CustomModal
+          isOpen={showModal}
+          handleClose={() => setShowModal(false)}
+        />
+      )}
     </MainLayout>
   );
 };
