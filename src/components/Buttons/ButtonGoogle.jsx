@@ -8,13 +8,8 @@ const ButtonGoogle = ({ text, onClick }) => {
       <div
         className={clsx(
           //default state
-<<<<<<< HEAD
           "bg-[#EBEBEB] text-[#1E1F22]",
           "py-3 w-[360px] leading",
-=======
-          "bg-[#B5BAC1] text-[#1E1F22]",
-          "py-3 px-16 leading",
->>>>>>> 6e3af71e9b2ff9a46ee16098a1590ddaf18a2d92
           "rounded-full",
           "font-medium tracking-wide",
           "cursor-pointer",
