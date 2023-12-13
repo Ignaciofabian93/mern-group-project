@@ -1,56 +1,86 @@
+import React from "react";
 import MainLayout from "../Layouts/MainLayout";
 import useMessage from "../hooks/useMessage";
-import React, { useState } from "react";
+import InputMessage from "../components/InpuntMessage/InputMessage";
+import UserConnected from "../components/User/UserConnected";
+import RoomCard from "../components/Cards/RoomCard";
 
-//Componentes
-import { Rooms } from "../components/Rooms/Rooms";
-import { Message } from "../components/Message/Message";
-import { StatusBar } from "../components/StatusBar/StatusBar";
-import { UserConnected } from "../components/User/UserConnected";
-import { InputMessage } from "../components/InpuntMessage/InputMessage";
+const rooms = [
+  " ",
+  "JavaScript",
+  "TypeScript",
+  "ReactJs",
+  "NextJs",
+  "NodeJs",
+  "MongoDB",
+];
 
 const Home = () => {
-  const [darkMode, setDarkMode] = useState(true);
-  const toogleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-  const { joinRoom, messageInput, handleMessageInput } = useMessage();
+  const {
+    handleCurrentRoom,
+    messages,
+    sendMessage,
+    handleMessageInput,
+    messageInput,
+    currentRoom,
+    userList,
+  } = useMessage();
 
   return (
     <MainLayout>
       <section className="w-full h-full flex">
-        <aside className="flex flex-col w-1/4 h-full dark:bg-[#2B2D31] transition duration-500">
-          <div className="flex w-full h-2/12 items-center justify-center px-4 py-2">
+        <aside className="w-1/4 h-full bg-slate-600">
+          <div className="w-full h-[100px] flex justify-center items-center pt-4">
             <UserConnected />
           </div>
-          <div className="flex flex-col w-full h-10/12 justify-center gap-4 px-4 py-2">
-            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
-            <Rooms joinRoom={joinRoom} imgRoom={"/src/assets/img/JS.png"} />
+          <div className="w-full h-[calc(100%_-_100px)] flex flex-col items-center justify-center">
+            <div className="flex items-center justify-around">
+              <p>Selecione un grupo:</p>
+              <select
+                name="room"
+                onChange={handleCurrentRoom}
+                value={currentRoom}
+              >
+                {rooms.map((room) => (
+                  <option key={room} value={room}>
+                    {room}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="w-full h-fit px-4">
+              {rooms.map((room) =>
+                room !== " " ? (
+                  <RoomCard key={room} room={room} activeUsers={userList} />
+                ) : null
+              )}
+            </div>
           </div>
         </aside>
-        <div className="w-3/4 h-full bg-slate-200 flex-1 px-12 pb-5 pt-2 dark:bg-[#313338] transition duration-500">
-          <div className="w-full h-1/12">
-            <StatusBar
-              text={"JavaScript Channel"}
-              toogleDarkMode={toogleDarkMode}
-              darkMode={darkMode}
-            />
-          </div>
-          <div className="w-full h-10/12">
-            <Message
-              messageInput={messageInput}
-              handleMessageInput={handleMessageInput}
-            />
-          </div>
-          <div className="w-full h-1/12">
-            <InputMessage
-              messageInput={messageInput}
-              handleMessageInput={handleMessageInput}
-            />
+        <div className="w-3/4 h-full bg-slate-400">
+          <div className="w-full h-full flex flex-col justify-between py-6">
+            <div
+              className="h-[calc(100%_-_100px)]"
+              style={{
+                border: "1px solid #ccc",
+                padding: "10px",
+                margin: "10px",
+                overflowY: "auto",
+              }}
+            >
+              {messages.map((msg, index) => (
+                <div key={index}>
+                  <strong>{msg.username}:</strong> {msg.text}
+                </div>
+              ))}
+            </div>
+            <div className="w-full h-[100px] flex justify-center items-center">
+              <InputMessage
+                onChange={handleMessageInput}
+                onClick={sendMessage}
+                value={messageInput}
+              />
+            </div>
           </div>
         </div>
       </section>

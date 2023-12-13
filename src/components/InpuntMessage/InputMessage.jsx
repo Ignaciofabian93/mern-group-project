@@ -3,10 +3,7 @@ import clsx from "clsx";
 import { ButtonSend } from "../Buttons/ButtonSend";
 import { ButtonFile } from "../Buttons/ButtonFile";
 
-export const InputMessage = ({
-  messageInput,
-  handleMessageInput,
-}) => {
+const InputMessage = ({ onClick, onChange, value }) => {
   const fileInputRef = useRef(null);
 
   const handleFileButtonClick = () => {
@@ -20,9 +17,14 @@ export const InputMessage = ({
   };
 
   return (
-    <div className="flex mt-10 gap-2 items-center">
+    <div className="w-11/12 flex justify-center mt-10 gap-2 items-center">
       <div className="w-full">
         <input
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onClick();
+            }
+          }}
           className={clsx(
             "w-full",
             "py-2",
@@ -36,10 +38,10 @@ export const InputMessage = ({
             "focus:outline-none",
             "focus:border-transparent"
           )}
-          value={messageInput}
+          value={value}
           type="text"
           placeholder="Escribe un mensaje"
-          onChange={handleMessageInput}
+          onChange={onChange}
         />
       </div>
       <div className="flex gap-2 ">
@@ -52,11 +54,13 @@ export const InputMessage = ({
             ref={fileInputRef}
           />
           <div type="button" onClick={handleFileButtonClick}>
-        <ButtonFile />
+            <ButtonFile />
           </div>
         </div>
-            <ButtonSend />
+        <ButtonSend onClick={onClick} />
       </div>
     </div>
   );
 };
+
+export default InputMessage;

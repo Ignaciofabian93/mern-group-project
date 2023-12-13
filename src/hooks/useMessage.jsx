@@ -1,18 +1,16 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { url } from "../api/config";
-import { createRoom } from "../api/fetchRoom";
-import { Authcontext } from "../context/authContext";
-import useRoom from "./useRoom";
+import useUser from "./useUser";
 
 const useMessage = () => {
-  const { user } = useContext(Authcontext);
-  const { rooms } = useRoom();
+  const { user } = useUser();
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
   const [messageInput, setMessageInput] = useState("");
-  const [currentRoom, setCurrentRoom] = useState("");
   const [username, setUsername] = useState("");
+  const [currentRoom, setCurrentRoom] = useState("");
+  const [userList, setUserList] = useState([]);
 
   useEffect(() => {
     const newSocket = io(url);
@@ -32,26 +30,34 @@ const useMessage = () => {
   useEffect(() => {
     if (socket) {
       socket.on("message", (message) => {
-        console.log("MESSAGE: ", message);
         setMessages((prevMessages) => [...prevMessages, message]);
       });
 
       socket.on("userJoined", ({ username }) => {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { username: "Server", text: `${username} joined the room.` },
+          { username: "Servidor", text: `${username} se ha unido` },
         ]);
-        console.log("USERNAME: ", username);
+      });
+
+      socket.on("activeUsers", (users) => {
+        console.log("USERS ACT: ", users);
+        if (users) {
+          setUserList(users);
+        } else {
+          setUserList([]);
+        }
       });
 
       socket.on("userLeft", ({ id, users }) => {
+        console.log("isauasiusis: ", id, users);
         const leftUser = users.find((user) => user.id === id);
         if (leftUser) {
           setMessages((prevMessages) => [
             ...prevMessages,
             {
-              username: "Server",
-              text: `${leftUser.username} left the room.`,
+              username: "Servidor",
+              text: `${leftUser.username} ha abandonado el grupo.`,
             },
           ]);
         }
@@ -59,31 +65,39 @@ const useMessage = () => {
     }
   }, [socket]);
 
-  const joinRoom = async () => {
-    if (socket && user && currentRoom) {
-      const checkRoom = rooms.rooms.some((room) => room.name === currentRoom);
-      if (checkRoom) {
-        socket.emit("joinRoom", currentRoom, user.name);
-      } else {
-        const response = await createRoom(currentRoom, user.uid);
-        if (response.room._id) {
-          socket.emit("joinRoom", currentRoom, user.name);
-        } else {
-          console.log("Error al crear el room");
-        }
-      }
+  useEffect(() => {
+    if (currentRoom !== "") {
+      joinRoom();
+    }
+  }, [currentRoom]);
+
+  const joinRoom = () => {
+    if (socket && username && currentRoom) {
+      socket.emit("joinRoom", currentRoom, username);
     }
   };
 
   const sendMessage = () => {
-    if (socket && messageInput && currentRoom) {
-      socket.emit("sendMessage", currentRoom, messageInput);
+    if (socket && messageInput && currentRoom && username) {
+      socket.emit("sendMessage", currentRoom, messageInput, username);
       setMessageInput("");
     }
   };
 
-  const handleCurrenRoom = (e) => {
+  const leaveRoom = () => {
+    if (socket) {
+      socket.emit("userLeft", currentRoom, username);
+    }
+  };
+
+  const handleUsername = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handleCurrentRoom = (e) => {
+    leaveRoom();
     setCurrentRoom(e.target.value);
+    setMessages([]);
   };
 
   const handleMessageInput = (e) => {
@@ -91,14 +105,16 @@ const useMessage = () => {
   };
 
   return {
-    user,
     messages,
     sendMessage,
     joinRoom,
-    handleCurrenRoom,
+    username,
+    handleUsername,
+    handleCurrentRoom,
     messageInput,
     handleMessageInput,
-    username,
+    currentRoom,
+    userList,
   };
 };
 

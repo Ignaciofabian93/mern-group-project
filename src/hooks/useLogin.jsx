@@ -68,6 +68,11 @@ const useLogin = () => {
     }
   };
 
+  const handleLogOut = async () => {
+    await logOut();
+    navigate("/login");
+  };
+
   return {
     user,
     handleLogin,
@@ -77,7 +82,7 @@ const useLogin = () => {
     handleData,
     handleGoogleLogin,
     handleRegister,
-    logOut,
+    handleLogOut,
   };
 };
 
