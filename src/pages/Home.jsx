@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import MainLayout from "../Layouts/MainLayout";
 import useMessage from "../hooks/useMessage";
 import InputMessage from "../components/InpuntMessage/InputMessage";
 import UserConnected from "../components/User/UserConnected";
 import CustomSelect from "../components/Select/CustomSelect";
+import useLogin from "../hooks/useLogin";
+import CustomModal from "../components/Modal/CustomModal";
 
 const rooms = [
   " ",
@@ -16,6 +18,8 @@ const rooms = [
 ];
 
 const Home = () => {
+  const { handleLogOut } = useLogin();
+  const [showModal, setShowModal] = useState(false);
   const {
     handleCurrentRoom,
     messages,
@@ -24,6 +28,10 @@ const Home = () => {
     messageInput,
     currentRoom,
   } = useMessage();
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
 
   return (
     <MainLayout>
@@ -41,12 +49,18 @@ const Home = () => {
               />
             </div>
             <div className="w-full px-4 mb-4">
-              <div className="w-full h-[50px] flex items-center pl-4 my-2 rounded-md dark:bg-[#1E1F22] text-white">
+              <button
+                className="w-full h-[50px] flex items-center pl-4 my-2 rounded-md dark:bg-[#1E1F22] text-white"
+                onClick={handleShowModal}
+              >
                 <p>Configuración</p>
-              </div>
-              <div className="w-full h-[50px] flex items-center pl-4 my-2 rounded-md dark:bg-[#1E1F22] text-white">
+              </button>
+              <button
+                className="w-full h-[50px] flex items-center pl-4 my-2 rounded-md dark:bg-[#1E1F22] text-white"
+                onClick={handleLogOut}
+              >
                 <p>Salir</p>
-              </div>
+              </button>
             </div>
           </div>
         </aside>
@@ -77,6 +91,12 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {showModal && (
+        <CustomModal
+          isOpen={showModal}
+          handleClose={() => setShowModal(false)}
+        />
+      )}
     </MainLayout>
   );
 };
