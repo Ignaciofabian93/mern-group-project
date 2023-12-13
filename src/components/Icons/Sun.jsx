@@ -2,13 +2,13 @@ import React from "react";
 
 export const IconSun = () => {
   return (
-    <div className="flex gap-3">
-      <p className=" text-white">Light Mode</p>
+    <div className="flex gap-3 hover:scale-125 transition duration-300">
+      {/* <p className=" text-white">Light</p> */}
 
       <svg
         width="24"
         height="24"
-        fill="#FBBC05"
+        fill="#0EA5E9"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >
