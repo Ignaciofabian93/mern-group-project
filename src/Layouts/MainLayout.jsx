@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Navbar } from "../components/Navigation/Navbar";
+import { ThemeContext } from "../context/themeContext";
 
-
-const MainLayout = ({ children, darkMode }) => {
+const MainLayout = ({ children }) => {
+  const { theme } = useContext(ThemeContext);
   return (
-    <main className={`${darkMode && "dark"}`}>
-      <section>{children}</section>
+    <main className={`${theme === "dark" && "dark"} w-full h-screen`}>
+      <Navbar />
+      <section className="w-full h-full pt-[50px]">{children}</section>
     </main>
   );
 };

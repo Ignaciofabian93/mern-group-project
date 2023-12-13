@@ -11,7 +11,7 @@ const Login = () => {
   return (
     <AuthLayout>
       <section className="w-full h-full flex flex-col items-center justify-center">
-        <h1 className="text-3xl">Devs Chat</h1>
+        <h1 className="text-3xl mb-12">Devs Chat</h1>
         <div className="w-full flex flex-col gap-4 items-center mb-8 ">
           <Textfield
             placeholder={"Correo electrónico"}

@@ -12,8 +12,7 @@ const useMessage = () => {
   const [messages, setMessages] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const [currentRoom, setCurrentRoom] = useState("");
-
-  console.log("USER: ", user);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     const newSocket = io(url);
@@ -25,8 +24,15 @@ const useMessage = () => {
   }, []);
 
   useEffect(() => {
+    if (user) {
+      setUsername(user.name);
+    }
+  }, [user]);
+
+  useEffect(() => {
     if (socket) {
       socket.on("message", (message) => {
+        console.log("MESSAGE: ", message);
         setMessages((prevMessages) => [...prevMessages, message]);
       });
 
@@ -35,6 +41,7 @@ const useMessage = () => {
           ...prevMessages,
           { username: "Server", text: `${username} joined the room.` },
         ]);
+        console.log("USERNAME: ", username);
       });
 
       socket.on("userLeft", ({ id, users }) => {
@@ -91,6 +98,7 @@ const useMessage = () => {
     handleCurrenRoom,
     messageInput,
     handleMessageInput,
+    username,
   };
 };
 
