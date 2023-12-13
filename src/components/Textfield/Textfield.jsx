@@ -5,7 +5,7 @@ const Textfield = ({ onChange, name, type, placeholder, value }) => {
   return (
     <>
       <label className="block">
-        <span className="block text-sm font-medium text-slate-700">
+        <span className="block text-sm font-normal text-slate-700">
           {placeholder}
         </span>
 
@@ -15,9 +15,9 @@ const Textfield = ({ onChange, name, type, placeholder, value }) => {
           type={type}
           value={value}
           className={clsx(
-            "mt-1 block w-96 py-3 pl-4",
+            " block w-[360px] h-[48px] pl-4",
             "bg-white border",
-            "border-slate-300 rounded-md",
+            "border-slate-300 rounded-lg",
             "text-sm shadow-sm placeholder-slate-400",
             "focus:outline-none",
             "focus:border-sky-500",

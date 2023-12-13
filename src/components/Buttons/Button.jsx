@@ -7,7 +7,7 @@ export const Button = ({ text, onClick }) => {
       className={clsx(
         //default state
         "bg-[#5865F2] text-white",
-        "py-3 px-8 leanding",
+        "h-[50px] w-[360px] leanding",
         "rounded-full",
         "font-semibold tracking-wide",
         "cursor-pointer",
