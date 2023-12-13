@@ -9,7 +9,7 @@ const ButtonGoogle = ({ text, onClick }) => {
         className={clsx(
           //default state
           "bg-[#B5BAC1] text-[#1E1F22]",
-          "py-3 px-24 leading",
+          "py-3 px-16 leading",
           "rounded-full",
           "font-semibold tracking-wide",
           "cursor-pointer",

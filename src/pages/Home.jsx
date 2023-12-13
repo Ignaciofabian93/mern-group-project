@@ -3,7 +3,7 @@ import MainLayout from "../Layouts/MainLayout";
 import useMessage from "../hooks/useMessage";
 import InputMessage from "../components/InpuntMessage/InputMessage";
 import UserConnected from "../components/User/UserConnected";
-import RoomCard from "../components/Cards/RoomCard";
+import CustomSelect from "../components/Select/CustomSelect";
 
 const rooms = [
   " ",
@@ -23,7 +23,6 @@ const Home = () => {
     handleMessageInput,
     messageInput,
     currentRoom,
-    userList,
   } = useMessage();
 
   return (
@@ -33,27 +32,21 @@ const Home = () => {
           <div className="w-full h-[100px] flex justify-center items-center pt-4">
             <UserConnected />
           </div>
-          <div className="w-full h-[calc(100%_-_100px)] flex flex-col items-center justify-center">
-            <div className="flex items-center justify-around">
-              <p>Selecione un grupo:</p>
-              <select
-                name="room"
+          <div className="w-full h-[calc(100%_-_100px)] flex flex-col items-center justify-between py-4">
+            <div className="flex items-center justify-around w-full px-4 mt-6">
+              <CustomSelect
+                rooms={rooms}
                 onChange={handleCurrentRoom}
                 value={currentRoom}
-              >
-                {rooms.map((room) => (
-                  <option key={room} value={room}>
-                    {room}
-                  </option>
-                ))}
-              </select>
+              />
             </div>
-            <div className="w-full h-fit px-4">
-              {rooms.map((room) =>
-                room !== " " ? (
-                  <RoomCard key={room} room={room} activeUsers={userList} />
-                ) : null
-              )}
+            <div className="w-full px-4 mb-4">
+              <div className="w-full h-[50px] flex items-center pl-4 my-2 rounded-md dark:bg-[#1E1F22] text-white">
+                <p>Configuración</p>
+              </div>
+              <div className="w-full h-[50px] flex items-center pl-4 my-2 rounded-md dark:bg-[#1E1F22] text-white">
+                <p>Salir</p>
+              </div>
             </div>
           </div>
         </aside>
