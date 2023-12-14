@@ -95,12 +95,13 @@ const Home = () => {
                     {msg.text}
                   </p>
                   {msg.image && (
-                    <div className="my-4 mx-24">
+                    <div className="my-4 mx-24 flex justify-end">
                       <img
                         src={msg.image}
                         alt="imagen"
-                        width={"100%"}
-                        height={200}
+                        width={"25%"}
+                        height={50}
+                        className="rounded-xl"
                       />
                     </div>
                   )}
