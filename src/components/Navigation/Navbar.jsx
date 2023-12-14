@@ -15,8 +15,9 @@ export const Navbar = () => {
         "shadow-lg",
         "fixed top-0",
         "flex  justify-between",
-        "pl-[100px] pr-[100px] py-2",
-        "bg-gradient-to-b-[#DFF1FB] ",
+        "pl-[50px] pr-[50px] py-2",
+        "bg-[#5C6069] ",
+        "font-medium",
         /* ----- Dark Theme Background -----*/
         "dark:bg-[#0B1120]",
 
@@ -28,9 +29,8 @@ export const Navbar = () => {
         <Logo />
         <p
           className={clsx(
-            "text-black font-semibold",
-            "dark:text-[#F8FAFC] transition duration-300",
-            "text-lg"
+            "text-[#F8FAFC] transition duration-300",
+            "text-base"
           )}
         >
           devsconnect

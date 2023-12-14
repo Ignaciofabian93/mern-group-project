@@ -15,7 +15,7 @@ const UserConnected = () => {
         "rounded-2xl px-4 mt-8",
         "text-white",
         "flex items-center justify-around",
-        "bg-[#F8FAFC]",
+        "bg-[#5cb0da]",
 
         /* ----- Transition -----*/
         "transition duration-300",
@@ -34,7 +34,7 @@ const UserConnected = () => {
         <div className="flex flex-col">
           {user && (
             <>
-              <p className="text-lg text-[#334155] font-semibold dark:text-white">
+              <p className="text-lg text-[#white] font-normal dark:text-white">
                 {user.name}
               </p>
               <p className="text-sm text-black dark:text-[#94A3B8]">

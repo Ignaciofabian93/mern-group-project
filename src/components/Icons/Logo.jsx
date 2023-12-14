@@ -2,7 +2,7 @@ import React from "react";
 
 export const Logo = () => {
   return (
-    <div className="dark:fill-[#F8FAFC] transition duration-300">
+    <div className="fill-[#F8FAFC] transition duration-300">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="23"

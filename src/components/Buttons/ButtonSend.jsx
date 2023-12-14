@@ -18,7 +18,7 @@ export const ButtonSend = ({ onClick }) => {
 
           /* ----- Dark mode-----*/
           "dark:fill-white rounded-full",
-          "dark:bg-[#334155]",
+          "dark:bg-[#34A853]",
           "dark:shadow-md"
         )}
       >
