@@ -37,7 +37,7 @@ const UserConnected = () => {
               <p className="text-lg text-[#white] font-normal dark:text-white">
                 {user.name}
               </p>
-              <p className="text-sm text-black dark:text-[#94A3B8]">
+              <p className="text-sm text-[#414347] dark:text-[#94A3B8]">
                 {user.email}
               </p>
             </>

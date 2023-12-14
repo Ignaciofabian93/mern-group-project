@@ -22,9 +22,9 @@ export const ButtonConfig = ({ text, onClick }) => {
         /* ----focus theme -----*/
         "focus:ring-blue-500",
         "focus:border-blue-500",
-        /* ----dark theme -----*/
 
-        "dark:bg-[#334155]",
+        /* ----dark theme -----*/
+        // "dark:bg-[#334155]",
         "dark:border-gray-600",
         "dark:placeholder-gray-400",
         "dark:text-white",
