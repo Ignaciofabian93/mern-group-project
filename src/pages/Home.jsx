@@ -7,6 +7,7 @@ import CustomSelect from "../components/Select/CustomSelect";
 import useLogin from "../hooks/useLogin";
 import CustomModal from "../components/Modal/CustomModal";
 import { clsx } from "clsx";
+import useUser from "../hooks/useLogin";
 
 const rooms = [
   " ",
@@ -19,6 +20,7 @@ const rooms = [
 ];
 
 const Home = () => {
+  const { user } = useUser();
   const { handleLogOut } = useLogin();
   const [showModal, setShowModal] = useState(false);
   const {
@@ -37,7 +39,7 @@ const Home = () => {
   return (
     <MainLayout>
       <section className="w-full h-full flex">
-        <aside className="w-1/4 h-full bg-[#D5DBFD] shadow-lg bg-inherit">
+        <aside className="w-1/4 h-full  shadow-lg black: bg-[#0B1120]">
           <div className="w-full h-[160px] flex justify-center items-center">
             <UserConnected />
           </div>
@@ -119,30 +121,30 @@ const Home = () => {
             /*-------- default config  ------*/
             "w-3/4 h-full",
             "pb-4 pr-4",
-            "bg-gradient-to-b",
-            "from-[#F8FAFC]",
-            "to-[#DFF1FB]",
-            "via-[#EEDDEC]",
-
-            /*-------- dark mode  ------*/
-
-            "dark:bg-gradient-to-b",
-            "dark:from-[#0B1120]",
-            "dark:to-[#361D3A]",
-            "dark:via-[#0B263B]",
-            "transition duration-300"
+            "dark:bg-[#182234]"
           )}
         >
-          <div className="w-full h-full flex flex-col justify-between py-6 border-2 border-slate-400 rounded-lg dark:border-slate-600">
-            <div className="h-[calc(100%_-_100px)] px-10 overflow-y-auto">
+          <div className="w-full h-full flex flex-col justify-between  py-8">
+            <div className="h-[calc(100%_-_100px)] px-10 flex flex-col  overflow-y-scroll">
               {messages.map((msg, index) => (
-                <div key={index}>
-                  <strong className="transition-all duration-300 ease-in-out text-black dark:text-white">
-                    {msg.username}:
-                  </strong>
-                  <span className="ml-4 transition-all duration-300 ease-in-out text-black dark:text-white">
-                    {msg.text}
-                  </span>
+                <div className=" flex  gap-4 pt-5 items-center" key={index}>
+                  <div className="flex gap-5 pt-5">
+                    {/* <img
+                      src={user.photo}
+                      alt="profile"
+                      className=" rounded-full w-12 h-12"
+                    /> */}
+                  </div>
+                  <div className=" py-3 px- rounded-r-xl rounded-b-xl pt-8">
+                    <p className=" font-light text-sm dark: text-[#94A3B8]">
+                      {msg.username}
+                    </p>
+                    <div>
+                      <p className=" font-thin text-base pl-5 pt-1 text-black dark:text-white">
+                        {msg.text}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
