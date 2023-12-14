@@ -7,7 +7,6 @@ import CustomSelect from "../components/Select/CustomSelect";
 import useLogin from "../hooks/useLogin";
 import CustomModal from "../components/Modal/CustomModal";
 import { clsx } from "clsx";
-import useUser from "../hooks/useLogin";
 import { ButtonConfig } from "../components/Buttons/ButtonConfig";
 import { ButtonSalir } from "../components/Buttons/ButtonSalir";
 
@@ -22,11 +21,7 @@ const rooms = [
 ];
 
 const Home = () => {
-<<<<<<< HEAD
-  const { user } = useUser();
-=======
   const windowRef = useRef();
->>>>>>> 6a0a8e04e11c3c6469836d4f9544d52b2f237e52
   const { handleLogOut } = useLogin();
   const [showModal, setShowModal] = useState(false);
   const {
@@ -84,30 +79,7 @@ const Home = () => {
             "dark:bg-[#182234]"
           )}
         >
-<<<<<<< HEAD
-          <div className="w-full h-full flex flex-col justify-between  ">
-            <div className="h-[calc(100%_-_100px)] px-10 flex flex-col  overflow-y-auto">
-              {messages.map((msg, index) => (
-                <div className=" flex  gap-4 jus items-center" key={index}>
-                  <div className="flex gap-5 pt-5">
-                    <img
-                      src={user.photo}
-                      alt="profile"
-                      className=" rounded-full w-12 h-12"
-                    />
-                  </div>
-                  <div className=" py-3 px- rounded-r-xl rounded-b-xl pt-8">
-                    <p className=" font-light text-sm dark: text-[#94A3B8]">
-                      {msg.username}
-                    </p>
-                    <div>
-                      <p className=" font-light text-base pl-5 pt-1 text-black dark:text-white">
-                        {msg.text}
-                      </p>
-                    </div>
-                  </div>
-=======
-          <div className="w-full h-full flex flex-col justify-between py-6 border-2 border-slate-400 rounded-lg dark:border-slate-600">
+          <div className="w-full h-full flex flex-col justify-between py-6 ">
             <div
               className="h-[calc(100%_-_100px)] px-10 overflow-y-auto scroll-window"
               ref={windowRef}
@@ -130,7 +102,6 @@ const Home = () => {
                       />
                     </div>
                   )}
->>>>>>> 6a0a8e04e11c3c6469836d4f9544d52b2f237e52
                 </div>
               ))}
             </div>
