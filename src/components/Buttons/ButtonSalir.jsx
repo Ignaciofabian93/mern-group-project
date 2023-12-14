@@ -25,7 +25,7 @@ export const ButtonSalir = ({ text, onClick }) => {
         "focus:border-blue-500",
 
         /* ----dark theme -----*/
-        "bg-[#fa4e51]",
+        "bg-red-500",
         "hover:bg-[#8a3537]",
         "dark:border-gray-600",
         "dark:placeholder-gray-400",

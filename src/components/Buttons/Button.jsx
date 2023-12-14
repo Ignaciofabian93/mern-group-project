@@ -46,6 +46,7 @@ export const FormButton = ({ text, onClick }) => {
         "text-sm capitalize",
         //hover
         "transition",
+        "duration-300",
         "hover:bg-[#4752C4] hover:shadow-md",
         //focus state
         "outline-none",
@@ -77,8 +78,10 @@ export const CancelButton = ({ text, onClick }) => {
         "text-sm capitalize",
         //disabled state
         "disabled:bg-[#4752C4]/50 disabled:cursor-not-allowed disabled:shadow",
-        "bg-[#fa4e51]",
-        "hover:bg-[#8a3537]"
+        "bg-red-500",
+        "hover:bg-[#8a3537]",
+        "transition",
+        "duration-300"
       )}
       onClick={onClick}
     >
