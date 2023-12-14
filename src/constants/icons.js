@@ -1,1 +1,3 @@
-import logout from "../assets/icons/logout.png";
+import user from "../assets/icons/user.png";
+
+export const UserIcon = user;

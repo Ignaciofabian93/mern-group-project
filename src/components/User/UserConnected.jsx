@@ -1,6 +1,7 @@
 import React from "react";
 import useUser from "../../hooks/useUser";
 import clsx from "clsx";
+import { UserIcon } from "../../constants/icons";
 
 const UserConnected = () => {
   const { user } = useUser();
@@ -28,7 +29,11 @@ const UserConnected = () => {
       <div className="flex gap-3">
         <div className="w-[50px] h-[50px] rounded-[50%] overflow-hidden">
           {user && (
-            <img src={user.photo} alt="profile" className="w-full h-full" />
+            <img
+              src={user.photo ? user.photo : UserIcon}
+              alt="profile"
+              className="w-full h-full"
+            />
           )}
         </div>
         <div className="flex flex-col">

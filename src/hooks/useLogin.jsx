@@ -27,9 +27,10 @@ const useLogin = () => {
     } else {
       const response = await saveUser(userData);
       console.log("res: ", response);
-      if (response.message === "User created succesfully") {
+      if (response.status === "ok") {
         alert("Usuario creado correctamente");
         setMessage("Usuario creado correctamente");
+        setUserData({ name: "", email: "", password: "" });
         navigate("/login");
       } else {
         alert("Error al crear usuario");
