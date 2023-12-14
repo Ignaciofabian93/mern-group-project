@@ -86,12 +86,12 @@ const Home = () => {
             >
               {messages.map((msg, index) => (
                 <div key={index}>
-                  <strong className="transition-all duration-300 ease-in-out text-black dark:text-white">
-                    {msg.username}:
-                  </strong>
-                  <span className="ml-4 transition-all duration-300 ease-in-out text-black dark:text-white">
+                  <p className="transition-all duration-300 ease-in-out text-gray-500 dark:text-gray-400 text-sm">
+                    {msg.username}
+                  </p>
+                  <p className="ml-4 transition-all duration-300 ease-in-out text-black dark:font-light dark:text-white">
                     {msg.text}
-                  </span>
+                  </p>
                   {msg.image && (
                     <div className="my-4 mx-24">
                       <img
