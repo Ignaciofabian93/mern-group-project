@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { Logout } from "../Icons/Logout";
 
 export const ButtonSalir = ({ text, onClick }) => {
   return (
@@ -12,6 +13,7 @@ export const ButtonSalir = ({ text, onClick }) => {
         "rounded-md",
         "bg-gray-50",
         "text-white",
+        "flex justify-between pr-3",
 
         // "border border-gray-300",
         "text-gray-900 text-sm",
@@ -36,6 +38,7 @@ export const ButtonSalir = ({ text, onClick }) => {
       onClick={onClick}
     >
       {text}
+      <Logout/>
     </button>
   );
 };

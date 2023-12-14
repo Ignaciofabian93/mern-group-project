@@ -7,7 +7,7 @@ import CustomSelect from "../components/Select/CustomSelect";
 import useLogin from "../hooks/useLogin";
 import CustomModal from "../components/Modal/CustomModal";
 import { clsx } from "clsx";
-import { ButtonConfig } from "../components/Buttons/ButtonConfig";
+// import { ButtonConfig } from "../components/Buttons/ButtonConfig";
 import { ButtonSalir } from "../components/Buttons/ButtonSalir";
 
 const rooms = [
@@ -34,9 +34,9 @@ const Home = () => {
     handleFile,
   } = useMessage();
 
-  const handleShowModal = () => {
-    setShowModal(true);
-  };
+  // const handleShowModal = () => {
+  //   setShowModal(true);
+  // };
 
   const handleWindow = () => {
     const window = windowRef.current.clientHeight;
@@ -63,7 +63,7 @@ const Home = () => {
               />
             </div>
             <div className="w-full px-4  flex flex-col items-center">
-              <ButtonConfig text={"Configuracion"} onClick={handleShowModal} />
+              {/* <ButtonConfig text={"Configuracion"} onClick={handleShowModal} /> */}
               <ButtonSalir text={"Salir"} onClick={handleLogOut} />
             </div>
           </div>
