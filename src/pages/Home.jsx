@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MainLayout from "../Layouts/MainLayout";
 import useMessage from "../hooks/useMessage";
 import InputMessage from "../components/InpuntMessage/InputMessage";
@@ -19,6 +19,7 @@ const rooms = [
 ];
 
 const Home = () => {
+  const windowRef = useRef();
   const { handleLogOut } = useLogin();
   const [showModal, setShowModal] = useState(false);
   const {
@@ -28,11 +29,21 @@ const Home = () => {
     handleMessageInput,
     messageInput,
     currentRoom,
+    handleFile,
   } = useMessage();
 
   const handleShowModal = () => {
     setShowModal(true);
   };
+
+  const handleWindow = () => {
+    const window = windowRef.current.clientHeight;
+    console.log("window: ", window);
+  };
+
+  useEffect(() => {
+    handleWindow();
+  }, [messages]);
 
   return (
     <MainLayout>
@@ -134,7 +145,10 @@ const Home = () => {
           )}
         >
           <div className="w-full h-full flex flex-col justify-between py-6 border-2 border-slate-400 rounded-lg dark:border-slate-600">
-            <div className="h-[calc(100%_-_100px)] px-10 overflow-y-auto">
+            <div
+              className="h-[calc(100%_-_100px)] px-10 overflow-y-auto scroll-window"
+              ref={windowRef}
+            >
               {messages.map((msg, index) => (
                 <div key={index}>
                   <strong className="transition-all duration-300 ease-in-out text-black dark:text-white">
@@ -143,6 +157,16 @@ const Home = () => {
                   <span className="ml-4 transition-all duration-300 ease-in-out text-black dark:text-white">
                     {msg.text}
                   </span>
+                  {msg.image && (
+                    <div className="my-4 mx-24">
+                      <img
+                        src={msg.image}
+                        alt="imagen"
+                        width={"100%"}
+                        height={200}
+                      />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -150,6 +174,7 @@ const Home = () => {
               <InputMessage
                 onChange={handleMessageInput}
                 onClick={sendMessage}
+                onChangeFile={handleFile}
                 value={messageInput}
               />
             </div>
