@@ -7,6 +7,8 @@ import CustomSelect from "../components/Select/CustomSelect";
 import useLogin from "../hooks/useLogin";
 import CustomModal from "../components/Modal/CustomModal";
 import { clsx } from "clsx";
+import { ButtonConfig } from "../components/Buttons/ButtonConfig";
+import { ButtonSalir } from "../components/Buttons/ButtonSalir";
 
 const rooms = [
   " ",
@@ -48,7 +50,7 @@ const Home = () => {
   return (
     <MainLayout>
       <section className="w-full h-full flex">
-        <aside className="w-1/4 h-full bg-[#D5DBFD] shadow-lg bg-inherit">
+        <aside className="w-[480px] h-full shadow-lg bg-[#5C6069]  dark:bg-[#0B1120]">
           <div className="w-full h-[160px] flex justify-center items-center">
             <UserConnected />
           </div>
@@ -60,65 +62,9 @@ const Home = () => {
                 value={currentRoom}
               />
             </div>
-            <div className="w-full px-4 mb-4">
-              <button
-                className={clsx(
-                  "w-full h-[50px]",
-                  "flex items-center",
-                  "pl-4 my-2",
-                  "rounded-md",
-                  /* ----default theme -----*/
-                  "bg-gray-50",
-                  "border border-gray-300",
-                  "text-gray-900 text-sm",
-                  "block w-full p-2.5",
-                  "rounded-lg",
-                  "shadow-md",
-                  "transition duration-300",
-                  /* ----focus theme -----*/
-                  "focus:ring-blue-500",
-                  "focus:border-blue-500",
-                  /* ----dark theme -----*/
-                  "dark:bg-gray-700",
-                  "dark:border-gray-600",
-                  "dark:placeholder-gray-400",
-                  "dark:text-white",
-                  "dark:focus:ring-blue-500",
-                  "dark:focus:border-blue-500"
-                )}
-                onClick={handleShowModal}
-              >
-                <p>Configuración</p>
-              </button>
-              <button
-                className={clsx(
-                  "w-full h-[50px]",
-                  "flex items-center",
-                  "pl-4 my-2",
-                  "rounded-md",
-                  /* ----default theme -----*/
-                  "bg-gray-50",
-                  "border border-gray-300",
-                  "text-gray-900 text-sm",
-                  "block w-full p-2.5",
-                  "rounded-lg",
-                  "shadow-md",
-                  "transition duration-300",
-                  /* ----focus theme -----*/
-                  "focus:ring-blue-500",
-                  "focus:border-blue-500",
-                  /* ----dark theme -----*/
-                  "dark:bg-gray-700",
-                  "dark:border-gray-600",
-                  "dark:placeholder-gray-400",
-                  "dark:text-white",
-                  "dark:focus:ring-blue-500",
-                  "dark:focus:border-blue-500"
-                )}
-                onClick={handleLogOut}
-              >
-                <p>Salir</p>
-              </button>
+            <div className="w-full px-4  flex flex-col items-center">
+              <ButtonConfig text={"Configuracion"} onClick={handleShowModal} />
+              <ButtonSalir text={"Salir"} onClick={handleLogOut} />
             </div>
           </div>
         </aside>
@@ -128,35 +74,26 @@ const Home = () => {
         <div
           className={clsx(
             /*-------- default config  ------*/
-            "w-3/4 h-full",
+            "bg-white",
+            "w-full h-full",
             "pb-4 pr-4",
-            "bg-gradient-to-b",
-            "from-[#F8FAFC]",
-            "to-[#DFF1FB]",
-            "via-[#EEDDEC]",
-
-            /*-------- dark mode  ------*/
-
-            "dark:bg-gradient-to-b",
-            "dark:from-[#0B1120]",
-            "dark:to-[#361D3A]",
-            "dark:via-[#0B263B]",
-            "transition duration-300"
+            /*-------- dark mode config  ------*/
+            "dark:bg-[#182234]",
           )}
         >
-          <div className="w-full h-full flex flex-col justify-between py-6 border-2 border-slate-400 rounded-lg dark:border-slate-600">
+          <div className="w-full h-full flex flex-col justify-between py-6 ">
             <div
               className="h-[calc(100%_-_100px)] px-10 overflow-y-auto scroll-window"
               ref={windowRef}
             >
               {messages.map((msg, index) => (
                 <div key={index}>
-                  <strong className="transition-all duration-300 ease-in-out text-black dark:text-white">
-                    {msg.username}:
-                  </strong>
-                  <span className="ml-4 transition-all duration-300 ease-in-out text-black dark:text-white">
+                  <p className="transition-all duration-300 ease-in-out text-gray-500 dark:text-gray-400 text-sm">
+                    {msg.username}
+                  </p>
+                  <p className="ml-4 transition-all duration-300 ease-in-out text-black dark:font-light dark:text-white">
                     {msg.text}
-                  </span>
+                  </p>
                   {msg.image && (
                     <div className="my-4 mx-24">
                       <img

@@ -39,7 +39,10 @@ const InputMessage = ({ onClick, onChange, value, onChangeFile }) => {
             "px-8",
             "rounded-full",
             "border border-transparent",
-            "shadow-md",
+            "shadow-sm",
+            "font-light",
+            "bg-gray-200",
+          "text-gray-700",
 
             /* --------- dark mode -------*/
             "dark:bg-[#334155] transition duration-300",

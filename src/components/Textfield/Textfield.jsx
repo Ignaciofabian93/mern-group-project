@@ -5,7 +5,7 @@ const Textfield = ({ onChange, name, type, placeholder, value }) => {
   return (
     <>
       <label className="block">
-        <span className="block text-sm font-medium text-slate-700">
+        <span className="block text-sm text-black font-light  dark:text-white">
           {placeholder}
         </span>
 

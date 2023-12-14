@@ -44,15 +44,15 @@ const CustomModal = ({ isOpen, handleClose }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all flex flex-col items-center">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-2xl font-medium leading-6 text-black"
                   >
-                    Actualizar contraseña
+                    Ajustes
                   </Dialog.Title>
-                  <div className="mt-6">
-                    <div className="my-2">
+                  <div className="mt-6 ">
+                    <div className="my-2 ">
                       <Textfield
                         onChange={handlePasswords}
                         name={"password"}
@@ -72,7 +72,7 @@ const CustomModal = ({ isOpen, handleClose }) => {
                     </div>
                   </div>
 
-                  <div className="mt-4 flex w-full justify-evenly">
+                  <div className="mt-4 flex w-[360px] flex-col gap-2">
                     <FormButton text={"Guardar"} onClick={() => {}} />
                     <CancelButton text={"Cancelar"} onClick={handleClose} />
                   </div>

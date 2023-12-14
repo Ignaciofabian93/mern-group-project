@@ -9,7 +9,7 @@ export const ButtonFile = ({ onClick }) => {
           /* ----- default -----*/
           "p-3 rounded-full",
           "flex items-center",
-          "bg-[#ffff] fill-[#334155]",
+          "bg-gray-200 fill-[#334155]",
           "shadow-md",
 
           /* ----- Transition -----*/

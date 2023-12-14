@@ -5,7 +5,7 @@ const CustomSelect = ({ rooms, onChange, value }) => {
   return (
     <div className=" flex flex-col items-center">
       <div className="w-[280px]">
-        <label className="block mb-2 font-medium text-gray-900 dark:text-white">
+        <label className="block mb-2 font-light text-white dark:text-white">
           Selecione un grupo
         </label>
         <select
@@ -15,6 +15,7 @@ const CustomSelect = ({ rooms, onChange, value }) => {
           className={clsx(
             /* ----default theme -----*/
             "bg-gray-50",
+            "h-[38px]",
             "border border-gray-300",
             "text-gray-900 text-sm",
             "block w-full p-2.5",

@@ -8,8 +8,8 @@ export const ButtonSend = ({ onClick }) => {
         className={clsx(
           /* ----- defaukt-----*/
           "p-3",
-          "bg-[#ffff]",
-          "fill-[#334155]",
+          "bg-[#5cb0da]",
+          "fill-white",
           "flex items-center",
           "shadow-md",
 
@@ -18,7 +18,7 @@ export const ButtonSend = ({ onClick }) => {
 
           /* ----- Dark mode-----*/
           "dark:fill-white rounded-full",
-          "dark:bg-[#334155]",
+          "dark:bg-[#34A853]",
           "dark:shadow-md"
         )}
       >

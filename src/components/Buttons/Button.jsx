@@ -7,7 +7,7 @@ export const Button = ({ text, onClick }) => {
       className={clsx(
         //default state
         "bg-[#5865F2] text-white",
-        "py-3 w-[360px] leanding",
+        "h-[48px] w-[360px] leanding",
         "rounded-full",
         "font-semibold tracking-wide",
         "cursor-pointer",
@@ -36,7 +36,7 @@ export const FormButton = ({ text, onClick }) => {
       className={clsx(
         //default state
         "bg-[#5865F2] text-white",
-        "py-2 px-6 leanding",
+        "h-[48px] w-[360px] leanding",
         "border-2 border-[#5865F2]",
         "rounded-full",
         "font-semibold tracking-wide",
@@ -46,6 +46,7 @@ export const FormButton = ({ text, onClick }) => {
         "text-sm capitalize",
         //hover
         "transition",
+        "duration-300",
         "hover:bg-[#4752C4] hover:shadow-md",
         //focus state
         "outline-none",
@@ -66,9 +67,9 @@ export const CancelButton = ({ text, onClick }) => {
     <button
       className={clsx(
         //default state
-        "text-[#5865F2] bg-white",
-        "py-2 px-6 leanding",
-        "border-2 border-[#5865F2]",
+        "text-white bg-white",
+        "h-[48px] w-[360px] leanding",
+        // "border-2 border-[#5865F2]",
         "rounded-full",
         "font-semibold tracking-wide",
         "cursor-pointer",
@@ -76,7 +77,11 @@ export const CancelButton = ({ text, onClick }) => {
         "relative shadow",
         "text-sm capitalize",
         //disabled state
-        "disabled:bg-[#4752C4]/50 disabled:cursor-not-allowed disabled:shadow"
+        "disabled:bg-[#4752C4]/50 disabled:cursor-not-allowed disabled:shadow",
+        "bg-red-500",
+        "hover:bg-[#8a3537]",
+        "transition",
+        "duration-300"
       )}
       onClick={onClick}
     >
