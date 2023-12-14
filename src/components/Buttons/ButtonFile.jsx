@@ -1,9 +1,9 @@
 import React from "react";
 import clsx from "clsx";
 
-export const ButtonFile = () => {
+export const ButtonFile = ({ onClick }) => {
   return (
-    <button>
+    <button onClick={onClick}>
       <div
         className={clsx(
           /* ----- default -----*/

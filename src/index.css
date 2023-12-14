@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD
 body{
     font-family: 'Inter', sans-serif;
 }
+=======
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scroll-window::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroll-window {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+>>>>>>> 6a0a8e04e11c3c6469836d4f9544d52b2f237e52

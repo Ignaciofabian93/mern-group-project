@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MainLayout from "../Layouts/MainLayout";
 import useMessage from "../hooks/useMessage";
 import InputMessage from "../components/InpuntMessage/InputMessage";
@@ -22,7 +22,11 @@ const rooms = [
 ];
 
 const Home = () => {
+<<<<<<< HEAD
   const { user } = useUser();
+=======
+  const windowRef = useRef();
+>>>>>>> 6a0a8e04e11c3c6469836d4f9544d52b2f237e52
   const { handleLogOut } = useLogin();
   const [showModal, setShowModal] = useState(false);
   const {
@@ -32,11 +36,21 @@ const Home = () => {
     handleMessageInput,
     messageInput,
     currentRoom,
+    handleFile,
   } = useMessage();
 
   const handleShowModal = () => {
     setShowModal(true);
   };
+
+  const handleWindow = () => {
+    const window = windowRef.current.clientHeight;
+    console.log("window: ", window);
+  };
+
+  useEffect(() => {
+    handleWindow();
+  }, [messages]);
 
   return (
     <MainLayout>
@@ -70,6 +84,7 @@ const Home = () => {
             "dark:bg-[#182234]"
           )}
         >
+<<<<<<< HEAD
           <div className="w-full h-full flex flex-col justify-between  ">
             <div className="h-[calc(100%_-_100px)] px-10 flex flex-col  overflow-y-auto">
               {messages.map((msg, index) => (
@@ -91,6 +106,31 @@ const Home = () => {
                       </p>
                     </div>
                   </div>
+=======
+          <div className="w-full h-full flex flex-col justify-between py-6 border-2 border-slate-400 rounded-lg dark:border-slate-600">
+            <div
+              className="h-[calc(100%_-_100px)] px-10 overflow-y-auto scroll-window"
+              ref={windowRef}
+            >
+              {messages.map((msg, index) => (
+                <div key={index}>
+                  <strong className="transition-all duration-300 ease-in-out text-black dark:text-white">
+                    {msg.username}:
+                  </strong>
+                  <span className="ml-4 transition-all duration-300 ease-in-out text-black dark:text-white">
+                    {msg.text}
+                  </span>
+                  {msg.image && (
+                    <div className="my-4 mx-24">
+                      <img
+                        src={msg.image}
+                        alt="imagen"
+                        width={"100%"}
+                        height={200}
+                      />
+                    </div>
+                  )}
+>>>>>>> 6a0a8e04e11c3c6469836d4f9544d52b2f237e52
                 </div>
               ))}
             </div>
@@ -98,6 +138,7 @@ const Home = () => {
               <InputMessage
                 onChange={handleMessageInput}
                 onClick={sendMessage}
+                onChangeFile={handleFile}
                 value={messageInput}
               />
             </div>

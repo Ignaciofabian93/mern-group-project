@@ -11,6 +11,7 @@ const useMessage = () => {
   const [username, setUsername] = useState("");
   const [currentRoom, setCurrentRoom] = useState("");
   const [userList, setUserList] = useState([]);
+  const [file, setFile] = useState(null);
 
   useEffect(() => {
     const newSocket = io(url);
@@ -41,7 +42,6 @@ const useMessage = () => {
       });
 
       socket.on("activeUsers", (users) => {
-        console.log("USERS ACT: ", users);
         if (users) {
           setUserList(users);
         } else {
@@ -78,8 +78,14 @@ const useMessage = () => {
   };
 
   const sendMessage = () => {
-    if (socket && messageInput && currentRoom && username) {
-      socket.emit("sendMessage", currentRoom, messageInput, username);
+    console.log("file: ", file);
+    if (socket && (messageInput || file) && currentRoom && username) {
+      if (file) {
+        socket.emit("sendImage", currentRoom, file, username);
+        setFile(null);
+      } else {
+        socket.emit("sendMessage", currentRoom, messageInput, username);
+      }
       setMessageInput("");
     }
   };
@@ -92,6 +98,10 @@ const useMessage = () => {
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
+  };
+
+  const handleFile = (file) => {
+    setFile(file); // Guardar el archivo en el estado local
   };
 
   const handleCurrentRoom = (e) => {
@@ -115,6 +125,7 @@ const useMessage = () => {
     handleMessageInput,
     currentRoom,
     userList,
+    handleFile,
   };
 };
 

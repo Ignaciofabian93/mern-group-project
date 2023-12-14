@@ -3,17 +3,24 @@ import { ButtonSend } from "../Buttons/ButtonSend";
 import { ButtonFile } from "../Buttons/ButtonFile";
 import clsx from "clsx";
 
-const InputMessage = ({ onClick, onChange, value }) => {
+const InputMessage = ({ onClick, onChange, value, onChangeFile }) => {
   const fileInputRef = useRef(null);
 
   const handleFileButtonClick = () => {
     fileInputRef.current.click();
   };
 
-  const handleFileInputChange = (e) => {
-    // Aquí puedes manejar la lógica cuando se selecciona un archivo
-    const selectedFile = e.target.files[0];
-    console.log("Selected File:", selectedFile);
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64 = reader.result;
+        onChangeFile(base64); // Emitir el valor del archivo leído
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -53,14 +60,13 @@ const InputMessage = ({ onClick, onChange, value }) => {
         <div>
           <input
             type="file"
+            accept="image/*"
             className="input-field"
             hidden
-            onChange={handleFileInputChange}
+            onChange={handleFileChange}
             ref={fileInputRef}
           />
-          <div type="button" onClick={handleFileButtonClick}>
-            <ButtonFile />
-          </div>
+          <ButtonFile onClick={handleFileButtonClick} />
         </div>
         <ButtonSend onClick={onClick} />
       </div>
