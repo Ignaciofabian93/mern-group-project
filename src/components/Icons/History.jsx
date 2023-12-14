@@ -2,7 +2,7 @@ import React from "react";
 
 export const History = () => {
   return (
-    <button className="cursor-pointer fill-[#1E3050] dark:fill-slate-200 transition duration-500">
+    <button className="cursor-pointer fill-[#1E3050] dark:fill-slate-200 transition duration-300">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="20"

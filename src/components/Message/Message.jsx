@@ -12,7 +12,7 @@ export const Message = () => {
             {username && message && (
               <p className="font-normal text-sm text-gray-500">{username}</p>
             )}
-            <p className="bg-slate-300 rounded-lg flex items-center py-2 px-3 dark:bg-slate-700 transition duration-500 ">
+            <p className="bg-slate-300 rounded-lg flex items-center py-2 px-3 dark:bg-slate-700 transition duration-300 ">
               {message}
             </p>
           </div>

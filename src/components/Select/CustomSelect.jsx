@@ -20,6 +20,7 @@ const CustomSelect = ({ rooms, onChange, value }) => {
             "block w-full p-2.5",
             "rounded-lg",
             "shadow-md",
+            "transition duration-300",
             /* ----focus theme -----*/
             "focus:ring-blue-500",
             "focus:border-blue-500",

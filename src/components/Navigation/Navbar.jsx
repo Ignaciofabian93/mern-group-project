@@ -12,15 +12,16 @@ export const Navbar = () => {
       className={clsx(
         /* ----- Default Value -----*/
         "w-full h-[50px]",
+        "shadow-lg",
         "fixed top-0",
         "flex  justify-between",
         "pl-[100px] pr-[100px] py-2",
         "bg-gradient-to-b-[#DFF1FB] ",
         /* ----- Dark Theme Background -----*/
         "dark:bg-[#0B1120]",
-    
+
         /* ----- Transition -----*/
-        // "transition duration-500"
+        "transition duration-300"
       )}
     >
       <div className="flex gap-2 items-center">
@@ -28,7 +29,7 @@ export const Navbar = () => {
         <p
           className={clsx(
             "text-black font-semibold",
-            "dark:text-[#F8FAFC] transition duration-500",
+            "dark:text-[#F8FAFC] transition duration-300",
             "text-lg"
           )}
         >

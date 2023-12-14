@@ -12,14 +12,13 @@ const UserConnected = () => {
         "ease-in-out",
         "shadow-lg",
         "w-[280px] h-[112px]",
-        "cursor-pointer",
         "rounded-2xl px-4 mt-8",
         "text-white",
         "flex items-center justify-around",
         "bg-[#F8FAFC]",
 
         /* ----- Transition -----*/
-        "transition duration-500",
+        "transition duration-300",
 
         /* ----- dark mode -----*/
         "dark:bg-[#334155]",

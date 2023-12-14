@@ -35,7 +35,7 @@ const InputMessage = ({ onClick, onChange, value }) => {
             "shadow-md",
 
             /* --------- dark mode -------*/
-            "dark:bg-[#334155] transition duration-500",
+            "dark:bg-[#334155] transition duration-300",
             "dark:text-white",
 
             /*---------- focus ---------------*/
