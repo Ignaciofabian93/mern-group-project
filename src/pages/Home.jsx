@@ -74,9 +74,11 @@ const Home = () => {
         <div
           className={clsx(
             /*-------- default config  ------*/
+            "bg-white",
             "w-full h-full",
             "pb-4 pr-4",
-            "dark:bg-[#182234]"
+            /*-------- dark mode config  ------*/
+            "dark:bg-[#182234]",
           )}
         >
           <div className="w-full h-full flex flex-col justify-between py-6 ">
