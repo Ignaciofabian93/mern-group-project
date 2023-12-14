@@ -67,7 +67,7 @@ export const CancelButton = ({ text, onClick }) => {
     <button
       className={clsx(
         //default state
-        "text-white bg-white",
+        "text-white",
         "h-[48px] w-[360px] leanding",
         // "border-2 border-[#5865F2]",
         "rounded-full",
