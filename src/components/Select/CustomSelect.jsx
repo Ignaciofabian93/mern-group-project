@@ -15,7 +15,7 @@ const CustomSelect = ({ rooms, onChange, value }) => {
           className={clsx(
             /* ----default theme -----*/
             "bg-gray-50",
-            "h-[44px]",
+            "h-[38px]",
             "border border-gray-300",
             "text-gray-900 text-sm",
             "block w-full p-2.5",

@@ -5,7 +5,7 @@ export const ButtonConfig = ({ text, onClick }) => {
   return (
     <button
       className={clsx(
-        "w-[280px] h-[44px]",
+        "w-[280px] h-[34px]",
         "flex items-center",
         "pl-4 my-2",
         "rounded-md",
