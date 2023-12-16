@@ -1,28 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
-import MainLayout from "../Layouts/MainLayout";
-import useMessage from "../hooks/useMessage";
-import InputMessage from "../components/InpuntMessage/InputMessage";
+import { MainLayout, LeftLayout, RightLayout } from "../Layouts";
+import { useMessage, useRoom } from "../hooks";
+import InputMessage from "../components/InputMessage/InputMessage";
 import UserConnected from "../components/User/UserConnected";
 import CustomSelect from "../components/Select/CustomSelect";
 import useLogin from "../hooks/useLogin";
 import CustomModal from "../components/Modal/CustomModal";
-import { clsx } from "clsx";
 import { ButtonSalir } from "../components/Buttons/ButtonSalir";
 
-const rooms = [
-  " ",
-  "JavaScript",
-  "TypeScript",
-  "ReactJs",
-  "NextJs",
-  "NodeJs",
-  "MongoDB",
-];
+// const rooms = [
+//   " ",
+//   "JavaScript",
+//   "TypeScript",
+//   "ReactJs",
+//   "NextJs",
+//   "NodeJs",
+//   "MongoDB",
+// ];
 
 const Home = () => {
   const windowRef = useRef();
   const { handleLogOut } = useLogin();
   const [showModal, setShowModal] = useState(false);
+  const { rooms } = useRoom();
   const {
     handleCurrentRoom,
     messages,
@@ -33,13 +33,10 @@ const Home = () => {
     handleFile,
   } = useMessage();
 
-  // const handleShowModal = () => {
-  //   setShowModal(true);
-  // };
+  console.log("ROOMS: ", rooms);
 
   const handleWindow = () => {
-    const window = windowRef.current.clientHeight;
-    console.log("window: ", window);
+    // const window = windowRef.current.clientHeight;
   };
 
   useEffect(() => {
@@ -49,37 +46,27 @@ const Home = () => {
   return (
     <MainLayout>
       <section className="w-full h-full flex">
-        <aside className="w-[480px] h-full shadow-lg bg-[#5C6069]  dark:bg-[#0B1120]">
+        <LeftLayout>
           <div className="w-full h-1/4 flex items-center px-4">
             <UserConnected />
           </div>
           <div className="w-full h-[calc(100%_-_160px)] pt-[48px] flex flex-col items-center justify-between py-16">
             <div className="flex items-center justify-around w-full px-4 mt-6">
               <CustomSelect
-                rooms={rooms}
+                rooms={rooms.rooms}
                 onChange={handleCurrentRoom}
                 value={currentRoom}
               />
             </div>
             <div className="w-full px-4  flex flex-col items-center">
-              {/* <ButtonConfig text={"Configuracion"} onClick={handleShowModal} /> */}
               <ButtonSalir text={"Salir"} onClick={handleLogOut} />
             </div>
           </div>
-        </aside>
+        </LeftLayout>
 
         {/* ----------------- area de mensajes ------------------- */}
 
-        <div
-          className={clsx(
-            /*-------- default config  ------*/
-            "bg-white",
-            "w-full h-full",
-            "pb-4 pr-4",
-            /*-------- dark mode config  ------*/
-            "dark:bg-[#182234]"
-          )}
-        >
+        <RightLayout>
           <div className="w-full h-full flex flex-col justify-between py-6 ">
             <div
               className="h-[calc(100%_-_100px)] px-10 overflow-y-auto scroll-window"
@@ -116,7 +103,7 @@ const Home = () => {
               />
             </div>
           </div>
-        </div>
+        </RightLayout>
         {/* ----------------- area de mensajes ------------------- */}
       </section>
       {showModal && (

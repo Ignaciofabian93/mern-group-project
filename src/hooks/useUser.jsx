@@ -1,9 +1,8 @@
-// import { useState } from "react";
-import { useState } from "react";
-import useLogin from "./useLogin";
+import { useContext, useState } from "react";
+import { Authcontext } from "../context/authContext";
 
 const useUser = () => {
-  const { user } = useLogin();
+  const { user } = useContext(Authcontext);
   const [profilePicture, setProfilePicture] = useState("");
 
   return { user };

@@ -18,7 +18,6 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
-      console.log("currenUser: ", currentUser);
       if (currentUser) {
         getToken();
       } else {

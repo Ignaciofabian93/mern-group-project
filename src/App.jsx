@@ -5,7 +5,7 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom";
-import { Home, Login, Register } from "./pages";
+import { Home, Login, Register, Profile } from "./pages";
 import { Authcontext } from "./context/authContext";
 
 const ProtectedRoute = ({ children }) => {
@@ -30,6 +30,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
             </ProtectedRoute>
           }
         />

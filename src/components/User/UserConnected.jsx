@@ -1,23 +1,32 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import useUser from "../../hooks/useUser";
 import clsx from "clsx";
 import { UserIcon } from "../../constants/icons";
-import { Tooltip, Modal } from "@nextui-org/react";
+import { Tooltip } from "@nextui-org/react";
 
 const UserConnected = () => {
+  const ref = useRef(null);
   const { user } = useUser();
-  const [isOpen, setIsOpen] = useState(false);
+  const [file, setFile] = useState(null);
 
   const handleClick = () => {
-    setIsOpen(true);
+    ref.current.click();
   };
 
-  const handleClose = () => {
-    setIsOpen(false);
+  const handleProfilePicture = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64 = reader.result;
+        console.log("base64: ", base64);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
-  const handleProfilePicture = () => {};
-
+  console.log("file: ", file);
   return (
     <div
       className={clsx(
@@ -46,11 +55,24 @@ const UserConnected = () => {
             onClick={handleClick}
           >
             {user && (
-              <img
-                src={user.photo ? user.photo : UserIcon}
-                alt="profile"
-                className="w-full h-full"
-              />
+              <>
+                <img
+                  src={user.photo ? user.photo : UserIcon}
+                  alt="profile"
+                  className="w-full h-full"
+                />
+                <input
+                  ref={ref}
+                  type="file"
+                  onChange={(e) => handleProfilePicture(e)}
+                  accept="image/*"
+                  className="w-full h-full"
+                  id="profile-picture"
+                  name="profile-picture"
+                  multiple={false}
+                  hidden={false}
+                />
+              </>
             )}
           </div>
         </Tooltip>
@@ -66,19 +88,6 @@ const UserConnected = () => {
             </>
           )}
         </div>
-        {isOpen && (
-          <Modal
-            visible={isOpen}
-            onClose={handleClose}
-            title="Actualizar foto de perfil"
-          >
-            <input
-              type="file"
-              onChange={(e) => handleProfilePicture(e.target.files[0])}
-            />
-            <button onClick={handleProfilePicture}>Upload</button>
-          </Modal>
-        )}
       </div>
     </div>
   );

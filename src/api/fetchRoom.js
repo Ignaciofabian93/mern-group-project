@@ -29,3 +29,14 @@ export const createRoom = async (name, creator) => {
     throw new Error(`Error al crear el espacio: ${error}`);
   }
 };
+
+export const saveUserInRoom = async (room_id, uid) => {
+  try {
+    const response = await api.put(`/api/rooms/${room_id}`, { uid });
+    const data = await response.data;
+    console.log("Data: ", data);
+    return data;
+  } catch (error) {
+    throw new Error(`Error al guardar el usuario en el espacio: ${error}`);
+  }
+};
