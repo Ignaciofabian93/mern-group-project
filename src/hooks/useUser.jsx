@@ -1,9 +1,10 @@
 // import { useState } from "react";
+import { useState } from "react";
 import useLogin from "./useLogin";
 
 const useUser = () => {
   const { user } = useLogin();
-  // const [users, setUsers] = useState([]);
+  const [profilePicture, setProfilePicture] = useState("");
 
   return { user };
 };

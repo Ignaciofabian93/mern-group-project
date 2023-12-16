@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { saveUser } from "../api/fetchUser";
 
 const useLogin = () => {
-  const { loginUser, googleLogin, logOut, user } = useContext(Authcontext);
+  const { loginUser, googleLogin, logOut, user, sendPasswordReset } =
+    useContext(Authcontext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -61,6 +62,7 @@ const useLogin = () => {
   const handleGoogleLogin = async () => {
     const response = await googleLogin();
     if (response.user.uid) {
+      await sendPasswordReset(response.user.email);
       setMessage("Bienvenido(a)");
       navigate("/");
     } else {

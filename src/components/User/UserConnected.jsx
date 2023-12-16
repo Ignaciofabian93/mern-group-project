@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import useUser from "../../hooks/useUser";
 import clsx from "clsx";
 import { UserIcon } from "../../constants/icons";
+import { Tooltip, Modal } from "@nextui-org/react";
 
 const UserConnected = () => {
   const { user } = useUser();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  const handleProfilePicture = () => {};
 
   return (
     <div
@@ -12,10 +24,11 @@ const UserConnected = () => {
         /* ----- default -----*/
         "ease-in-out",
         "shadow-lg",
-        "w-[280px] h-[112px]",
-        "rounded-2xl px-4 mt-8",
+        "w-full h-[90px]",
+        "rounded-2xl",
         "text-white",
-        "flex items-center justify-around",
+        "flex items-center justify-start",
+        "px-6",
         "bg-[#5cb0da]",
 
         /* ----- Transition -----*/
@@ -27,15 +40,20 @@ const UserConnected = () => {
       )}
     >
       <div className="flex gap-3">
-        <div className="w-[50px] h-[50px] rounded-[50%] overflow-hidden">
-          {user && (
-            <img
-              src={user.photo ? user.photo : UserIcon}
-              alt="profile"
-              className="w-full h-full"
-            />
-          )}
-        </div>
+        <Tooltip placement="bottom" content="Actualizar foto">
+          <div
+            className="w-[50px] h-[50px] rounded-[50%] overflow-hidden cursor-pointer"
+            onClick={handleClick}
+          >
+            {user && (
+              <img
+                src={user.photo ? user.photo : UserIcon}
+                alt="profile"
+                className="w-full h-full"
+              />
+            )}
+          </div>
+        </Tooltip>
         <div className="flex flex-col">
           {user && (
             <>
@@ -48,6 +66,19 @@ const UserConnected = () => {
             </>
           )}
         </div>
+        {isOpen && (
+          <Modal
+            visible={isOpen}
+            onClose={handleClose}
+            title="Actualizar foto de perfil"
+          >
+            <input
+              type="file"
+              onChange={(e) => handleProfilePicture(e.target.files[0])}
+            />
+            <button onClick={handleProfilePicture}>Upload</button>
+          </Modal>
+        )}
       </div>
     </div>
   );

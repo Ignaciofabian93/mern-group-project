@@ -7,7 +7,6 @@ import CustomSelect from "../components/Select/CustomSelect";
 import useLogin from "../hooks/useLogin";
 import CustomModal from "../components/Modal/CustomModal";
 import { clsx } from "clsx";
-// import { ButtonConfig } from "../components/Buttons/ButtonConfig";
 import { ButtonSalir } from "../components/Buttons/ButtonSalir";
 
 const rooms = [
@@ -51,7 +50,7 @@ const Home = () => {
     <MainLayout>
       <section className="w-full h-full flex">
         <aside className="w-[480px] h-full shadow-lg bg-[#5C6069]  dark:bg-[#0B1120]">
-          <div className="w-full h-[160px] flex justify-center items-center">
+          <div className="w-full h-1/4 flex items-center px-4">
             <UserConnected />
           </div>
           <div className="w-full h-[calc(100%_-_160px)] pt-[48px] flex flex-col items-center justify-between py-16">
@@ -78,7 +77,7 @@ const Home = () => {
             "w-full h-full",
             "pb-4 pr-4",
             /*-------- dark mode config  ------*/
-            "dark:bg-[#182234]",
+            "dark:bg-[#182234]"
           )}
         >
           <div className="w-full h-full flex flex-col justify-between py-6 ">

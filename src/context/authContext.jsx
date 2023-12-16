@@ -6,6 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "../firebase/config";
 
@@ -45,6 +46,8 @@ const AuthProvider = ({ children }) => {
   const registerUser = (email, password) =>
     createUserWithEmailAndPassword(auth, email, password);
 
+  const sendPasswordReset = (email) => sendPasswordResetEmail(auth, email);
+
   const logOut = () => signOut(auth);
 
   const provider = new GoogleAuthProvider();
@@ -60,6 +63,7 @@ const AuthProvider = ({ children }) => {
         loginUser,
         registerUser,
         logOut,
+        sendPasswordReset,
       }}
     >
       {children}
