@@ -5,12 +5,12 @@ export const ButtonConfig = ({ text, onClick }) => {
   return (
     <button
       className={clsx(
-        "w-[280px] h-[34px]",
+        "w-full h-[40px]",
         "flex items-center",
         "pl-4 my-2",
         "rounded-md",
         /* ----default theme -----*/
-        "bg-[#5cb0da]",
+        "bg-[#222]",
         "text-white",
         "hover:bg-cyan-600",
         // "border border-gray-300",

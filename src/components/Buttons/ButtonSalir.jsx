@@ -7,7 +7,7 @@ export const ButtonSalir = ({ text, onClick }) => {
     <button
       className={clsx(
         /* ----default theme -----*/
-        "w-[280px] h-[34px]",
+        "w-full h-[40px]",
         "flex items-center",
         "pl-4 my-2",
         "rounded-md",
@@ -38,7 +38,7 @@ export const ButtonSalir = ({ text, onClick }) => {
       onClick={onClick}
     >
       {text}
-      <Logout/>
+      <Logout />
     </button>
   );
 };

@@ -7,8 +7,11 @@ import CustomSelect from "../components/Select/CustomSelect";
 import useLogin from "../hooks/useLogin";
 import { ButtonSalir } from "../components/Buttons/ButtonSalir";
 import { Button } from "@nextui-org/react";
+import { ButtonConfig } from "../components/Buttons/ButtonConfig";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   const { handleLogOut } = useLogin();
   const { rooms } = useRoom();
   const {
@@ -21,9 +24,12 @@ const Home = () => {
     handleFile,
     handleSaveChat,
     handleGetChat,
+    activeUsers,
   } = useSocket();
 
-  console.log("ROOMS: ", rooms);
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
 
   return (
     <MainLayout>
@@ -32,7 +38,7 @@ const Home = () => {
           <div className="w-full h-1/4 flex items-center px-4">
             <UserConnected />
           </div>
-          <div className="w-full h-[calc(100%_-_160px)] pt-[48px] flex flex-col items-center justify-between py-16">
+          <div className="w-full h-3/4 flex flex-col items-center justify-between pb-6">
             <div className="flex items-center justify-around w-full px-4 mt-6">
               <CustomSelect
                 rooms={rooms.rooms}
@@ -41,12 +47,16 @@ const Home = () => {
               />
             </div>
             {currentRoom !== "" && (
-              <>
+              <div className="flex w-full px-4 justify-evenly">
                 <Button onClick={handleSaveChat}>Guardar chat</Button>
                 <Button onClick={handleGetChat}>Historial</Button>
-              </>
+              </div>
             )}
-            <div className="w-full px-4  flex flex-col items-center">
+            <div className="w-full flex flex-col items-center px-4">
+              <ButtonConfig
+                text={"Ajustes"}
+                onClick={() => handleNavigate("/profile")}
+              />
               <ButtonSalir text={"Salir"} onClick={handleLogOut} />
             </div>
           </div>

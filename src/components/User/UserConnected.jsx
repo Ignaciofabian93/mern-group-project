@@ -1,32 +1,11 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import useUser from "../../hooks/useUser";
 import clsx from "clsx";
 import { UserIcon } from "../../constants/icons";
-import { Tooltip } from "@nextui-org/react";
 
 const UserConnected = () => {
-  const ref = useRef(null);
   const { user } = useUser();
-  const [file, setFile] = useState(null);
 
-  const handleClick = () => {
-    ref.current.click();
-  };
-
-  const handleProfilePicture = (e) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64 = reader.result;
-        console.log("base64: ", base64);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  console.log("file: ", file);
   return (
     <div
       className={clsx(
@@ -48,34 +27,16 @@ const UserConnected = () => {
         "dark:shadow-md"
       )}
     >
-      <div className="flex gap-3">
-        <Tooltip placement="bottom" content="Actualizar foto">
-          <div
-            className="w-[50px] h-[50px] rounded-[50%] overflow-hidden cursor-pointer"
-            onClick={handleClick}
-          >
-            {user && (
-              <>
-                <img
-                  src={user.photo ? user.photo : UserIcon}
-                  alt="profile"
-                  className="w-full h-full"
-                />
-                <input
-                  ref={ref}
-                  type="file"
-                  onChange={(e) => handleProfilePicture(e)}
-                  accept="image/*"
-                  className="w-full h-full"
-                  id="profile-picture"
-                  name="profile-picture"
-                  multiple={false}
-                  hidden={false}
-                />
-              </>
-            )}
-          </div>
-        </Tooltip>
+      <div className="flex items-center gap-3">
+        <div className="w-[65px] h-[65px] rounded-[50%] overflow-hidden cursor-pointer">
+          {user && (
+            <img
+              src={user.photo ? user.photo : UserIcon}
+              alt="profile"
+              className="w-full h-full"
+            />
+          )}
+        </div>
         <div className="flex flex-col">
           {user && (
             <>
