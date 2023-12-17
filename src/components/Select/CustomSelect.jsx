@@ -8,7 +8,7 @@ const CustomSelect = ({ rooms, onChange, value }) => {
       <p className="text-white mb-2 text-sm font-semibold pl-2">
         Seleccione un chat:
       </p>
-      <Select onChange={onChange} value={value}>
+      <Select onChange={onChange} value={value} aria-label="select-room">
         {rooms &&
           rooms.map((room) => (
             <SelectItem key={room._id} value={room._id}>

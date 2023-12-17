@@ -40,3 +40,13 @@ export const saveUserInRoom = async (room_id, uid) => {
     throw new Error(`Error al guardar el usuario en el espacio: ${error}`);
   }
 };
+
+export const saveChat = async (room_id, messages) => {
+  try {
+    const response = await api.put(`/api/rooms/${room_id}`, { messages });
+    const data = await response.data;
+    return data;
+  } catch (error) {
+    throw new Error(`Error al guardar el mensaje en el espacio: ${error}`);
+  }
+};
