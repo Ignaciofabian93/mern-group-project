@@ -129,6 +129,7 @@ const useSocket = () => {
     handleFile,
     handleSaveChat,
     handleGetChat,
+    apiResponse,
   };
 };
 

@@ -58,26 +58,27 @@ const Home = () => {
           <div className="w-full h-full flex flex-col justify-between py-6 ">
             <div className="h-[calc(100%_-_100px)] px-10 overflow-y-auto scroll-window">
               {messages.map((msg, index) => {
-                console.log("MSG: ", msg);
                 if (msg.text) {
                   return (
                     <div
                       key={index}
-                      className="border-2 w-fit px-6 py-2 rounded-lg mb-4"
+                      className="flex border-2 w-fit px-6 py-2 rounded-lg mb-4"
                     >
-                      <p className="transition-all duration-300 ease-in-out text-gray-500 dark:text-gray-400 text-sm">
-                        {msg.username}
-                      </p>
-                      <p className="ml-4 transition-all duration-300 ease-in-out text-black dark:font-light dark:text-white">
-                        {msg.text}
-                      </p>
+                      <div>
+                        <p className="transition-all duration-300 ease-in-out text-gray-500 dark:text-gray-400 text-sm">
+                          {msg.username}
+                        </p>
+                        <p className="ml-4 transition-all duration-300 ease-in-out text-black dark:font-light dark:text-white">
+                          {msg.text}
+                        </p>
+                      </div>
                       {msg.image && (
                         <div className="my-4 mx-24 flex justify-end">
                           <img
                             src={msg.image}
                             alt="imagen"
-                            width={"25%"}
-                            height={50}
+                            width={"30%"}
+                            height={"auto"}
                             className="rounded-xl"
                           />
                         </div>
