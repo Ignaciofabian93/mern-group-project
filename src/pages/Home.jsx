@@ -1,27 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { MainLayout, LeftLayout, RightLayout } from "../Layouts";
-import { useMessage, useRoom } from "../hooks";
+import { useSocket, useRoom } from "../hooks";
 import InputMessage from "../components/InputMessage/InputMessage";
 import UserConnected from "../components/User/UserConnected";
 import CustomSelect from "../components/Select/CustomSelect";
 import useLogin from "../hooks/useLogin";
-import CustomModal from "../components/Modal/CustomModal";
 import { ButtonSalir } from "../components/Buttons/ButtonSalir";
 
-// const rooms = [
-//   " ",
-//   "JavaScript",
-//   "TypeScript",
-//   "ReactJs",
-//   "NextJs",
-//   "NodeJs",
-//   "MongoDB",
-// ];
-
 const Home = () => {
-  const windowRef = useRef();
   const { handleLogOut } = useLogin();
-  const [showModal, setShowModal] = useState(false);
   const { rooms } = useRoom();
   const {
     handleCurrentRoom,
@@ -31,17 +18,9 @@ const Home = () => {
     messageInput,
     currentRoom,
     handleFile,
-  } = useMessage();
+  } = useSocket();
 
   console.log("ROOMS: ", rooms);
-
-  const handleWindow = () => {
-    // const window = windowRef.current.clientHeight;
-  };
-
-  useEffect(() => {
-    handleWindow();
-  }, [messages]);
 
   return (
     <MainLayout>
@@ -68,12 +47,12 @@ const Home = () => {
 
         <RightLayout>
           <div className="w-full h-full flex flex-col justify-between py-6 ">
-            <div
-              className="h-[calc(100%_-_100px)] px-10 overflow-y-auto scroll-window"
-              ref={windowRef}
-            >
+            <div className="h-[calc(100%_-_100px)] px-10 overflow-y-auto scroll-window">
               {messages.map((msg, index) => (
-                <div key={index}>
+                <div
+                  key={index}
+                  className="border-2 w-fit px-6 py-2 rounded-lg mb-4"
+                >
                   <p className="transition-all duration-300 ease-in-out text-gray-500 dark:text-gray-400 text-sm">
                     {msg.username}
                   </p>
@@ -106,12 +85,6 @@ const Home = () => {
         </RightLayout>
         {/* ----------------- area de mensajes ------------------- */}
       </section>
-      {showModal && (
-        <CustomModal
-          isOpen={showModal}
-          handleClose={() => setShowModal(false)}
-        />
-      )}
     </MainLayout>
   );
 };

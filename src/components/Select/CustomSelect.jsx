@@ -1,17 +1,14 @@
 import React from "react";
 // import clsx from "clsx";
 import { Select, SelectItem } from "@nextui-org/react";
-import { useRoom } from "../../hooks";
 
 const CustomSelect = ({ rooms, onChange, value }) => {
-  console.log("rooms!!!: ", rooms);
-  const { handleCurrentRoom } = useRoom();
   return (
     <div className="w-full h-fit">
       <p className="text-white mb-2 text-sm font-semibold pl-2">
         Seleccione un chat:
       </p>
-      <Select onChange={handleCurrentRoom} value={value}>
+      <Select onChange={onChange} value={value}>
         {rooms &&
           rooms.map((room) => (
             <SelectItem key={room._id} value={room._id}>

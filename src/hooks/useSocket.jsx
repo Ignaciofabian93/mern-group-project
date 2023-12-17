@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { url } from "../api/config";
 import useUser from "./useUser";
+import useRoom from "./useRoom";
 
-const useMessage = () => {
+const useSocket = () => {
   const { user } = useUser();
+  const { rooms } = useRoom();
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
   const [messageInput, setMessageInput] = useState("");
-  const [username, setUsername] = useState("");
   const [currentRoom, setCurrentRoom] = useState("");
-  const [userList, setUserList] = useState([]);
   const [file, setFile] = useState(null);
 
   useEffect(() => {
@@ -23,12 +23,6 @@ const useMessage = () => {
   }, []);
 
   useEffect(() => {
-    if (user) {
-      setUsername(user.name);
-    }
-  }, [user]);
-
-  useEffect(() => {
     if (socket) {
       socket.on("message", (message) => {
         setMessages((prevMessages) => [...prevMessages, message]);
@@ -39,14 +33,6 @@ const useMessage = () => {
           ...prevMessages,
           { username: "Servidor", text: `${username} se ha unido` },
         ]);
-      });
-
-      socket.on("activeUsers", (users) => {
-        if (users) {
-          setUserList(users);
-        } else {
-          setUserList([]);
-        }
       });
 
       socket.on("userLeft", ({ id, users }) => {
@@ -72,19 +58,19 @@ const useMessage = () => {
   }, [currentRoom]);
 
   const joinRoom = () => {
-    if (socket && username && currentRoom) {
-      socket.emit("joinRoom", currentRoom, username);
+    if (socket && user.name && currentRoom) {
+      socket.emit("joinRoom", currentRoom, user.name);
     }
   };
 
   const sendMessage = () => {
     console.log("file: ", file);
-    if (socket && (messageInput || file) && currentRoom && username) {
+    if (socket && (messageInput || file) && currentRoom && user.name) {
       if (file) {
-        socket.emit("sendImage", currentRoom, file, username);
+        socket.emit("sendImage", currentRoom, file, user.name);
         setFile(null);
       } else {
-        socket.emit("sendMessage", currentRoom, messageInput, username);
+        socket.emit("sendMessage", currentRoom, messageInput, user.name);
       }
       setMessageInput("");
     }
@@ -92,12 +78,8 @@ const useMessage = () => {
 
   const leaveRoom = () => {
     if (socket) {
-      socket.emit("userLeft", currentRoom, username);
+      socket.emit("userLeft", currentRoom, user.name);
     }
-  };
-
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
   };
 
   const handleFile = (file) => {
@@ -105,8 +87,11 @@ const useMessage = () => {
   };
 
   const handleCurrentRoom = (e) => {
+    const roomSelected = rooms.rooms.find(
+      (room) => room._id === e.target.value
+    );
     leaveRoom();
-    setCurrentRoom(e.target.value);
+    setCurrentRoom(roomSelected.name);
     setMessages([]);
   };
 
@@ -118,15 +103,12 @@ const useMessage = () => {
     messages,
     sendMessage,
     joinRoom,
-    username,
-    handleUsername,
     handleCurrentRoom,
     messageInput,
     handleMessageInput,
     currentRoom,
-    userList,
     handleFile,
   };
 };
 
-export default useMessage;
+export default useSocket;
