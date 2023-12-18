@@ -1,18 +1,22 @@
 import React from "react";
 import AuthLayout from "../Layouts/AuthLayout";
 import Textfield from "../components/Textfield/Textfield";
-import { Button } from "../components/Buttons/Button";
+import { CustomButton } from "../components/Buttons/Button";
 import ButtonGoogle from "../components/Buttons/ButtonGoogle";
 import useLogin from "../hooks/useLogin";
 import { Link } from "react-router-dom";
 import LogoAuth from "../components/Icons/LogoAuth";
 import { loginBackground } from "../constants/images";
+import CustomAlert from "../components/Alert/CustomAlert";
 
 const Login = () => {
-  const { handleLogin, handleGoogleLogin, userData, handleData } = useLogin();
+  const { handleLogin, handleGoogleLogin, userData, handleData, message } =
+    useLogin();
+  console.log("message: ", message);
   return (
     <AuthLayout>
       <main className="w-full h-full flex flex-col items-center justify-center">
+        {message !== "" && <CustomAlert message={message} />}
         <div className="w-full h-full flex">
           <section className="w-1/2 h-screen flex justify-end">
             <img
@@ -44,7 +48,7 @@ const Login = () => {
             </div>
             <div>
               <div className="flex flex-col gap-2 mb-4">
-                <Button text={"Iniciar sesión"} onClick={handleLogin} />
+                <CustomButton text={"Iniciar sesión"} onClick={handleLogin} />
                 <ButtonGoogle
                   onClick={handleGoogleLogin}
                   text={"Iniciar sesión con Google"}

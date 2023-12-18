@@ -37,7 +37,6 @@ const useSocket = () => {
     const id = rooms.rooms.find((room) => room.name === currentRoom)._id;
     if (id) {
       const response = await getRoom(id);
-      console.log("response fetch chat: ", response);
       setMessages(response.room.messages);
     }
   };
@@ -75,8 +74,6 @@ const useSocket = () => {
       joinRoom();
     }
   }, [currentRoom]);
-
-  console.log("Messages: ", messages);
 
   const joinRoom = () => {
     if (socket && user.name && currentRoom) {

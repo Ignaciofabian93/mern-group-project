@@ -24,7 +24,6 @@ const Home = () => {
     handleFile,
     handleSaveChat,
     handleGetChat,
-    activeUsers,
   } = useSocket();
 
   const handleNavigate = (path) => {

@@ -4,6 +4,7 @@ import { IconSun } from "../Icons/Sun";
 import { Logo } from "../Icons/Logo";
 import { ThemeContext } from "../../context/themeContext";
 import { clsx } from "clsx";
+import { Tooltip } from "@nextui-org/react";
 
 export const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -36,10 +37,14 @@ export const Navbar = () => {
           devsconnect
         </p>
       </div>
-
-      <button onClick={toggleTheme}>
-        {theme === "dark" ? <IconSun /> : <IconMoon />}
-      </button>
+      <Tooltip
+        content={theme === "dark" ? "Modo claro" : "Modo oscuro"}
+        placement="bottom"
+      >
+        <button onClick={toggleTheme}>
+          {theme === "dark" ? <IconSun /> : <IconMoon />}
+        </button>
+      </Tooltip>
     </nav>
   );
 };

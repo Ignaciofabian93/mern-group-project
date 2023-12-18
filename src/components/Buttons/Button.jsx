@@ -1,9 +1,10 @@
 import React from "react";
 import clsx from "clsx";
+import { Button } from "@nextui-org/react";
 
-export const Button = ({ text, onClick }) => {
+export const CustomButton = ({ text, onClick }) => {
   return (
-    <button
+    <Button
       className={clsx(
         //default state
         "bg-[#5865F2] text-white",
@@ -26,7 +27,7 @@ export const Button = ({ text, onClick }) => {
       onClick={onClick}
     >
       {text}
-    </button>
+    </Button>
   );
 };
 

@@ -4,7 +4,11 @@ import clsx from "clsx";
 const AuthLayout = ({ children }) => {
   return (
     <main
-      className={clsx("w-screen", "h-screen", "flex flex-col bg-[#0a0a0a]")}
+      className={clsx(
+        "w-screen",
+        "h-screen",
+        "flex flex-col bg-[#0a0a0a] relative"
+      )}
     >
       {children}
     </main>

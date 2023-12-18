@@ -28,7 +28,7 @@ const UserConnected = () => {
       )}
     >
       <div className="flex items-center gap-3">
-        <div className="w-[65px] h-[65px] rounded-[50%] overflow-hidden cursor-pointer">
+        <div className="w-[65px] h-[65px] rounded-[50%] overflow-hidden">
           {user && (
             <img
               src={user.photo ? user.photo : UserIcon}

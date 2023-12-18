@@ -2,7 +2,7 @@ import React from "react";
 import AuthLayout from "../Layouts/AuthLayout";
 import Textfield from "../components/Textfield/Textfield";
 import useLogin from "../hooks/useLogin";
-import { Button } from "../components/Buttons/Button";
+import { CustomButton } from "../components/Buttons/Button";
 import { Link } from "react-router-dom";
 import LogoAuth from "../components/Icons/LogoAuth";
 import { registerBackground } from "../constants/images";
@@ -50,7 +50,7 @@ const Register = () => {
           </div>
           <div className="flex flex-col w-full items-center">
             <div className="w-full flex justify-center mb-4">
-              <Button text={"Guardar"} onClick={handleRegister} />
+              <CustomButton text={"Guardar"} onClick={handleRegister} />
             </div>
             <Link to={"/login"}>
               <span className="font-normal text-sm text-blue-700 hover:underline">

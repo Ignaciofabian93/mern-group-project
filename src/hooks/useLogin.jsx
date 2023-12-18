@@ -15,8 +15,6 @@ const useLogin = () => {
     password: "",
   });
 
-  console.log("data: ", userData);
-
   const handleData = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
@@ -24,38 +22,30 @@ const useLogin = () => {
 
   const handleRegister = async () => {
     if (!userData.name || !userData.email || !userData.password) {
-      alert("Todos los campos son obligatorios");
+      setMessage("Todos los campos son obligatorios");
     } else {
       const response = await saveUser(userData);
-      console.log("res: ", response);
       if (response.status === "ok") {
-        alert("Usuario creado correctamente");
         setMessage("Usuario creado correctamente");
         setUserData({ name: "", email: "", password: "" });
         navigate("/login");
       } else {
-        alert("Error al crear usuario");
         setMessage("Error al crear usuario");
       }
     }
   };
 
   const handleLogin = async () => {
-    try {
-      setLoading(true);
-      const response = await loginUser(userData.email, userData.password);
-      if (response.user.uid) {
-        setLoading(false);
-        setMessage("Bienvenido(a)");
-        navigate("/");
-      } else {
-        setLoading(false);
-        setMessage("Error al iniciar sesion");
-      }
-    } catch (error) {
+    setLoading(true);
+    const response = await loginUser(userData.email, userData.password);
+    console.log(response);
+    if (response.user.uid) {
       setLoading(false);
-      setMessage(error);
-      throw new Error(`Error al intentar iniciar sesion: ${error}`);
+      setMessage("Bienvenido(a)");
+      navigate("/");
+    } else {
+      setLoading(false);
+      setMessage("Credenciales incorrectas");
     }
   };
 
@@ -67,7 +57,6 @@ const useLogin = () => {
       navigate("/");
     } else {
       setMessage("Error al iniciar sesión con Google");
-      alert("Error al iniciar sesion con Google");
     }
   };
 
