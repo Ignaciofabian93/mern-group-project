@@ -26,19 +26,19 @@ export const Navbar = () => {
         "transition duration-300"
       )}
     >
-      <div className="flex gap-2 items-center ">
-        <Link to={"/"}>
+      <Link to={"/"} className="flex gap-2 items-center ">
+        <div className="flex gap-2 items-center ">
           <Logo />
-        </Link>
-        <p
-          className={clsx(
-            "text-[#F8FAFC] transition duration-300",
-            "text-base"
-          )}
-        >
-          devsconnect
-        </p>
-      </div>
+          <p
+            className={clsx(
+              "text-[#F8FAFC] transition duration-300",
+              "text-base"
+            )}
+          >
+            devsconnect
+          </p>
+        </div>
+      </Link>
       <Tooltip
         content={theme === "dark" ? "Modo claro" : "Modo oscuro"}
         placement="bottom"
