@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { MainLayout, LeftLayout, RightLayout } from "../Layouts";
 import { useSocket, useRoom } from "../hooks";
 import InputMessage from "../components/InputMessage/InputMessage";
@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
+  const containerRef = useRef();
   const { handleLogOut } = useLogin();
   const { rooms } = useRoom();
   const {
@@ -30,6 +31,10 @@ const Home = () => {
     navigate(path);
   };
 
+  useEffect(() => {
+    containerRef.current.scrollTop = containerRef.current.scrollHeight;
+  }, [messages]);
+
   return (
     <MainLayout>
       <section className="w-full h-full flex">
@@ -38,19 +43,21 @@ const Home = () => {
             <UserConnected />
           </div>
           <div className="w-full h-3/4 flex flex-col items-center justify-between pb-6">
-            <div className="flex items-center justify-around w-full px-4 mt-6">
-              <CustomSelect
-                rooms={rooms.rooms}
-                onChange={handleCurrentRoom}
-                value={currentRoom}
-              />
-            </div>
-            {currentRoom !== "" && (
-              <div className="flex w-full px-4 justify-evenly">
-                <Button onClick={handleSaveChat}>Guardar chat</Button>
-                <Button onClick={handleGetChat}>Historial</Button>
+            <div className="w-full">
+              <div className="flex items-center justify-around w-full px-4 mt-6 mb-4">
+                <CustomSelect
+                  rooms={rooms.rooms}
+                  onChange={handleCurrentRoom}
+                  value={currentRoom}
+                />
               </div>
-            )}
+              {currentRoom !== "" && (
+                <div className="flex w-full px-4 justify-between">
+                  <Button onClick={handleSaveChat}>Guardar chat</Button>
+                  <Button onClick={handleGetChat}>Historial</Button>
+                </div>
+              )}
+            </div>
             <div className="w-full flex flex-col items-center px-4">
               <ButtonConfig
                 text={"Ajustes"}
@@ -65,7 +72,10 @@ const Home = () => {
 
         <RightLayout>
           <div className="w-full h-full flex flex-col justify-between py-6 ">
-            <div className="h-[calc(100%_-_100px)] px-10 overflow-y-auto scroll-window">
+            <div
+              ref={containerRef}
+              className="h-[calc(100%_-_100px)] px-10 overflow-y-auto scroll-window"
+            >
               {messages.map((msg, index) => {
                 if (msg.text) {
                   return (
