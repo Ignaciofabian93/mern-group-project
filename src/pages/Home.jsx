@@ -110,7 +110,7 @@ const Home = () => {
                       </div>
                       {msg.image && (
                         <div
-                          className="w-fit my-4 mx-12 flex justify-end"
+                          className="w-fit my-4 mx-12 flex justify-end cursor-pointer"
                           onClick={handleOpenModal}
                         >
                           <img
@@ -120,6 +120,8 @@ const Home = () => {
                             height={"auto"}
                             className="rounded-xl"
                           />
+
+                          {/* Modal para ver la imagen más grande*/}
                           {openModal && (
                             <Modal isOpen={openModal} size="xl">
                               <ModalContent>
