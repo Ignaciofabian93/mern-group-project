@@ -5,6 +5,7 @@ import { Logo } from "../Icons/Logo";
 import { ThemeContext } from "../../context/themeContext";
 import { clsx } from "clsx";
 import { Tooltip } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -25,8 +26,10 @@ export const Navbar = () => {
         "transition duration-300"
       )}
     >
-      <div className="flex gap-2 items-center">
-        <Logo />
+      <div className="flex gap-2 items-center ">
+        <Link to={"/"}>
+          <Logo />
+        </Link>
         <p
           className={clsx(
             "text-[#F8FAFC] transition duration-300",
