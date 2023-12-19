@@ -19,16 +19,17 @@ const Profile = () => {
   };
   return (
     <MainLayout>
-      <section className="w-full h-full flex flex-col items-center">
-        <h1 className="text-white text-2xl">Actualizar perfil</h1>
-        <div className="flex">
-          <div>
-            <div>{user && <p className="text-white">{user.name}</p>}</div>
+      <section className="w-full h-full flex flex-col items-center justify-center">
+        <h1 className="text-black dark:text-white text-4xl">Actualizar perfil</h1>
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex items-center flex-col gap-4">
+              <div>{user && <p className="text-black dark:text-white">{user.name}</p>}</div>
             <div className="w-[100px] h-[100px] rounded-[50%] overflow-hidden">
               <img
                 src={profilePicture}
                 alt="profile"
-                className="w-full h-full"
+                className="w-full h-full cursor-pointer hover:opacity-80"
+                onClick={handleFileButton}
               />
               <input
                 type="file"
@@ -39,14 +40,13 @@ const Profile = () => {
                 ref={fileRef}
               />
             </div>
-            <div>
+            {/* <div>
               <CustomButton
                 text={"Actualizar Foto"}
-                onClick={handleFileButton}
               />
-            </div>
+            </div> */}
           </div>
-          <div>
+          <div className="flex flex-col gap-4 mt-4">
             <Textfield
               name={"newPassword"}
               type={"password"}
