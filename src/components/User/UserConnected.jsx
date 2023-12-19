@@ -14,16 +14,14 @@ const UserConnected = () => {
         "w-full h-[90px]",
         "rounded-2xl",
         "text-white",
-        "flex items-center justify-start",
-        "px-6",
+        "flex items-center justify-center",
         // "bg-[#5cb0da]",
 
         /* ----- Transition -----*/
-        "transition duration-300",
+        "transition duration-300"
 
         /* ----- dark mode -----*/
         // "dark:bg-[#334155]",
-        
       )}
     >
       <div className="flex items-center gap-3">
@@ -32,19 +30,17 @@ const UserConnected = () => {
             <img
               src={user.photo ? user.photo : UserIcon}
               alt="profile"
-              className="w-[50px] h-[50px] rounded-full"
+              className="w-[60px] h-[60px] rounded-full"
             />
           )}
         </div>
         <div className="flex flex-col">
           {user && (
             <>
-              <p className="text-lg text-[#white] font-normal dark:text-white">
+              <p className="text-md text-[#white] font-normal dark:text-white">
                 {user.name}
               </p>
-              <p className="text-sm  dark:text-gray-500">
-                {user.email}
-              </p>
+              <p className="text-sm  dark:text-gray-500">{user.email}</p>
             </>
           )}
         </div>

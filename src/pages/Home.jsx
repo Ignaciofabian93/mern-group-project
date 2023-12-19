@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { MainLayout, LeftLayout, RightLayout } from "../Layouts";
 import { useSocket, useRoom } from "../hooks";
 import InputMessage from "../components/InputMessage/InputMessage";
@@ -22,7 +22,6 @@ const Home = () => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const containerRef = useRef();
-  // const [openModal, setOpenModal] = useState(false);
   const { handleLogOut } = useLogin();
   const { rooms } = useRoom();
   const {
@@ -45,10 +44,6 @@ const Home = () => {
     onOpen();
   };
 
-  // const handleCloseModal = () => {
-  //   setOpenModal(false);
-  // };
-
   useEffect(() => {
     containerRef.current.scrollTop = containerRef.current.scrollHeight;
   }, [messages]);
@@ -57,10 +52,10 @@ const Home = () => {
     <MainLayout>
       <section className="w-full h-full flex">
         <LeftLayout>
-          <div className="w-full h-1/4 flex items-center px-4">
+          <div className="w-full h-1/5 flex items-center px-4">
             <UserConnected />
           </div>
-          <div className="w-full h-3/4 flex flex-col items-center justify-between pb-6">
+          <div className="w-full h-4/5 flex flex-col items-center justify-between pb-6">
             <div className="w-full">
               <div className="flex items-center justify-around w-full px-4 mt-6 mb-4">
                 <CustomSelect
@@ -71,8 +66,18 @@ const Home = () => {
               </div>
               {currentRoom !== "" && (
                 <div className="flex w-full px-4 justify-between">
-                  <Button onClick={handleSaveChat}>Guardar chat</Button>
-                  <Button onClick={handleGetChat}>Historial</Button>
+                  <Button
+                    onClick={handleSaveChat}
+                    className="bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-white"
+                  >
+                    Guardar chat
+                  </Button>
+                  <Button
+                    onClick={handleGetChat}
+                    className="bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-white"
+                  >
+                    Historial
+                  </Button>
                 </div>
               )}
             </div>
@@ -99,10 +104,10 @@ const Home = () => {
                   return (
                     <div
                       key={index}
-                      className="flex border-2 w-fit px-6 py-2 rounded-lg mb-4"
+                      className="flex border-2 border-sky-500 w-fit px-6 py-2 rounded-lg mb-4 dark:border-slate-500"
                     >
                       <div className="w-full">
-                        <p className="transition-all duration-300 ease-in-out text-gray-500 dark:text-gray-400 text-sm">
+                        <p className="transition-all duration-300 ease-in-out text-gray-500 dark:text-gray-400 text-sm italic">
                           {msg.username}
                         </p>
                         <p className="ml-4 transition-all duration-300 ease-in-out text-black dark:font-light dark:text-white">

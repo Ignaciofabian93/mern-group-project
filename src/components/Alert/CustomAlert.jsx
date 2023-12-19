@@ -2,7 +2,7 @@ import React from "react";
 
 const CustomAlert = ({ message }) => {
   return (
-    <div className="border-2 bg-slate-300 w-fit h-fit absolute top-100 text-red">
+    <div className="bg-slate-700 text-white w-fit h-fit p-4 rounded-xl transition-all duration-500 ease-in-out absolute top-10">
       {message}
     </div>
   );

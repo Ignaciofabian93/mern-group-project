@@ -38,7 +38,6 @@ const useLogin = () => {
   const handleLogin = async () => {
     setLoading(true);
     const response = await loginUser(userData.email, userData.password);
-    console.log(response);
     if (response.user.uid) {
       setLoading(false);
       setMessage("Bienvenido(a)");

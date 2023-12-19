@@ -5,7 +5,7 @@ const LeftLayout = ({ children }) => {
   return (
     <aside
       className={clsx(
-        "w-[480px] h-full",
+        "w-[420px] h-full",
         "bg-gray-600",
         "border-white",
         "border-t-2",
