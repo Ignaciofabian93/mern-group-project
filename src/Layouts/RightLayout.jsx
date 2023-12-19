@@ -10,7 +10,7 @@ const RightLayout = ({ children }) => {
         "w-full h-full",
         "pb-4 pr-4",
         /*-------- dark mode config  ------*/
-        "dark:bg-[#182234]"
+        "dark:bg-slate-800"
       )}
     >
       {children}

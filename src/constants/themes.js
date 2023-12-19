@@ -9,3 +9,4 @@ export const light = {
   text: "#000",
   primary: "#3df",
 };
+

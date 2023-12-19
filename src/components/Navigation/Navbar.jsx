@@ -12,16 +12,15 @@ export const Navbar = () => {
     <nav
       className={clsx(
         /* ----- Default Value -----*/
-        "w-full h-[50px]",
-        "shadow-lg",
         "fixed top-0",
         "flex  justify-between",
-        "pl-[50px] pr-[50px] py-2",
-        "bg-[#5C6069] ",
         "font-medium",
+        "w-full h-[50px]",
+        "pl-[50px] pr-[50px] py-2",
+        /*----color----*/
+        "bg-gray-600 ",
         /* ----- Dark Theme Background -----*/
-        "dark:bg-[#0B1120]",
-
+        "dark:bg-slate-900",
         /* ----- Transition -----*/
         "transition duration-300"
       )}
