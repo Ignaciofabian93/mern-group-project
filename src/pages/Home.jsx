@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MainLayout, LeftLayout, RightLayout } from "../Layouts";
 import { useSocket, useRoom } from "../hooks";
 import InputMessage from "../components/InputMessage/InputMessage";
@@ -8,11 +8,19 @@ import useLogin from "../hooks/useLogin";
 import { ButtonSalir } from "../components/Buttons/ButtonSalir";
 import { Button } from "@nextui-org/react";
 import { ButtonConfig } from "../components/Buttons/ButtonConfig";
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  ModalContent,
+} from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
   const containerRef = useRef();
+  const [openModal, setOpenModal] = useState(false);
   const { handleLogOut } = useLogin();
   const { rooms } = useRoom();
   const {
@@ -25,10 +33,19 @@ const Home = () => {
     handleFile,
     handleSaveChat,
     handleGetChat,
+    file,
   } = useSocket();
 
   const handleNavigate = (path) => {
     navigate(path);
+  };
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
   };
 
   useEffect(() => {
@@ -83,7 +100,7 @@ const Home = () => {
                       key={index}
                       className="flex border-2 w-fit px-6 py-2 rounded-lg mb-4"
                     >
-                      <div>
+                      <div className="w-full">
                         <p className="transition-all duration-300 ease-in-out text-gray-500 dark:text-gray-400 text-sm">
                           {msg.username}
                         </p>
@@ -92,7 +109,10 @@ const Home = () => {
                         </p>
                       </div>
                       {msg.image && (
-                        <div className="my-4 mx-24 flex justify-end">
+                        <div
+                          className="w-fit my-4 mx-12 flex justify-end"
+                          onClick={handleOpenModal}
+                        >
                           <img
                             src={msg.image}
                             alt="imagen"
@@ -100,6 +120,31 @@ const Home = () => {
                             height={"auto"}
                             className="rounded-xl"
                           />
+                          {openModal && (
+                            <Modal isOpen={openModal} size="xl">
+                              <ModalContent>
+                                {() => (
+                                  <>
+                                    <ModalHeader>Imagen</ModalHeader>
+                                    <ModalBody>
+                                      <img
+                                        src={msg.image}
+                                        alt="imagen"
+                                        width={"100%"}
+                                        height={"auto"}
+                                        className="rounded-xl"
+                                      />
+                                    </ModalBody>
+                                    <ModalFooter>
+                                      <Button onClick={handleCloseModal}>
+                                        Cerrar
+                                      </Button>
+                                    </ModalFooter>
+                                  </>
+                                )}
+                              </ModalContent>
+                            </Modal>
+                          )}
                         </div>
                       )}
                     </div>
@@ -113,6 +158,7 @@ const Home = () => {
                 onClick={sendMessage}
                 onChangeFile={handleFile}
                 value={messageInput}
+                file={file}
               />
             </div>
           </div>

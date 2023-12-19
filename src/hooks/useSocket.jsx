@@ -75,6 +75,12 @@ const useSocket = () => {
     }
   }, [currentRoom]);
 
+  useEffect(() => {
+    if (file) {
+      sendMessage();
+    }
+  }, [file]);
+
   const joinRoom = () => {
     if (socket && user.name && currentRoom) {
       socket.emit("joinRoom", currentRoom, user.name);
@@ -132,6 +138,7 @@ const useSocket = () => {
     handleGetChat,
     apiResponse,
     activeUsers,
+    file,
   };
 };
 

@@ -2,8 +2,9 @@ import React, { useRef } from "react";
 import { ButtonSend } from "../Buttons/ButtonSend";
 import { ButtonFile } from "../Buttons/ButtonFile";
 import clsx from "clsx";
+import { Badge } from "@nextui-org/react";
 
-const InputMessage = ({ onClick, onChange, value, onChangeFile }) => {
+const InputMessage = ({ onClick, onChange, value, onChangeFile, file }) => {
   const fileInputRef = useRef(null);
 
   const handleFileButtonClick = () => {
@@ -42,7 +43,7 @@ const InputMessage = ({ onClick, onChange, value, onChangeFile }) => {
             "shadow-sm",
             "font-light",
             "bg-gray-200",
-          "text-gray-700",
+            "text-gray-700",
 
             /* --------- dark mode -------*/
             "dark:bg-[#334155] transition duration-300",
