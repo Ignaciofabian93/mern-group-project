@@ -2,9 +2,8 @@ import React, { useRef } from "react";
 import { ButtonSend } from "../Buttons/ButtonSend";
 import { ButtonFile } from "../Buttons/ButtonFile";
 import clsx from "clsx";
-import { Badge } from "@nextui-org/react";
 
-const InputMessage = ({ onClick, onChange, value, onChangeFile, file }) => {
+const InputMessage = ({ onClick, onChange, value, onChangeFile }) => {
   const fileInputRef = useRef(null);
 
   const handleFileButtonClick = () => {

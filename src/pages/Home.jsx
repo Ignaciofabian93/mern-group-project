@@ -14,13 +14,15 @@ import {
   ModalBody,
   ModalFooter,
   ModalContent,
+  useDisclosure,
 } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const containerRef = useRef();
-  const [openModal, setOpenModal] = useState(false);
+  // const [openModal, setOpenModal] = useState(false);
   const { handleLogOut } = useLogin();
   const { rooms } = useRoom();
   const {
@@ -33,7 +35,6 @@ const Home = () => {
     handleFile,
     handleSaveChat,
     handleGetChat,
-    file,
   } = useSocket();
 
   const handleNavigate = (path) => {
@@ -41,12 +42,12 @@ const Home = () => {
   };
 
   const handleOpenModal = () => {
-    setOpenModal(true);
+    onOpen();
   };
 
-  const handleCloseModal = () => {
-    setOpenModal(false);
-  };
+  // const handleCloseModal = () => {
+  //   setOpenModal(false);
+  // };
 
   useEffect(() => {
     containerRef.current.scrollTop = containerRef.current.scrollHeight;
@@ -122,31 +123,27 @@ const Home = () => {
                           />
 
                           {/* Modal para ver la imagen más grande*/}
-                          {openModal && (
-                            <Modal isOpen={openModal} size="xl">
-                              <ModalContent>
-                                {() => (
-                                  <>
-                                    <ModalHeader>Imagen</ModalHeader>
-                                    <ModalBody>
-                                      <img
-                                        src={msg.image}
-                                        alt="imagen"
-                                        width={"100%"}
-                                        height={"auto"}
-                                        className="rounded-xl"
-                                      />
-                                    </ModalBody>
-                                    <ModalFooter>
-                                      <Button onClick={handleCloseModal}>
-                                        Cerrar
-                                      </Button>
-                                    </ModalFooter>
-                                  </>
-                                )}
-                              </ModalContent>
-                            </Modal>
-                          )}
+                          <Modal isOpen={isOpen} size="xl">
+                            <ModalContent>
+                              {() => (
+                                <>
+                                  <ModalHeader>Imagen</ModalHeader>
+                                  <ModalBody>
+                                    {console.log("imagen!!: ", msg.image)}
+                                    <img
+                                      key={msg.image}
+                                      src={msg.image}
+                                      alt="imagen"
+                                      className="w-[100%] h-[50%] max-h-[300px] rounded-xl"
+                                    />
+                                  </ModalBody>
+                                  <ModalFooter>
+                                    <Button onClick={onClose}>Cerrar</Button>
+                                  </ModalFooter>
+                                </>
+                              )}
+                            </ModalContent>
+                          </Modal>
                         </div>
                       )}
                     </div>
@@ -160,7 +157,6 @@ const Home = () => {
                 onClick={sendMessage}
                 onChangeFile={handleFile}
                 value={messageInput}
-                file={file}
               />
             </div>
           </div>

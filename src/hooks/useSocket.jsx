@@ -14,7 +14,6 @@ const useSocket = () => {
   const [currentRoom, setCurrentRoom] = useState("");
   const [file, setFile] = useState(null);
   const [apiResponse, setApiResponse] = useState("");
-  const [activeUsers, setActiveUsers] = useState([]);
 
   useEffect(() => {
     const newSocket = io(url);
@@ -84,7 +83,6 @@ const useSocket = () => {
   const joinRoom = () => {
     if (socket && user.name && currentRoom) {
       socket.emit("joinRoom", currentRoom, user.name);
-      setActiveUsers(...activeUsers, user.name);
     }
   };
 
@@ -103,8 +101,6 @@ const useSocket = () => {
   const leaveRoom = () => {
     if (socket) {
       socket.emit("userLeft", currentRoom, user.name);
-      const filteredUsers = activeUsers.filter((user) => user !== user.name);
-      setActiveUsers(filteredUsers);
     }
   };
 
@@ -137,7 +133,6 @@ const useSocket = () => {
     handleSaveChat,
     handleGetChat,
     apiResponse,
-    activeUsers,
     file,
   };
 };
