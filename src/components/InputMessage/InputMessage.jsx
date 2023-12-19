@@ -45,7 +45,7 @@ const InputMessage = ({ onClick, onChange, value, onChangeFile }) => {
             "text-gray-700",
 
             /* --------- dark mode -------*/
-            "dark:bg-[#334155] transition duration-300",
+            "dark:bg-slate-700 transition duration-300",
             "dark:text-white",
 
             /*---------- focus ---------------*/
