@@ -11,9 +11,9 @@ export const ButtonConfig = ({ text, onClick }) => {
         "pl-4 my-2",
         "rounded-md",
         /* ----default theme -----*/
-        "bg-sky-950",
+        "bg-cyan-600",
         "text-white",
-        "hover:bg-sky-950/50",
+        "hover:bg-cyan-800",
         // "border border-gray-300",
         "text-gray-900 text-sm",
         "block",
