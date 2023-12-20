@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MainLayout, LeftLayout, RightLayout } from "../Layouts";
 import { useSocket, useRoom } from "../hooks";
 import InputMessage from "../components/InputMessage/InputMessage";
@@ -18,10 +18,21 @@ import {
 } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 
+const NameIcon = ({ letter }) => {
+  return (
+    <div className="w-[40px] h-[40px] rounded-[50%] bg-white/70 border-2 border-sky-500 dark:bg-cyan-800 dark:border-cyan-800 flex items-center justify-center">
+      <p className="capitalize text-2xl font-semibold dark:text-white">
+        {letter}
+      </p>
+    </div>
+  );
+};
+
 const Home = () => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const containerRef = useRef();
+  const [selectedImage, setSelectedImage] = useState("");
   const { handleLogOut } = useLogin();
   const { rooms } = useRoom();
   const {
@@ -40,7 +51,8 @@ const Home = () => {
     navigate(path);
   };
 
-  const handleOpenModal = () => {
+  const handleSelectImage = (image) => {
+    setSelectedImage(image);
     onOpen();
   };
 
@@ -106,18 +118,21 @@ const Home = () => {
                       key={index}
                       className="flex border-2 border-sky-500 w-fit px-6 py-2 rounded-lg mb-4 dark:border-slate-500"
                     >
-                      <div className="w-full">
-                        <p className="transition-all duration-300 ease-in-out text-gray-500 dark:text-gray-400 text-sm italic">
-                          {msg.username}
-                        </p>
-                        <p className="ml-4 transition-all duration-300 ease-in-out text-black dark:font-light dark:text-white">
-                          {msg.text}
-                        </p>
+                      <div className="w-full flex">
+                        <NameIcon letter={msg.username[0]} />
+                        <div className="ml-4">
+                          <p className="transition-all duration-300 ease-in-out text-gray-500 dark:text-gray-400 text-sm italic">
+                            {msg.username}
+                          </p>
+                          <p className="transition-all duration-300 ease-in-out text-black dark:font-light dark:text-white">
+                            {msg.text}
+                          </p>
+                        </div>
                       </div>
                       {msg.image && (
                         <div
                           className="w-fit my-4 mx-12 flex justify-end cursor-pointer"
-                          onClick={handleOpenModal}
+                          onClick={() => handleSelectImage(msg.image)}
                         >
                           <img
                             src={msg.image}
@@ -126,29 +141,6 @@ const Home = () => {
                             height={"auto"}
                             className="rounded-xl"
                           />
-
-                          {/* Modal para ver la imagen más grande*/}
-                          <Modal isOpen={isOpen} size="xl">
-                            <ModalContent>
-                              {() => (
-                                <>
-                                  <ModalHeader>Imagen</ModalHeader>
-                                  <ModalBody>
-                                    {console.log("imagen!!: ", msg.image)}
-                                    <img
-                                      key={msg.image}
-                                      src={msg.image}
-                                      alt="imagen"
-                                      className="w-[100%] h-[50%] max-h-[300px] rounded-xl"
-                                    />
-                                  </ModalBody>
-                                  <ModalFooter>
-                                    <Button onClick={onClose}>Cerrar</Button>
-                                  </ModalFooter>
-                                </>
-                              )}
-                            </ModalContent>
-                          </Modal>
                         </div>
                       )}
                     </div>
@@ -156,6 +148,27 @@ const Home = () => {
                 }
               })}
             </div>
+            {/* Modal para ver la imagen más grande*/}
+            <Modal isOpen={isOpen} size="xl">
+              <ModalContent>
+                {() => (
+                  <>
+                    <ModalHeader>Imagen</ModalHeader>
+                    <ModalBody>
+                      <img
+                        key={selectedImage}
+                        src={selectedImage}
+                        alt="imagen"
+                        className="w-[100%] h-[50%] max-h-[300px] rounded-xl"
+                      />
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button onClick={onClose}>Cerrar</Button>
+                    </ModalFooter>
+                  </>
+                )}
+              </ModalContent>
+            </Modal>
             <div className="w-full h-[100px] flex justify-center items-center">
               <InputMessage
                 onChange={handleMessageInput}
