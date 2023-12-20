@@ -25,10 +25,12 @@ const useSocket = () => {
   }, []);
 
   useEffect(() => {
-    setApiResponse(`Bienvenido(a) ${user.name}`);
-    setTimeout(() => {
-      setApiResponse("");
-    }, 4000);
+    if (user) {
+      setApiResponse(`Bienvenido(a) ${user.name}`);
+      setTimeout(() => {
+        setApiResponse("");
+      }, 4000);
+    }
   }, []);
 
   const handleSaveChat = async () => {
