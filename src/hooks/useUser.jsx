@@ -24,7 +24,6 @@ const useUser = () => {
     } else {
       try {
         const response = await updateUserPassword(updatedPassword.newPassword);
-        console.log("Response; ", response);
         if (response === undefined) {
           setMessage("Contraseña actualizada");
           setTimeout(() => {
