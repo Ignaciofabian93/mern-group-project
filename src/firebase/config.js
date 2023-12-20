@@ -10,15 +10,6 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID,
 };
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyA428v9MVYhJc2fQZ2WvsKqr9uZCdRiZLo",
-//   authDomain: "chatapp-8b90d.firebaseapp.com",
-//   projectId: "chatapp-8b90d",
-//   storageBucket: "chatapp-8b90d.appspot.com",
-//   messagingSenderId: "14108660781",
-//   appId: "1:14108660781:web:2917dc54cc5d1b0ee5d4a4",
-// };
-
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
