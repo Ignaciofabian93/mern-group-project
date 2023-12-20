@@ -23,39 +23,60 @@ const useLogin = () => {
   const handleRegister = async () => {
     if (!userData.name || !userData.email || !userData.password) {
       setMessage("Todos los campos son obligatorios");
+      setTimeout(() => {
+        setMessage("");
+      }, 2000);
     } else {
       const response = await saveUser(userData);
       if (response.status === "ok") {
-        setMessage("Usuario creado correctamente");
+        setMessage("Usuario creado correctamente. Ya puede iniciar sesión");
+        setTimeout(() => {
+          setMessage("");
+        }, 2000);
         setUserData({ name: "", email: "", password: "" });
-        navigate("/login");
       } else {
         setMessage("Error al crear usuario");
+        setTimeout(() => {
+          setMessage("");
+        }, 2000);
       }
     }
   };
 
   const handleLogin = async () => {
-    setLoading(true);
-    const response = await loginUser(userData.email, userData.password);
-    if (response.user.uid) {
-      setLoading(false);
-      setMessage("Bienvenido(a)");
-      navigate("/");
-    } else {
-      setLoading(false);
-      setMessage("Credenciales incorrectas");
+    try {
+      setLoading(true);
+      const response = await loginUser(userData.email, userData.password);
+      if (response.user.uid) {
+        setLoading(false);
+        navigate("/");
+      } else {
+        setLoading(false);
+        setMessage("Credenciales incorrectas");
+      }
+    } catch (error) {
+      setMessage("Error en inicio de sesión. Revise sus credenciales");
+      setTimeout(() => {
+        setMessage("");
+      }, 2000);
     }
   };
 
   const handleGoogleLogin = async () => {
-    const response = await googleLogin();
-    if (response.user.uid) {
-      await sendPasswordReset(response.user.email);
-      setMessage("Bienvenido(a)");
-      navigate("/");
-    } else {
+    try {
+      const response = await googleLogin();
+      if (response.user.uid) {
+        await sendPasswordReset(response.user.email);
+        setMessage("Bienvenido(a)");
+        navigate("/");
+      } else {
+        setMessage("Error al iniciar sesión con Google");
+      }
+    } catch (error) {
       setMessage("Error al iniciar sesión con Google");
+      setTimeout(() => {
+        setMessage("");
+      }, 2000);
     }
   };
 

@@ -6,13 +6,22 @@ import { CustomButton } from "../components/Buttons/Button";
 import { Link } from "react-router-dom";
 import LogoAuth from "../components/Icons/LogoAuth";
 import { registerBackground } from "../constants/images";
+import CustomAlert from "../components/Alert/CustomAlert";
 
 const Register = () => {
-  const { handleRegister, handleData, userData } = useLogin();
+  const { handleRegister, handleData, userData, message } = useLogin();
   return (
     <AuthLayout>
-      {/* <main className="w-full h-full flex flex-col items-center justify-center"> */}
       <div className="flex w-full h-full">
+        <div
+          className="w-full flex justify-center absolute -top-8 z-10 transition-all duration-500 ease-in-out"
+          style={{
+            transform:
+              message !== "" ? "translateY(100%)" : "translateY(-100%)",
+          }}
+        >
+          {message !== "" && <CustomAlert message={message} />}
+        </div>
         <section className="w-1/2 h-screen flex justify-end">
           <img
             className="w-auto h-full opacity-70 shadow-2xl"
@@ -60,7 +69,6 @@ const Register = () => {
           </div>
         </section>
       </div>
-      {/* </main> */}
     </AuthLayout>
   );
 };

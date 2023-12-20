@@ -3,7 +3,6 @@ import { getRooms } from "../api/fetchRoom";
 
 const useRoom = () => {
   const [rooms, setRooms] = useState([]);
-  // const [message, setMessage] = useState("");
 
   useEffect(() => {
     handleGetRooms();

@@ -8,6 +8,7 @@ import useLogin from "../hooks/useLogin";
 import { ButtonSalir } from "../components/Buttons/ButtonSalir";
 import { Button } from "@nextui-org/react";
 import { ButtonConfig } from "../components/Buttons/ButtonConfig";
+import CustomAlert from "../components/Alert/CustomAlert";
 import {
   Modal,
   ModalHeader,
@@ -45,6 +46,7 @@ const Home = () => {
     handleFile,
     handleSaveChat,
     handleGetChat,
+    apiResponse,
   } = useSocket();
 
   const handleNavigate = (path) => {
@@ -63,6 +65,15 @@ const Home = () => {
   return (
     <MainLayout>
       <section className="w-full h-full flex">
+        <div
+          className="w-full flex justify-center absolute -top-8 z-10 transition-all duration-500 ease-in-out"
+          style={{
+            transform:
+              apiResponse !== "" ? "translateY(100%)" : "translateY(-100%)",
+          }}
+        >
+          {apiResponse !== "" && <CustomAlert message={apiResponse} />}
+        </div>
         <LeftLayout>
           <div className="w-full h-1/5 flex items-center px-4">
             <UserConnected />
@@ -159,7 +170,7 @@ const Home = () => {
                         key={selectedImage}
                         src={selectedImage}
                         alt="imagen"
-                        className="w-[100%] h-[50%] max-h-[300px] rounded-xl"
+                        className="w-[100%] h-[100%] max-h-[300px] rounded-xl"
                       />
                     </ModalBody>
                     <ModalFooter>

@@ -24,11 +24,25 @@ const useSocket = () => {
     // };
   }, []);
 
+  useEffect(() => {
+    setApiResponse(`Bienvenido(a) ${user.name}`);
+    setTimeout(() => {
+      setApiResponse("");
+    }, 4000);
+  }, []);
+
   const handleSaveChat = async () => {
     const id = rooms.rooms.find((room) => room.name === currentRoom)._id;
     if (id) {
       const response = await saveChat(id, messages);
-      setApiResponse(response.message);
+      if (response.message === "Room updated") {
+        setApiResponse("Chat guardado correctamente");
+      } else {
+        setApiResponse("Error al guardar el chat");
+      }
+      setTimeout(() => {
+        setApiResponse("");
+      }, 2000);
     }
   };
 
@@ -36,7 +50,16 @@ const useSocket = () => {
     const id = rooms.rooms.find((room) => room.name === currentRoom)._id;
     if (id) {
       const response = await getRoom(id);
-      setMessages(response.room.messages);
+      if (response.message === "Room found") {
+        setApiResponse("Historial cargado");
+        setMessages(response.room.messages);
+      } else {
+        setApiResponse("Error al cargar el historial");
+        setMessages([]);
+      }
+      setTimeout(() => {
+        setApiResponse("");
+      }, 2000);
     }
   };
 

@@ -12,11 +12,18 @@ import CustomAlert from "../components/Alert/CustomAlert";
 const Login = () => {
   const { handleLogin, handleGoogleLogin, userData, handleData, message } =
     useLogin();
-  console.log("message: ", message);
   return (
     <AuthLayout>
       <main className="w-full h-full flex flex-col items-center justify-center">
-        {message !== "" && <CustomAlert message={message} />}
+        <div
+          className="w-full flex justify-center absolute -top-8 z-10 transition-all duration-500 ease-in-out"
+          style={{
+            transform:
+              message !== "" ? "translateY(100%)" : "translateY(-100%)",
+          }}
+        >
+          {message !== "" && <CustomAlert message={message} />}
+        </div>
         <div className="w-full h-full flex">
           <section className="w-1/2 h-screen flex justify-end">
             <img
